@@ -6,15 +6,15 @@ const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: "My Site",
-  tagline: "Dinosaurs are cool",
-  url: "https://your-docusaurus-test-site.com",
+  title: "Peddler API docs",
+  tagline: "Guide to the Admin API",
+  url: "https://abinashbunty.github.io",
   baseUrl: "/",
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
-  favicon: "img/favicon.ico",
-  organizationName: "facebook", // Usually your GitHub org/user name.
-  projectName: "docusaurus", // Usually your repo name.
+  favicon: "img/peddler-logo.png",
+  organizationName: "Abinashbunty", // Usually your GitHub org/user name.
+  projectName: "peddler-daas-api-docs", // Usually your repo name.
 
   presets: [
     [
@@ -25,13 +25,13 @@ const config = {
           sidebarPath: require.resolve("./sidebars.js"),
           // Please change this to your repo.
           editUrl:
-            "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/",
+            "https://github.com/Abinashbunty/peddler-daas-api-docs/",
         },
         blog: {
           showReadingTime: true,
           // Please change this to your repo.
           editUrl:
-            "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/",
+            "https://github.com/Abinashbunty/peddler-daas-api-docs/",
         },
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
@@ -44,10 +44,10 @@ const config = {
     /** @type {import('docusaurus-preset-openapi').ThemeConfig} */
     ({
       navbar: {
-        title: "My Site",
+        title: "DaaS",
         logo: {
-          alt: "My Site Logo",
-          src: "img/logo.svg",
+          alt: "Peddler Logo",
+          src: "https://www.peddler.com/images/5b987eb7aa7aee05c01036832b57105d-logo.svg",
         },
         items: [
           {
@@ -59,14 +59,14 @@ const config = {
           { to: "/api", label: "API", position: "left" },
           { to: "/blog", label: "Blog", position: "left" },
           {
-            href: "https://github.com/facebook/docusaurus",
+            href: "https://github.com/peddlerlabs",
             label: "GitHub",
             position: "right",
           },
         ],
       },
       footer: {
-        style: "dark",
+        style: "light",
         links: [
           {
             title: "Docs",
@@ -78,37 +78,37 @@ const config = {
             ],
           },
           {
-            title: "Community",
+            title: 'Peddler',
             items: [
               {
-                label: "Stack Overflow",
-                href: "https://stackoverflow.com/questions/tagged/docusaurus",
+                label: 'Marketplace',
+                href: 'https://www.peddler.com/',
               },
               {
-                label: "Discord",
-                href: "https://discordapp.com/invite/docusaurus",
-              },
-              {
-                label: "Twitter",
-                href: "https://twitter.com/docusaurus",
+                label: 'Delivery Service',
+                href: 'https://www.peddler.express/',
               },
             ],
           },
           {
-            title: "More",
+            title: 'Social Media',
             items: [
               {
-                label: "Blog",
-                to: "/blog",
+                label: 'Instagram',
+                href: 'https://www.instagram.com/peddler/',
               },
               {
-                label: "GitHub",
-                href: "https://github.com/facebook/docusaurus",
+                label: 'Facebook',
+                href: 'https://www.facebook.com/peddlerdotcom/',
               },
+              {
+                label: 'Twitter',
+                href: 'https://twitter.com/peddler_it',
+              }
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} Peddler Labs.`,
       },
       prism: {
         theme: lightCodeTheme,
