@@ -18,7 +18,7 @@ function HomepageHeader() {
             className="button button--secondary button--lg"
             to="/docs/intro"
           >
-            Docusaurus Tutorial - 5min ⏱️
+            Click here to proceed.⚡
           </Link>
         </div>
       </div>
@@ -31,8 +31,11 @@ export default function Home() {
   return (
     <Layout
       title={`Welcome to ${siteConfig.title}`}
-      description="Description will go into a meta tag in <head />"
+      description="Detailed documentation for Peddler DaaS API"
     >
+      <head>
+        <meta name="description" content="Detailed documentation for Peddler DaaS API" />
+      </head>
       <HomepageHeader />
       <main>
         <HomepageFeatures />

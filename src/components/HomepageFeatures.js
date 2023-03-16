@@ -4,32 +4,32 @@ import styles from "./HomepageFeatures.module.css";
 
 const FeatureList = [
   {
-    title: "Easy to Use",
-    Svg: require("../../static/img/undraw_docusaurus_mountain.svg").default,
+    title: 'Easy to follow',
+    Svg: require('@site/static/img/teaching_re_g7e3.svg').default,
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
+        The guide is divided into sections and subsections to make it 
+        easy to find the information you need.
       </>
     ),
   },
   {
-    title: "Focus on What Matters",
-    Svg: require("../../static/img/undraw_docusaurus_tree.svg").default,
+    title: 'Small examples to guide you',
+    Svg: require('@site/static/img/learning_re_32qv.svg').default,
     description: (
       <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
+        The guide has small examples to guide you through the process of
+        understanding the admin resources. 
       </>
     ),
   },
   {
-    title: "Powered by React",
-    Svg: require("../../static/img/undraw_docusaurus_react.svg").default,
+    title: 'Self-explanatory',
+    Svg: require('@site/static/img/books_re_8gea.svg').default,
     description: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+        The guide is self-explanatory. It does not require any prior
+        knowledge of the admin resources.
       </>
     ),
   },
