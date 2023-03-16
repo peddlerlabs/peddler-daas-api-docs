@@ -1,7 +1,7 @@
 ---
 slug: welcome
 title: Welcome
-authors: abinash
+authors: [abinash]
 tags: [facebook, hello, docusaurus]
 ---
 
