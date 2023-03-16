@@ -10,7 +10,7 @@ The JWT assertion is a JSON Web Token (JWT) that is used to authenticate a clien
 
 - `iss` (issuer) - The client id of the application
 - `sub` (subject) - The user id of the resource owner
-- `aud` (audience) - The Peddler API base URL
+- `aud` (audience) - The Peddler API base URL token path
 - `exp` (expiration time) - The expiration time of the JWT assertion
 - `iat` (issued at) - The time the JWT assertion was issued
 

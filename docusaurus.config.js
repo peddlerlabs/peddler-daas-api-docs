@@ -40,6 +40,18 @@ const config = {
     ],
   ],
 
+  themes: [
+    ["@easyops-cn/docusaurus-search-local",
+    /** @type {import("@easyops-cn/docusaurus-search-local").PluginOptions} */
+    ({
+      hashed: true,
+      language: ["en"],
+      highlightSearchTermsOnTargetPage: true,
+      explicitSearchResultPath: true,
+      }),
+    ],
+  ],
+
   themeConfig:
     /** @type {import('docusaurus-preset-openapi').ThemeConfig} */
     ({
