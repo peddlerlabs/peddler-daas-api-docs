@@ -28,8 +28,8 @@ const FeatureList = [
     Svg: require('@site/static/img/books_re_8gea.svg').default,
     description: (
       <>
-        The guide is self-explanatory. It does not require any prior
-        knowledge of the admin resources.
+        The guide is self-explanatory. But still, some prior knowledage of
+        web app development will be helpful.
       </>
     ),
   },
