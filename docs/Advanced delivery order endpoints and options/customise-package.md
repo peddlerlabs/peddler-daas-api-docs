@@ -21,7 +21,7 @@ Should your package contain both ALCOHOL and FOOD, ALCOHOL should prevail.
 
 :::  
   
-**For example when quering the `/getDeliveryServiceTypes` endpoint, you should expect the following object returned.**
+## Quering the `/getDeliveryServiceTypes` endpoint
 
 ```json
 {
