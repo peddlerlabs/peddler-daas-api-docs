@@ -1,9 +1,23 @@
 {
-  "openapi": "3.0.0",
+  "openapi": "3.1.0",
   "info": {
     "title": "Peddler Delivery as a Service API",
     "version": "1.0.0"
   },
+  "servers": [
+    {
+      "url": "https://peddler-daas-api.free.beeceptor.com",
+      "description": "Mock server"
+    },
+    {
+      "url": "https://lokl-api.peddler.com",
+      "description": "Production server"
+    },
+    {
+      "url": "https://alphadev-api.peddler.com",
+      "description": "Staging server"
+    }
+  ],
   "paths": {
     "/api/Orders": {
       "post": {
