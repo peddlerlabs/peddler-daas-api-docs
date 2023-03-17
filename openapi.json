@@ -4,11 +4,6 @@
     "title": "Peddler Delivery as a Service API",
     "version": "1.0.0"
   },
-  "servers": [
-    {
-      "url": "https://alphadev-api.peddler.com"
-    }
-  ],
   "paths": {
     "/api/Orders": {
       "post": {
@@ -6394,8 +6389,8 @@
             }
           }
         },
-        "summary": "",
-        "operationId": "",
+        "summary": "Get the packing slip for the order",
+        "operationId": "Get the packing slip for the order",
         "description": "",
         "tags": [
           "Order"
@@ -6405,6 +6400,15 @@
             "name": "id",
             "in": "path",
             "description": "",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "xordernumber",
+            "in": "path",
+            "description": "e.g. application/json",
             "required": true,
             "schema": {
               "type": "string"
@@ -6422,7 +6426,7 @@
           }
         ],
         "requestBody": {
-          "$ref": "#/components/requestBodies/Xordernumber"
+          "$ref": "#/components/requestBodies/Get_the_packing_slip_for_the_orderXordernumber"
         }
       }
     },
@@ -6681,7 +6685,7 @@
           }
         ],
         "requestBody": {
-          "$ref": "#/components/requestBodies/Xordernumber"
+          "$ref": "#/components/requestBodies/Get_the_packing_slip_for_the_orderXordernumber"
         }
       }
     },
@@ -8882,7 +8886,7 @@
           }
         }
       },
-      "Xordernumber": {
+      "Get_the_packing_slip_for_the_orderXordernumber": {
         "content": {
           "application/json": {
             "schema": {
