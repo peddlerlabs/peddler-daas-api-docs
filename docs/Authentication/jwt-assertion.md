@@ -26,6 +26,8 @@ The JWT assertion is created using the following steps:
 2. Sign the JSON object with the private key
 3. Encode the signed JSON object using Base64 URL encoding
 
+### JavaScript Example
+
 ```js
 const jwt = require('jws');
 
@@ -52,6 +54,131 @@ const body = {
 const assertion = jwt.sign(body);
 ```
 
+### PHP Example
+
+```php
+<?php
+
+class JWTBuilder
+{
+    const DEFAULT_SCOPE = ['DEFAULT', 'authenticated'];
+    const API_URL = 'https://api-lokl.peddler.com/';
+    const SANDBOX_API_URL = 'https://alphadev-api.peddler.com/';
+    const GRANT_TYPE = 'urn:ietf:params:oauth:grant-type:jwt-bearer';
+
+    protected InMemory $privateFile;
+    protected string $clientId = '';
+    protected string $storeOwnerId = '';
+    protected string $storeId = '';
+    protected bool $isSandbox = false;
+
+    public function __construct(
+        string $privateFile,
+        string $clientId,
+        string $storeOwnerId,
+        string $storeId,
+        bool $isSandbox = true
+    ) {
+        if (preg_match('/-{3,}\n([\s\S]*?)\n-{3,}/', $privateFile)) {
+            $this->privateFile = InMemory::plainText($privateFile);
+        } else {
+            $this->privateFile = InMemory::file($privateFile);
+        }
+        $this->clientId = $clientId;
+        $this->storeOwnerId = $storeOwnerId;
+        $this->storeId = $storeId;
+        $this->isSandbox = $isSandbox;
+    }
+
+    /**
+     * Generate JWT Claim required for
+     * @return string
+     */
+    public function generateJWTClaim(): string
+    {
+        $configuration = $this->getJwtConfiguration();
+        $now = new DateTimeImmutable();
+        $token = $configuration->builder()
+            // Configures the issuer (iss claim)
+            ->issuedBy($this->clientId)
+            // Configures the sub
+            ->relatedTo($this->storeOwnerId)
+            // Configures the audience (aud claim)
+            ->permittedFor('/oauth/token')
+            // Configures the id (jti claim)
+            // Configures the time that the token was issue (iat claim)
+            ->issuedAt($now)
+            // Configures the expiration time of the token (exp claim)
+            ->expiresAt($now->modify('+10000 seconds'))
+            // Configures a new claim, called "uid"
+            ->withClaim('scope', self::DEFAULT_SCOPE)
+            ->withClaim('storeId', $this->storeId)
+            // Builds a new token
+            ->getToken($configuration->signer(), $configuration->signingKey());
+
+        return $token->toString();
+    }
+
+    private function getJwtConfiguration(): Configuration
+    {
+        return Configuration::forAsymmetricSigner(new Sha256(), $this->privateFile, $this->privateFile);
+    }
+
+    public function isSandboxEnabled(): bool
+    {
+        return $this->isSandbox == true;
+    }
+
+    public function getApiUrl(): string
+    {
+        return $this->isSandboxEnabled() ? self::SANDBOX_API_URL : self::API_URL;
+    }
+}
+```
+
+### Python Example
+
+```python
+import os
+import requests
+import time
+import jwt
+import sys
+
+def key_path(key_name):
+    return os.path.join(os.path.dirname(os.path.realpath(__file__)), key_name)
+
+def current_milli_time():
+    return round(time.time() * 1000)
+
+with open(key_path("testkey_rsa.priv")) as rsa_key:
+            example_privkey = rsa_key.read()
+url = "https://staging-api-lokl.peddler.com/oauth/token"
+example_jwt = {
+    "iss": "123",
+    "sub": "bob",
+    "aud": '/oauth/token',
+    "exp": time.time()+100,
+    "iat": time.time(),
+    "scope": ['DEFAULT', 'authenticated'],
+}
+endcoded_jwt = jwt.encode(example_jwt, example_privkey, algorithm="RS256")
+data = {
+    "grant_type": "urn:ietf:params:oauth:grant-type:jwt-bearer",
+    "assertion": endcoded_jwt
+}
+
+headers = {"Content-type": "application/x-www-form-urlencoded"}
+# get the access token
+auth_res = requests.post(url, headers=headers, data=data)
+if auth_res.status_code == 200:
+    # if response is OK, get the access token
+    print("[!] Got access token:", auth_res)
+else:
+    print("[!] Cannot get access token, exiting...", auth_res)
+    exit()
+```
+
 :::tip Note
 
 - Scopes are always `DEFAULT` & `authenticated` unless instructed otherwise.
@@ -64,7 +191,6 @@ const assertion = jwt.sign(body);
 The JWT assertion is sent to the Peddler API to obtain an `accessToken`. The `accessToken` is used to make requests to protected endpoints and access/create/modify underlying resources.
 
 ```js
-js
 const form = {
   grant_type: 'urn:ietf:params:oauth:grant-type:jwt-bearer',
   assertion: assertion

@@ -117,6 +117,7 @@ const config = {
         copyright: `Copyright © ${new Date().getFullYear()} Peddler Labs.`,
       },
       prism: {
+        additionalLanguages: ["php"],
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
       },
