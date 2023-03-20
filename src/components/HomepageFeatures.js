@@ -5,7 +5,7 @@ import styles from "./HomepageFeatures.module.css";
 const FeatureList = [
   {
     title: 'Easy to follow',
-    Svg: require('@site/static/img/teaching_re_g7e3.svg').default,
+    Svg: require('@site/static/img/easy-follow.svg').default,
     description: (
       <>
         The guide is divided into sections and subsections to make it 
@@ -15,7 +15,7 @@ const FeatureList = [
   },
   {
     title: 'Small examples to guide you',
-    Svg: require('@site/static/img/learning_re_32qv.svg').default,
+    Svg: require('@site/static/img/example-guide.svg').default,
     description: (
       <>
         The guide has small examples to guide you through the process of
@@ -25,7 +25,7 @@ const FeatureList = [
   },
   {
     title: 'Self-explanatory',
-    Svg: require('@site/static/img/books_re_8gea.svg').default,
+    Svg: require('@site/static/img/self-explain.svg').default,
     description: (
       <>
         The guide is self-explanatory. But still, some prior knowledage of

@@ -6,9 +6,9 @@ const darkCodeTheme = require("prism-react-renderer/themes/palenight");
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: "Peddler DaaS API docs",
+  title: "Peddler DaaS API",
   tagline: "Guide to the Admin API",
-  url: "https://abinashbunty.github.io",
+  url: "https://docs.peddler.com",
   baseUrl: "/",
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
@@ -36,8 +36,10 @@ const config = {
   ],
 
   themes: [
+    // @ts-ignore
     ["@easyops-cn/docusaurus-search-local",
     /** @type {import("@easyops-cn/docusaurus-search-local").PluginOptions} */
+    // @ts-ignore
     ({
       hashed: true,
       language: ["en"],
