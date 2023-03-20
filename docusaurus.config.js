@@ -77,12 +77,20 @@ const config = {
         style: "light",
         links: [
           {
-            title: "Docs",
+            title: "More",
             items: [
               {
-                label: "About",
+                label: "API Docs",
                 to: "/docs/intro",
               },
+              {
+                label: "About us",
+                href: 'https://www.peddler.com/en/about-us/'
+              },
+              {
+                label: 'Terms & Conditions',
+                href: 'https://www.peddler.com/en/terms-and-conditions/'
+              }
             ],
           },
           {
