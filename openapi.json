@@ -2,8 +2,15 @@
   "openapi": "3.1.0",
   "info": {
     "title": "Peddler Delivery as a Service API",
-    "version": "1.0.0"
-  },
+    "version": "1.0.0",
+    "summary": "Useful CRUD operations for Peddler Delivery as a Service",
+    "description": "The Peddler Delivery as a Service API is a RESTful API that allows you to create, read, update and delete orders. The API is organized around REST. Our API has predictable resource-oriented URLs, accepts form-encoded request bodies, returns JSON-encoded responses, and uses standard HTTP response codes, authentication, and verbs.",
+    "contact": {
+      "name": "API Support | Peddler",
+      "url": "https://peddler.com",
+      "email": "developers@peddler.com"
+    }
+},
   "servers": [
     {
       "url": "https://peddler-daas-api.free.beeceptor.com",
@@ -912,7 +919,7 @@
             }
           }
         },
-        "summary": "Create a new instance of the model and persist it into the data source.",
+        "summary": "Create new instance of the model",
         "operationId": "Create a new instance of the model and persist it into the data source.",
         "description": "",
         "tags": [
@@ -1705,7 +1712,7 @@
             }
           }
         },
-        "summary": "Find all instances of the model matched by filter from the data source.",
+        "summary": "Find all instances of the model matched by filter",
         "operationId": "Find all instances of the model matched by filter from the data source.",
         "description": "",
         "tags": [
@@ -2607,8 +2614,8 @@
             }
           }
         },
-        "summary": "Find a model instance by {{id}} from the data source.",
-        "operationId": "Find a model instance by {{id}} from the data source.",
+        "summary": "Find a model instance by {id} from the data source.",
+        "operationId": "Find a model instance by {id} from the data source.",
         "description": "",
         "tags": [
           "Order"
@@ -3602,7 +3609,7 @@
             }
           }
         },
-        "summary": "Replace attributes for a model instance and persist it into the data source.",
+        "summary": "Replace attributes for a model instance",
         "operationId": "Replace attributes for a model instance and persist it into the data source.",
         "description": "",
         "tags": [
@@ -3729,7 +3736,7 @@
             }
           }
         },
-        "summary": "Fetches hasOne relation billingaddress.",
+        "summary": "Fetch hasOne relation billingaddress",
         "operationId": "Fetches hasOne relation billingaddress.",
         "description": "",
         "tags": [
@@ -3861,7 +3868,7 @@
             }
           }
         },
-        "summary": "Creates a new instance in billingaddress of this model.",
+        "summary": "Create new instance in billingaddress",
         "operationId": "Creates a new instance in billingaddress of this model.",
         "description": "",
         "tags": [
@@ -4041,7 +4048,7 @@
             }
           }
         },
-        "summary": "Update billingaddress of this model.",
+        "summary": "Update billingaddress",
         "operationId": "Update billingaddress of this model.",
         "description": "",
         "tags": [
@@ -4576,7 +4583,7 @@
             }
           }
         },
-        "summary": "Find a related item by id for deliverylineItems.",
+        "summary": "Find a related item by id for deliverylineItems",
         "operationId": "Find a related item by id for deliverylineItems.",
         "description": "",
         "tags": [
@@ -4620,7 +4627,7 @@
             "headers": {}
           }
         },
-        "summary": "Delete a related item by id for deliverylineItems.",
+        "summary": "Delete a related item by id for deliverylineItems",
         "operationId": "Delete a related item by id for deliverylineItems.",
         "description": "",
         "tags": [
@@ -6610,8 +6617,8 @@
             }
           }
         },
-        "summary": "Find a model instance by {{id}} from the data source.",
-        "operationId": "Find a model instance by {{id}} from the data source.",
+        "summary": "Find a model instance by {id} from the data source.",
+        "operationId": "Find a model instance by {id} from the data source.",
         "description": "",
         "tags": [
           "PostcodeRegion"
