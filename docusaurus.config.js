@@ -68,7 +68,9 @@ const config = {
           { to: "/api", label: "API", position: "left" },
           {
             href: "https://github.com/peddlerlabs",
-            label: "GitHub",
+            className: "header-github-link",
+            "aria-label": "GitHub repository",
+            // label: "GitHub",
             position: "right",
           },
         ],
