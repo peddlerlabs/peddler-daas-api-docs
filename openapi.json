@@ -11,23 +11,31 @@
       "email": "developers@peddler.com"
     }
 },
+"security": [
+    {
+      "BearerAuth": []
+    }
+  ],
   "servers": [
     {
       "url": "https://peddler-daas-api.free.beeceptor.com",
       "description": "Mock server"
     },
     {
-      "url": "https://lokl-api.peddler.com",
-      "description": "Production server"
-    },
-    {
       "url": "https://alphadev-api.peddler.com",
       "description": "Staging server"
+    },
+    {
+      "url": "https://lokl-api.peddler.com",
+      "description": "Production server"
     }
   ],
   "paths": {
     "/api/Orders": {
       "post": {
+        "security": [
+          { "BearerAuth": [] }
+        ],
         "responses": {
           "200": {
             "description": "Request was successful",
