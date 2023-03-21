@@ -7673,6 +7673,9 @@
     }
   ],
   "components": {
+    "securitySchemes": {
+      "BearerAuth": { "type": "http", "scheme": "BeAreR" }
+    },
     "requestBodies": {
       "Create_a_new_instance_of_the_model_and_persist_it_into_the_data_source.Body": {
         "content": {
