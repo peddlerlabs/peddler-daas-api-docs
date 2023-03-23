@@ -24,8 +24,8 @@ const config = {
         docs: {
           sidebarPath: require.resolve("./sidebars.js"),
           // Please change this to your repo.
-          editUrl:
-            "https://github.com/Abinashbunty/peddler-daas-api-docs/",
+          // editUrl:
+            // "https://github.com/Abinashbunty/peddler-daas-api-docs/",
         },
         blog: false,
         theme: {
@@ -53,7 +53,7 @@ const config = {
     /** @type {import('docusaurus-preset-openapi').ThemeConfig} */
     ({
       navbar: {
-        title: "DaaS",
+        // title: "",
         logo: {
           alt: "Peddler Logo",
           src: "https://www.peddler.com/images/5b987eb7aa7aee05c01036832b57105d-logo.svg",
@@ -63,9 +63,9 @@ const config = {
             type: "doc",
             docId: "intro",
             position: "left",
-            label: "Docs",
+            label: "📃Docs",
           },
-          { to: "/api", label: "API", position: "left" },
+          { to: "/api", label: "🧑🏻‍💻API", position: "left" },
           {
             href: "https://github.com/peddlerlabs",
             className: "header-github-link",
