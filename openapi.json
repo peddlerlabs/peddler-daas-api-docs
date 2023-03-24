@@ -6696,6 +6696,16 @@
             "schema": {
               "type": "string"
             }
+          },
+          {
+            "name": "Accept",
+            "in": "header",
+            "description": "Content-type of the request body",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
           }
         ]
       }
@@ -7509,7 +7519,7 @@
         "operationId": "Query stores of Peddler",
         "description": "",
         "tags": [
-          "Peddler"
+          "Peddlers"
         ],
         "parameters": [
           {
@@ -7567,7 +7577,7 @@
         "operationId": "Validate address for specific catchment area",
         "description": "",
         "tags": [
-          "Peddler"
+          "Peddlers"
         ],
         "parameters": [
           {
@@ -7651,7 +7661,7 @@
       "name": "PostcodeRegion"
     },
     {
-      "name": "Peddler"
+      "name": "Peddlers"
     }
   ],
   "components": {
