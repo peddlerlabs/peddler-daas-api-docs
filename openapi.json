@@ -6355,9 +6355,9 @@
             }
           }
         },
-        "summary": "Cancel the order",
-        "operationId": "Cancel the order",
-        "description": "",
+        "summary": "Cancel order",
+        "operationId": "Cancel order",
+        "description": "Cancel the order which is already placed",
         "tags": [
           "Orders"
         ],
@@ -6551,36 +6551,15 @@
             }
           }
         },
-        "summary": "Find all instances of the model matched by filter from the data source.",
-        "operationId": "Find all instances of the model matched by filter from the data source.",
-        "description": "",
+        "summary": "Retrieve all postcodes and regions",
+        "operationId": "Retrieve all postcodes and regions",
+        "description": "Provides a list of all postcodes and regions where Peddler operates",
         "tags": [
           "PostcodeRegion"
-        ],
-        "parameters": [
-          {
-            "name": "filter",
-            "in": "query",
-            "description": "",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "Accept",
-            "in": "header",
-            "description": "e.g. application/json",
-            "required": false,
-            "example": "application/json",
-            "schema": {
-              "type": "string"
-            }
-          }
         ]
       }
     },
-    "/api/PostcodeRegions/{id}": {
+    "/api/PostcodeRegions/{postcode}": {
       "get": {
         "responses": {
           "200": {
@@ -6598,7 +6577,8 @@
                       "enum": [
                         "AMSTERDAM",
                         "UTRECHT",
-                        "WASSENAAR_VOORSCHOTEN"
+                        "ROTTERDAM",
+                        "DEN_HAAG"
                       ],
                       "type": "string"
                     }
@@ -6619,28 +6599,46 @@
                 }
               }
             }
+          },
+          "422": {
+            "description": "Not found",
+            "headers": {},
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "default": "Not available for delivery"
+                    }
+                  },
+                  "required": [
+                    "message"
+                  ],
+                  "additionalProperties": false
+                },
+                "examples": {
+                  "response": {
+                    "value": {
+                      "message": "Postcode not found"
+                    }
+                  }
+                }
+              }
+            }
           }
         },
-        "summary": "Find a model instance by {id} from the data source.",
-        "operationId": "Find a model instance by {id} from the data source.",
-        "description": "",
+        "summary": "Retrieve single postcode and region",
+        "operationId": "Retrieve single postcode and region",
+        "description": "Provide region of a single postcode",
         "tags": [
           "PostcodeRegion"
         ],
         "parameters": [
           {
-            "name": "id",
+            "name": "postcode",
             "in": "path",
-            "description": "",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "filter",
-            "in": "query",
-            "description": "",
+            "description": "4-digit postcode",
             "required": true,
             "schema": {
               "type": "string"
@@ -6649,7 +6647,7 @@
           {
             "name": "Accept",
             "in": "header",
-            "description": "e.g. application/json",
+            "description": "Content-type of the request body",
             "required": false,
             "example": "application/json",
             "schema": {
@@ -6684,7 +6682,7 @@
         },
         "summary": "Validate postcode",
         "operationId": "Validate postcode",
-        "description": "",
+        "description": "Checks if the postcode is valid and is in Peddler operations area and returns the region",
         "tags": [
           "PostcodeRegion"
         ],
@@ -6692,26 +6690,14 @@
           {
             "name": "postcode",
             "in": "query",
-            "description": "",
+            "description": "6-digit postal code",
             "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "Accept",
-            "in": "header",
-            "description": "e.g. application/json",
-            "required": false,
-            "example": "application/json",
+            "example": "1012AB",
             "schema": {
               "type": "string"
             }
           }
-        ],
-        "requestBody": {
-          "$ref": "#/components/requestBodies/Get_the_packing_slip_for_the_orderXordernumber"
-        }
+        ]
       }
     },
     "/api/Peddlers/{id}/stores": {
@@ -7539,7 +7525,7 @@
             "name": "filter",
             "in": "query",
             "description": "",
-            "required": true,
+            "required": false,
             "schema": {
               "type": "string"
             }
