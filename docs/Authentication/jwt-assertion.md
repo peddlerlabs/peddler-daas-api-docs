@@ -28,7 +28,7 @@ The JWT assertion is created using the following steps:
 
 ### JavaScript Example
 
-```js
+```js title="jwt-assertion.js"
 const jwt = require('jws');
 
 // Load the SSL credentials
@@ -56,7 +56,7 @@ const assertion = jwt.sign(body);
 
 ### PHP Example
 
-```php
+```php title="jwt-assertion.php"
 <?php
 
 class JWTBuilder
@@ -138,7 +138,7 @@ class JWTBuilder
 
 ### Python Example
 
-```python
+```python title="jwt-assertion.py"
 import os
 import requests
 import time

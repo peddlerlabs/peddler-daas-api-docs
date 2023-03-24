@@ -99,11 +99,11 @@ const config = {
             title: 'Peddler',
             items: [
               {
-                label: 'Marketplace',
+                label: '🛒Marketplace',
                 href: 'https://www.peddler.com/',
               },
               {
-                label: 'Delivery Service',
+                label: '📦Delivery Service',
                 href: 'https://www.peddler.express/',
               },
             ],

@@ -20,13 +20,14 @@ Peddler API responds with the following status codes in the event of a request s
 | **5xx** | `GATEWAY ERROR` <br />or<br />`SERVER ERROR` | Something went wrong our team has been notified. |
 
 
-The most common codes experienced are:
+### Most common codes experienced by clients
+
 - **200** : The request is successful.
 - **401** & **498**: You need to renew or refresh your token.
 - **422**: The parameters/json data contains validation errors
 
 ## Rate limiting
-Peddler API rate limits at *2000* requests per minute (this can be applied/omitted per client by special request to the Peddler team).
+Peddler API rate limits at **2000** requests per minute (this can be applied/omitted per client by special request to the Peddler team).
 Should you exceed this rate you will receive a **429** HTTP STATUS.
 
 We recommend throttling your requests, or batching multiple deliveries for any particular store in one order depending on your volume. 
