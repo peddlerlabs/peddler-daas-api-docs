@@ -18,10 +18,6 @@
   ],
   "servers": [
     {
-      "url": "https://peddler-daas-api.free.beeceptor.com",
-      "description": "Mock server"
-    },
-    {
       "url": "https://alphadev-api.peddler.com",
       "description": "Staging server"
     },
@@ -931,7 +927,7 @@
         "operationId": "Create a new instance of the model and persist it into the data source.",
         "description": "",
         "tags": [
-          "Order"
+          "Orders"
         ],
         "parameters": [
           {
@@ -1724,7 +1720,7 @@
         "operationId": "Find all instances of the model matched by filter from the data source.",
         "description": "",
         "tags": [
-          "Order"
+          "Orders"
         ],
         "parameters": [
           {
@@ -2626,7 +2622,7 @@
         "operationId": "Find a model instance by {id} from the data source.",
         "description": "",
         "tags": [
-          "Order"
+          "Orders"
         ],
         "parameters": [
           {
@@ -3621,7 +3617,7 @@
         "operationId": "Replace attributes for a model instance and persist it into the data source.",
         "description": "",
         "tags": [
-          "Order"
+          "Orders"
         ],
         "parameters": [
           {
@@ -3748,7 +3744,7 @@
         "operationId": "Fetches hasOne relation billingaddress.",
         "description": "",
         "tags": [
-          "Order"
+          "Orders"
         ],
         "parameters": [
           {
@@ -3880,7 +3876,7 @@
         "operationId": "Creates a new instance in billingaddress of this model.",
         "description": "",
         "tags": [
-          "Order"
+          "Orders"
         ],
         "parameters": [
           {
@@ -4060,7 +4056,7 @@
         "operationId": "Update billingaddress of this model.",
         "description": "",
         "tags": [
-          "Order"
+          "Orders"
         ],
         "parameters": [
           {
@@ -4595,7 +4591,7 @@
         "operationId": "Find a related item by id for deliverylineItems.",
         "description": "",
         "tags": [
-          "Order"
+          "Orders"
         ],
         "parameters": [
           {
@@ -4639,7 +4635,7 @@
         "operationId": "Delete a related item by id for deliverylineItems.",
         "description": "",
         "tags": [
-          "Order"
+          "Orders"
         ],
         "parameters": [
           {
@@ -5075,11 +5071,11 @@
             }
           }
         },
-        "summary": "Update a related item by id for deliverylineItems.",
-        "operationId": "Update a related item by id for deliverylineItems.",
+        "summary": "Update a related item by id for deliverylineItems",
+        "operationId": "Update a related item by id for deliverylineItems",
         "description": "",
         "tags": [
-          "Order"
+          "Orders"
         ],
         "parameters": [
           {
@@ -5498,11 +5494,11 @@
             }
           }
         },
-        "summary": "Queries deliverylineItems of Order.",
-        "operationId": "Queries deliverylineItems of Order.",
+        "summary": "Query deliverylineItems of Order",
+        "operationId": "Query deliverylineItems of Order",
         "description": "",
         "tags": [
-          "Order"
+          "Orders"
         ],
         "parameters": [
           {
@@ -5935,11 +5931,11 @@
             }
           }
         },
-        "summary": "Creates a new instance in deliverylineItems of this model.",
-        "operationId": "Creates a new instance in deliverylineItems of this model.",
+        "summary": "Create a new instance in deliverylineItems of this model",
+        "operationId": "Create a new instance in deliverylineItems of this model",
         "description": "",
         "tags": [
-          "Order"
+          "Orders"
         ],
         "parameters": [
           {
@@ -5973,11 +5969,11 @@
             "headers": {}
           }
         },
-        "summary": "Deletes all deliverylineItems of this model.",
-        "operationId": "Deletes all deliverylineItems of this model.",
+        "summary": "Delete all deliverylineItems of model",
+        "operationId": "Delete all deliverylineItems of model",
         "description": "",
         "tags": [
-          "Order"
+          "Orders"
         ],
         "parameters": [
           {
@@ -6022,11 +6018,11 @@
             }
           }
         },
-        "summary": "Completes an order",
-        "operationId": "Completes an order",
+        "summary": "Complete an order",
+        "operationId": "Complete an order",
         "description": "",
         "tags": [
-          "Order"
+          "Orders"
         ],
         "parameters": [
           {
@@ -6090,7 +6086,7 @@
         "operationId": "Get custom delivery types",
         "description": "",
         "tags": [
-          "Order"
+          "Orders"
         ],
         "parameters": [
           {
@@ -6296,7 +6292,7 @@
         "operationId": "Get the available delivery slots Date Object and time slot per date",
         "description": "",
         "tags": [
-          "Order"
+          "Orders"
         ],
         "parameters": [
           {
@@ -6363,7 +6359,7 @@
         "operationId": "Cancel the order",
         "description": "",
         "tags": [
-          "Order"
+          "Orders"
         ],
         "parameters": [
           {
@@ -6422,7 +6418,7 @@
         "operationId": "Get the packing slip for the order",
         "description": "",
         "tags": [
-          "Order"
+          "Orders"
         ],
         "parameters": [
           {
@@ -6475,11 +6471,11 @@
             }
           }
         },
-        "summary": "Upload a CSV FEED",
-        "operationId": "Upload a CSV FEED",
+        "summary": "Upload a CSV feed",
+        "operationId": "Upload a CSV feed",
         "description": "",
         "tags": [
-          "Order"
+          "Orders"
         ],
         "parameters": [
           {
@@ -7523,8 +7519,8 @@
             }
           }
         },
-        "summary": "Queries stores of Peddler.",
-        "operationId": "Queries stores of Peddler.",
+        "summary": "Query stores of Peddler",
+        "operationId": "Query stores of Peddler",
         "description": "",
         "tags": [
           "Peddler"
@@ -7581,8 +7577,8 @@
             }
           }
         },
-        "summary": "Validates an address for specific catchment area",
-        "operationId": "Validates an address for specific catchment area",
+        "summary": "Validate address for specific catchment area",
+        "operationId": "Validate address for specific catchment area",
         "description": "",
         "tags": [
           "Peddler"
@@ -7663,7 +7659,7 @@
   },
   "tags": [
     {
-      "name": "Order"
+      "name": "Orders"
     },
     {
       "name": "PostcodeRegion"
