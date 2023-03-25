@@ -2,13 +2,13 @@
 sidebar_position: 1
 ---
 
-# Oauth 2.0 framework
+# OAuth 2.0 framework
 Peddler utilises the **OAuth 2.0** Authorization Framework. The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to the Peddler HTTP services,
 on behalf of a resource owner (a retailer user who owns a store) by orchestrating an approval interaction between the resource owner and the HTTP service,
 or by allowing the third-party application to obtain access on its own behalf.
 
 ## Client authentication with JWT
-For third party application we recommend our secure client authentication with signed JWT token.
+For third party application we recommend our secure client authentication with signed [JWT token](https://en.wikipedia.org/wiki/JSON_Web_Token).
 The advantage of this schema is that the client application is associated to a specific resource owner for example a user who owns a store. 
 This way the client application can manage deliveries on behalf of a store. 
 
