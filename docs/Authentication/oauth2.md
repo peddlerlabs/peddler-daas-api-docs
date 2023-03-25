@@ -18,7 +18,7 @@ Each JWT private key is therefore either assigned:
 - 1 private key linked to multiple "store-owners" (users). 
 
 Upon creating the JWT assertion, the "sub" (subject) parameter is used to vary which resource owner i.e. "user" the `accessToken` is created for.
-AccessTokens are subsequently used to make requests to protected endpoints and access/create/modify underlying resources.
+Access tokens are subsequently used to make requests to protected endpoints and access/create/modify underlying resources.
 
 To get started with the API your require to have received the following:
  - 1 x issuer client id
