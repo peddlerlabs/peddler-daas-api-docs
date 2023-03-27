@@ -36,7 +36,7 @@ The Peddler API has a staging environment that can be used for testing purposes.
 - Peddler API uses OAuth2 based authentication methods. All keys are provided by the peddler team and are available on request.
 - If you have questions about using the API, want to share some feedback,
 or have come across a bug you'd like to report, write us an email at *developers@peddler.com* 
-or submit a request through our Support Center at *[helpdesk@peddler.com](mailto:helpdesk@peddler.com)*.
+or submit a request through our Support Center at [*helpdesk@peddler.com*](mailto:helpdesk@peddler.com).
 
 :::danger Security Warning
 
