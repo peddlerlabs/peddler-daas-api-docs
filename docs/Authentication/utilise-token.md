@@ -21,7 +21,7 @@ Host: localhost:3001
 ```
 
 ## Access tokens expiry
-By default, access tokens on Peddler are short lived in most cases `7200 seconds` (i.e. *2 hours*). 
+By default, access tokens on Peddler are short lived in most cases `7200 seconds` (i.e. 2 hours). 
 The developer should make no assumption around the validity or state of an access token or the expiry term.
 The access token can be revoked at the discretion of the Peddler API.
 
@@ -32,5 +32,9 @@ New tokens are required when your client receives the following HTTP status code
 - 401 `UNAUTHORIZED`
 - 498 `TOKEN_EXPIRED`
 
+:::tip Note
+
 We do not recommend creating a new access token for each request as you could exceed your rate limit with large amounts of requests.
-Therefore, a utility that renews the access token is preferable, upon receiving a ***401*** or ***498*** error and re-attempting the request.
+Therefore, a utility that renews the access token is preferable, upon receiving a **401** or **498** error and re-attempting the request.
+
+:::

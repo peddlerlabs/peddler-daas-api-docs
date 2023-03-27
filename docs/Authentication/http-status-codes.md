@@ -4,7 +4,11 @@ sidebar_position: 4
 
 # HTTP Status Codes
 
-Peddler API responds with the following status codes in the event of a request succeeding or not.
+## What is an HTTP status code?
+
+HTTP status codes are a set of standardised codes that are returned by the Peddler API in response to a request. Depending on the response code, the client can determine the success or failure of the request. Peddler API uses the standard HTTP status codes.
+
+## Table of HTTP status codes
 
 | **Status Code** | **Response** | **Description** |
 |:---:|:---:|:---|
@@ -31,4 +35,4 @@ Peddler API rate limits at **2000** requests per minute (this can be applied/omi
 Should you exceed this rate you will receive a **429** HTTP STATUS.
 
 We recommend throttling your requests, or batching multiple deliveries for any particular store in one order depending on your volume. 
-Once you receive a **429** response you must withold for at least 5 minutes.
+Once you receive a **429** response you must withold for at least *5 minutes*.
