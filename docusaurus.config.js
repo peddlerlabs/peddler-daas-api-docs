@@ -27,7 +27,9 @@ const config = {
           // editUrl:
             // "https://github.com/Abinashbunty/peddler-daas-api-docs/",
         },
-        blog: false,
+        blog: {
+          showReadingTime: true
+        },
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
         },
@@ -66,6 +68,7 @@ const config = {
             label: "📃Docs",
           },
           { to: "/api", label: "🧑🏻‍💻API", position: "left" },
+          { to: "/blog", label: "📰Blog", position: "left" },
           {
             href: "https://github.com/peddlerlabs",
             className: "header-github-link",
