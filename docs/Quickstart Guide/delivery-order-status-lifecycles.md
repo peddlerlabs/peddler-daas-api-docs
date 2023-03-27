@@ -69,6 +69,12 @@ In addition to the above we assign specific properties when the lifecycle is upd
 Individual deliveries can be tracked during the order lifecycle. Tracking Urls are provided dynamically and are available during certain order states.
 The links provide a map with a location of the courier.
 
-Each delivery line item has the following properties, once the lifecycle has been transitioned to the ACCEPTED status state:
-- `deliveryTrackingUrl`: (URL) with secure link for delivery tracking - this is only available for security reasons whilst the delivery is in progress
-- `pickupTrackingUrl`: (URL) with secure link for pickup tracking - this is only available for security reasons whilst the pickup is in progress
+Each delivery line item has the following properties, once the lifecycle has been transitioned to the `ACCEPTED` status state:
+- `deliveryTrackingUrl`: (URL) with secure link for delivery tracking
+- `pickupTrackingUrl`: (URL) with secure link for pickup tracking
+
+:::danger Note
+
+Tracking links are only available when the order is in the `ACCEPTED` state. For security reasons, the links are only available when pickup/delivery is in progress.
+
+:::

@@ -8,7 +8,7 @@ Construct your JWT assertion, then exchange for an access token.
 We recommend to implement this as a re-usable utility/service. (See [access token section](/docs/Authentication/jwt-assertion)).
 - The claim and corresponding assertion is required on a per store-owner and thus, per store basis, i.e. you can only book deliveries for a respective store per assertion not for multiple stores. 
 - Peddler provides separate private keys for each store which takes into account various security considerations.
-- We urge you to store private keys securely, utilising your selected key management solution or secure storage vault.
+- We urge you to store private keys securely, utilising your selected [key management](https://en.wikipedia.org/wiki/Key_management) solution or secure storage vault.
 
 :::danger Important
 
@@ -16,7 +16,7 @@ Keys should never be included or hard-coded into source code.
 
 :::
 
-***Example:***
+**Example:**
 ```js title="Request"
 const payload = {
     iss: 'provided_app_id', // issuer - client id

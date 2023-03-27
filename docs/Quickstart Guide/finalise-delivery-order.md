@@ -5,7 +5,7 @@ sidebar_position: 4
 # Finalise delivery order
 
 Once the order is ready to ship and the respective delivery line-items have been added, we finalise the order for delivery.
-Upon finalising an order, it is processed by our PSP or accounts systems, it can not be modified once its status has changed from `CREATED` (more on statuses will follow).
+Upon finalising an order, it is processed by our PSP or accounts systems, it can not be modified once its status has changed from `CREATED` (more on statuses [here](/docs/Quickstart%20Guide/delivery-order-status-lifecycles.md#order-status)).
 It is possible to programmatically CANCEL an order (see cancelling an order).
 
 :::tip Notes 
@@ -17,7 +17,7 @@ It is possible to programmatically CANCEL an order (see cancelling an order).
 
 ## Order completion request
 
-```js
+```js title="Complete order"
 request
     .post(`https://api-lokl.peddler.com/api/Orders/${id}/completeOrder`)
     .set('Authorization', `Bearer ${access_token}`)
@@ -40,7 +40,7 @@ request
 - 200: OK. HTTP response, the body can be ignored.
 - Further updates are sent via the order webhook
 
-```json
+```json title="Response"
 HTTP/1.1 200 OK
 Content-Type: application/json
 Cache-Control: no-store
