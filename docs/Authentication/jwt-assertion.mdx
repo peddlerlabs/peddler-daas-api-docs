@@ -26,13 +26,14 @@ The JWT assertion is created using the following steps:
 2. Sign the JSON object with the private key
 3. Encode the signed JSON object using Base64 URL encoding
 
-
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 
-
-### JavaScript Example
+```mdx-code-block
+<Tabs>
+<TabItem value="JavaScript">
+```
 
 ```js title="jwt-assertion.js"
 const jwt = require('jws');
@@ -60,7 +61,10 @@ const body = {
 const assertion = jwt.sign(body);
 ```
 
-### PHP Example
+```mdx-code-block
+</TabItem>
+<TabItem value="PHP">
+```
 
 ```php title="jwt-assertion.php"
 <?php
@@ -142,7 +146,10 @@ class JWTBuilder
 }
 ```
 
-### Python Example
+```mdx-code-block
+</TabItem>
+<TabItem value="Python">
+```
 
 ```python title="jwt-assertion.py"
 import os
@@ -184,6 +191,12 @@ else:
     print("[!] Cannot get access token, exiting...", auth_res)
     exit()
 ```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
+
 
 :::tip Note
 
