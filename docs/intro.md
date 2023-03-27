@@ -7,18 +7,17 @@ sidebar_position: 1
 - The Peddler API is a RESTful web service for developers to programmatically interact with Peddler's data and real-time order/delivery management services.
 - All data exchanged between clients and the API is JSON (unless specified otherwise) over HTTPS.
 - The base URL for the Peddler API is `https://lokl-api.peddler.com`
+- Peddler utilises the CRUD standardised use of HTTP Action Verbs.
+  - POST (create)
+  - GET (read)
+  - PUT (update/replace)
+  - DELETE (remove)
 
 :::tip Staging Environment
 
 The Peddler API has a staging environment that can be used for testing purposes. The base URL for the staging environment is `https://alphadev-api.peddler.com`
 
 :::
-
-- Peddler utilises the CRUD standardised use of HTTP Action Verbs.
-  - POST (create)
-  - GET (read)
-  - PUT (update/replace)
-  - DELETE (remove)
 
 **High-level CRUD Operation examples:**
 
