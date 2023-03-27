@@ -7,7 +7,7 @@ sidebar_position: 1
 Also referred to as **Peddler catchment area**
 
 Querying which postcode(s) or postcode are available you can use the "PostcodeRegions" endpoint.
-- To query a single postcode you would call the following endpoint with the first 4 numbers as a "string"
+- To query a single postcode you would call the following endpoint with the first 4 digits as a "string"
   - `GET /api/PostcodeRegions/1066` -> **200** OK (postcode with region) 
   - `GET /api/PostcodeRegions/9999` -> **404** NOT FOUND
   - `GET /api/PostcodeRegions` -> **200** OK -> (list postcodes with region) 
