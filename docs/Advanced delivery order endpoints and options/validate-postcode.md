@@ -14,7 +14,7 @@ Querying which postcode(s) or postcode are available you can use the "PostcodeRe
   
 ## Example postcode request
 
-```js
+```js title="Query postcode"
 request
     .get(`/api/PostcodeRegions/${postcode}`) // endpoint
     .set('Authorization', `Bearer ${access_token}`) // header
@@ -29,7 +29,7 @@ request
 
 ## Example postcode response
 
-```json
+```json title="Response"
 {
     "id": "1066",
     "region": "AMSTERDAM"
