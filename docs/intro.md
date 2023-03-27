@@ -19,7 +19,7 @@ The Peddler API has a staging environment that can be used for testing purposes.
 
 :::
 
-**High-level CRUD Operation examples:**
+## High-level CRUD Operation examples
 
 1. If you want to create an "Order", you should send a *POST* request to the API as follows:  
     `https://lokl-api.peddler.com/api/Orders`
