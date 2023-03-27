@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # Quickstart guide: a delivery order application
 In this section we will provide a step-by-step example on how to create a "delivery order" application with the Peddler API.
-Notably all reference to endpoints are further expended upon in the API endpoint documentation references.
+Notably all reference to endpoints are further expended upon in the [API endpoint documentation](/api) references.
 
 The objective of this section is to provide the developer a quick start to integrating their POS/OMS with our delivery order API's.
 
