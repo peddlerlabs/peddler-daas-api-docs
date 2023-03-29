@@ -1,0 +1,104 @@
+---
+sidebar_position: 5
+---
+
+# Shipment status
+
+In this section, you will find the exaplantion of the shipment lifecycle. In other words, the status (events) pertaining to a shipment. 
+
+## Table of status
+
+Following is a list of all the possible shipment statuses:
+
+import BrowserWindow from '@site/src/components/BrowserWindow'
+
+```mdx-code-block
+<BrowserWindow url="https://alphadev-api.peddler.com/">
+
+| **STATUS** | **Description** |
+|:---:|---|
+| ````SHIPMENT_CONFIRMED```` | Shipment confirmed (est. date/time of arrival) |
+| ``SHIPMENT_IN_WAREHOUSE`` | Shipment in warehouse (est. date/time of arrival + map) |
+| ``OUT_FOR_DELIVERY`` | Out for delivery (est. date/time of arrival + map) |
+| ``DELIVERED`` | Delivered (optional: delivered at neighbours + details) |
+| ``DELIVERED_COLLECTION_POINT`` | Delivered at Collection point (+ details) |
+| ``FAILED_ATTEMPT`` | (REASON: Customer not answering, Wrong/incomplete address, Issue with package, Refused by customer + NEXT ATTEMPT or CONTACT SUPPORT) |
+| ``ON_HOLD`` | Shipment is currently on hold and waiting to be released on the designated timeslot or paused by support |
+| ``EXCEPTION`` | All other issues related to package or address |
+| ``RETURN_TO_SENDER`` | Shipment has been returned to sender |
+| ``CANCELED`` | Shipment has been canceled by sender/carrier |
+| ``SHIPMENT_DETAILS_UPDATED`` | Delivery details updated - for example address change or change by consignee |
+
+</BrowserWindow>
+```
+## Status details
+
+When a shipment is queried, all the statuses for the shipment are returned. Each of the status has a timestamp `ts` and a description `details`.
+- The description is a human readable text that explains the status.
+- The timestamp is the time when the status was set.
+
+Apart from the aforementioned contents `ts` & `details`, some more information is returned for the statuses. These are described below.
+### ````SHIPMENT_CONFIRMED````
+
+- Shipment confirmed (est. date/time of arrival)
+- ``estimatedDeliveryDate``: Date of delivery
+
+### ``SHIPMENT_IN_WAREHOUSE``
+
+- Package confirmed in warehouse Amsterdam
+- ``estimatedDeliveryDate``: Date of delivery
+- ``warehouse``: Warehouse name & address
+
+### ``OUT_FOR_DELIVERY``
+
+- Package out for delivery at XX:XX dd/mm/yyyy local time
+- ``estimatedDeliveryDate``: Date of delivery
+- ``courierName``: Courier's name (optional)
+
+### ``DELIVERED``
+
+- Package delivered at XX:XX dd/mm/yyyy local time
+- ``deliveryDate``: Date of delivery
+- ``courierName``: Courier's name (optional)
+- ``courierComment``: Comment from courier (optional)
+- ``deliveredAtNeighbours``: Address of neighbour where package was delivered (optional)
+- ``podSignatureUrl``: URL of the proof of delivery signature (optional)
+
+### ``DELIVERED_COLLECTION_POINT``
+
+- Package delivered on XX:XX dd/mm/yyyy at collection point: Superstore John M. Keynesplein 12 1066EP
+- ``collectionPoint``: Collection point name & address
+- ``courierName``: Courier's name (optional)
+- ``courierComment``: Comment from courier (optional)
+
+### ``FAILED_ATTEMPT``
+
+- Customer not answering, Wrong/incomplete address, Issue with package, Issue with transport/courier, Refused by customer
+- ``nextAttemptDate``: Date of next attempt (optional)
+- ``contactSupport``: TRUE (optional)
+
+### ``ON_HOLD``
+
+- Shipment is currently on hold and waiting to be released on the designated timeslot or paused by support
+
+### ``EXCEPTION``
+
+- Shipment is currently being processed by support, anticipated status update in 48 hours
+- ``reason``: An issue described by the support team
+
+### ``RETURN_TO_SENDER``
+
+- Shipment has been returned to sender
+
+### ``CANCELED``
+
+- Shipment has been canceled by sender/carrier
+
+### ``SHIPMENT_DETAILS_UPDATED``
+
+- The shipment details have been updated by: sender|support|consignee
+- ``originalShipment``: The shipment details before the update
+- ``updatedByType``: The type of user that updated the shipment details
+- ``updatedBy``: The name of the user that updated the shipment details
+- ``updated``: The updated details of the shipment with ``deliveryDate`` & ``collectionPoint``
+
