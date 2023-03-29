@@ -8,7 +8,7 @@ const darkCodeTheme = require("prism-react-renderer/themes/palenight");
 const config = {
   title: "Peddler DaaS API",
   tagline: "Guide to the Admin API",
-  url: "https://docs.peddler.com",
+  url: "https://peddler-daas-api-docs.vercel.app/",
   baseUrl: "/",
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
