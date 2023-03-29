@@ -4,7 +4,7 @@ sidebar_position: 1
 
 # OAuth 2.0 framework
 
-Peddler utilises the **OAuth 2.0** Authorization Framework. The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to the Peddler HTTP services, on behalf of a resource owner (a retailer user who owns a store) by orchestrating an approval interaction between the resource owner and the HTTP service, or by allowing the third-party application to obtain access on its own behalf.
+Peddler utilises the **OAuth 2.0** Authorization Framework. The OAuth 2.0 authorization framework enables a third-party application to obtain limited access to the Peddler HTTP services, on behalf of a resource owner (a carrier enterprise) by orchestrating an approval interaction between the resource owner and the HTTP service, or by allowing the third-party application to obtain access on its own behalf.
 
 ## Client authentication
 

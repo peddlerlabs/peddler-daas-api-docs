@@ -4,10 +4,10 @@ sidebar_position: 3
 
 # Create manifest
 
-The shipment resource (referred to as an 'instance') is a container for a set of pickup-delivery instructions and their respective attributes. 
-Each shipment instance contains one or more pickup-delivery line items, referred to as 'delivery line items'.
+The manifest (referred to as an 'instance') is a container for a set of delivery instructions and their respective attributes. 
+Each manifest instance contains one or more delivery objects, referred to as 'shipments'.
 
-In this example we will start with a basic 'shipment instance' and a single 'delivery line item', more complex delivery options are provided in subsequent examples.
+In this example we will start with a basic 'manifest instance' and a single 'shipment'. More complex delivery options are provided in subsequent examples.
 
 :::info Note on CARRIER_ID
 
@@ -15,9 +15,9 @@ The `CARRIER_ID` is a unique identifier for your carrier account. It is provided
 
 :::
 
-## POST /api/carrier/``CARRIER_ID``/createShipments
+## Create a manifest instance
 
-<!-- Each 'shipment Instance' can have many `deliveryLineItems` ([array] property) which contain instructions for each pickup/delivery pair to take place.
+<!-- Each 'shipment Instance' can have many `shipments` ([array] property) which contain instructions for each delivery to take place.
 
 - At least one or more deliveryLineItems (denoting the delivery details addresses/type/times)
 - Each delivery line item must specify:
@@ -40,27 +40,34 @@ This is not strictly enforced however it should be applied if packaging weights 
 
 ::: -->
 
-In order to create a shipment instance, you will need to make a POST request to the following endpoint:
+In order to create a manifest instance, you will need to make a ``POST`` request to the following endpoint:
 
 `/api/carrier/[CARRIER_ID]/createShipments`
 
 The request body should contain a JSON object with the following properties:
 
-| Parameter | Type | Format | Description |
+import BrowserWindow from '@site/src/components/BrowserWindow'
+
+```mdx-code-block
+<BrowserWindow url="https://alphadev-api.peddler.com/">
+
+| **Parameter** | **Type** | **Format** | **Description** |
 |---|:---:|:---:|---|
 | ``metaData`` | <span style={{color: 'red'}}>REQUIRED</span> | string | A unique code for you to identify |
 | ``deliveryAddress`` | <span style={{color: 'red'}}>REQUIRED</span> | object | Address object containing consignee details pertaining to delivery |
 | ``deliveryAddress.name`` | <span style={{color: 'green'}}>RECOMMENDED</span> | string | Include the consignee name or company name |
 | ``deliveryAddress.house`` | <span style={{color: 'green'}}>RECOMMENDED</span> | string | Include the house number unless included in ``address1`` fieldOptions |
-| ``deliveryAddress.address1`` | <span style={{color: 'red'}}>REQUIRED</span> | string |  |
+| ``deliveryAddress.address1`` | <span style={{color: 'red'}}>REQUIRED</span> | string | Include street amd house number |
 | ``deliveryAddress.phone`` | <span style={{color: 'green'}}>RECOMMENDED</span> | numeric | Customer mobile in [E.164 format](https://www.itu.int/rec/T-REC-E.164/) for SMS delivery notifications |
 | ``deliveryEmail`` | <span style={{color: 'green'}}>RECOMMENDED</span> | string |  email address for inflight options and delivery notifications |
-| ``deliveryShippingType`` | <span style={{color: 'red'}}>REQUIRED</span> | string | ENUM PACKAGE DEFAULT (higher rate), LETTERBOX (lower rate) |
-| ``deliveryContentsType`` | <span style={{color: 'red'}}>REQUIRED</span> | string | Possible values: ``GOODS`` (DEFAULT) ``FOOD``, ``ALCOHOL``, ``BOOKS`` OR ``ADR`` |
+| ``deliveryShippingType`` | <span style={{color: 'green'}}>RECOMMENDED</span> | string | ENUM PACKAGE DEFAULT (higher rate), LETTERBOX (lower rate) |
+| ``deliveryContentsType`` | <span style={{color: 'green'}}>RECOMMENDED</span> | string | Possible values: ``GOODS`` (DEFAULT) ``FOOD``, ``ALCOHOL``, ``BOOKS`` OR ``ADR`` |
 | ``estimatedInjectionDate`` | <span style={{color: 'red'}}>REQUIRED</span> | string | JSON DATE "2023-07-10T15:43:24.133Z" estimation when the shipment will be injected to destination country |
-| ``carrierOptions`` | <span style={{color: 'red'}}>REQUIRED</span> | object | *Only when signature is required SURCHARGE maybe applicable*<br /><pre lang="json">{<br />"key": "POD",<br />"value": "SIGNATURE"<br />}</pre><br /> *Required when shipping ADR goods*<br /><pre lang="json">{<br />"key": "ADR",<br />"value": "Description of ADR contents"<br />}</pre> |
-| ``carrierServiceLevel`` | <span style={{color: 'red'}}>REQUIRED</span> | string | Provided by Peddler "NEXT_DAY_48" |
+| ``carrierOptions`` | <span style={{color: 'green'}}>RECOMMENDED</span> | object | *Only when signature is required. SURCHARGE maybe applicable*<br /><pre lang="json">{<br />"key": "POD",<br />"value": "SIGNATURE"<br />}</pre><br /> *Required when shipping ADR goods*<br /><pre lang="json">{<br />"key": "ADR",<br />"value": "Description of ADR contents"<br />}</pre> |
+| ``carrierServiceLevel`` | <span style={{color: 'green'}}>RECOMMENDED</span> | string | Provided by Peddler "NEXT_DAY_48" |
 
+</BrowserWindow>
+```
 :::info Note on carrierOptions
 
 ADR requires additional description in carrierOptions
@@ -69,7 +76,7 @@ ADR requires additional description in carrierOptions
 
 ## Mock delivery shipment request
 
-```js
+```js title="mockedDeliveryshipment.js"
 const mockedDeliveryshipment = [
     {
         "metaData": "UNIQUE_SENDER_REFERENCE_1",
@@ -105,17 +112,6 @@ const mockedDeliveryshipment = [
         ],
         webhookUri: "https://carrierwebsite.com/api/webhooks",
         "carrierServiceLevel": "NEXT_DAY_48"
-    },
-    // address1 should contain house number if available
-    {
-        "metaData": "UNIQUE_SENDER_REFERENCE_2",
-        "deliveryAddress": {
-            "address1": "John M. Keynesplein 12",
-            "city": "Amsterdam",
-            "postCode": "1066 EP",
-            "country": "NL"
-        },
-        "estimatedInjectionDate": "2023-07-10T15:43:24.133Z",
     }
 ]
 
@@ -133,6 +129,39 @@ request
     });
 ```
 
+:::tip Minimum required fields
+
+A shipment can be created with the minimum required fields, however, we recommend including as much information as possible to ensure a smooth delivery experience.
+
+An example of a minimum required shipment is shown below:
+
+```js title="minimumRequiredShipment.js"
+const mockedDeliveryshipment = {
+    "metaData": "UNIQUE_SENDER_REFERENCE_2",
+    "deliveryAddress": {
+        "address1": "John M. Keynesplein 12",
+        "city": "Amsterdam",
+        "postCode": "1066 EP",
+        "country": "NL"
+    },
+    "estimatedInjectionDate": "2023-07-10T15:43:24.133Z",
+}
+
+request
+    .post('https://api-lokl.peddler.com/api/shipments')
+    .set('Authorization', `Bearer ${access_token}`)
+    .send(mockedDeliveryshipment)
+    .end((err, res) => {
+        const error = res.error || err;
+        if (error) {
+            console.log(error);
+        }
+        const deliveryshipmentInstance = res.body;
+        console.log(deliveryshipmentInstance);
+    });
+```
+:::
+
 
 ## Mock delivery shipment response
 
@@ -140,7 +169,7 @@ request
 - The most common validation error is utilising a postcode not in our catchment area (we will provide a postcode validation example below)
 
 
-```json
+```json title="mockedDeliveryshipmentResponse.json"
 [
     {
         "id": "XXXXXX1",

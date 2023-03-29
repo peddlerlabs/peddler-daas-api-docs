@@ -6,7 +6,7 @@ sidebar_position: 2
 
 Construct your client authentication to generate an access token to access Peddler API resources. 
 We recommend to implement this as a re-usable utility/service. (See [access token section](/carrier-docs/Authentication/client-auth)).
-- The claim and corresponding assertion is required on a per store-owner and thus, per store basis, i.e. you can only book deliveries for a respective store per assertion not for multiple stores. 
+<!-- - The claim and corresponding assertion is required on a per store-owner and thus, per store basis, i.e. you can only book deliveries for a respective store per assertion not for multiple stores.  -->
 - Peddler provides separate private keys for each carrier which takes into account various security considerations.
 - We urge you to store private keys securely, utilising your selected [key management](https://en.wikipedia.org/wiki/Key_management) solution or secure storage vault.
 
@@ -25,7 +25,7 @@ const tokenResponse = await request
         grant_type: 'client_credentials',
         client_id,
         client_secret,
-        scope: ['DEFAULT', 'authenticated'].join(' ')
+        scope: ['DEFAULT', 'authenticated', 'XXX'].join(' ')
     })
     .timeout({
         response: 1000 * 60 * 3,
