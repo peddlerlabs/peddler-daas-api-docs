@@ -17,7 +17,7 @@ The parameters required for client authentication are:
 | `grant_type` | Set this to "client_credentials" |
 | `client_id` | Your application's Client ID |
 | `client_secret` | Your application's Client Secret |
-| `scope` | The scope of the token. Includes `DEAFULT`, `authenticated` |
+| `scope` | The scope of the token. Includes `DEAFULT`, `authenticated` , `CARRIER_ID` |
 
 
 :::danger Security

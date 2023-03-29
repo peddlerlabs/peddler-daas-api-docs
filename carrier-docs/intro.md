@@ -39,6 +39,7 @@ The Peddler API has a staging environment that can be used for testing purposes.
 or have come across a bug you'd like to report, write us an email at *developers@peddler.com* 
 or submit a request through our Support Center at [*helpdesk@peddler.com*](mailto:helpdesk@peddler.com).
 
+
 :::danger Security Warning
 
 We will never ask you for credentials/API keys so do not provide them.

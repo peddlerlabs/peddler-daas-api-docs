@@ -79,7 +79,7 @@ const config = {
             type: "doc",
             docId: "intro",
             position: "left",
-            label: "📃Docs",
+            label: "📃Retailer Docs",
           },
           {
             to: "/carrier-docs/intro",
