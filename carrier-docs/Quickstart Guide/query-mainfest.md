@@ -5,7 +5,7 @@ sidebar_position: 4
 # Query manifest
 
 Upon creating a manifest [here](/carrier-docs/Quickstart%20Guide/create-manifest),
-you can query the manifest to get the status of the same. There are two ways to
+you can query the entire manifest or particuler shipment(s) to get the status of the same. There are two ways to
 query the manifest:
 - JSON.stringify - This is the RECOMMENDED method of querying the manifest.
 - Array - This is the alternate method of querying the manifest.
