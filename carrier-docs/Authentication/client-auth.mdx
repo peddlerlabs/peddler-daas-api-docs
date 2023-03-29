@@ -1,0 +1,126 @@
+---
+sidebar_position: 2
+---
+
+# Client authentication
+
+## Overview
+
+Client authentication using client ID and client secret is a common method used to verify the identity of a client application that is requesting access to a protected resource, such as an API.
+
+In this method, the client application sends a request to the server along with a client ID and a client secret. The client ID is a public identifier that identifies the client application, while the client secret is a private key that is known only to the client and the server.
+
+### Roles
+
+There are two roles inside the client authentication flow:
+
+#### Client
+
+The application that requests access to protected resources from a resource server. It may be a third-party application, but it also can be an application being a part of the organization that owns the resources. In this case, this is an application that tries to authenticate.
+
+#### Authorization server
+
+The server that authenticates the client trying to get access to the protected resources and issues access tokens.
+
+
+## Client authentication request
+
+The client authentication request is a POST request to the authorization server's token endpoint. The request must include the following parameters:
+
+- `grant_type` - Set this to "client_credentials"
+- `client_id` - Your application's Client ID
+- `client_secret` - Your application's Client Secret
+- `scope` - The scope of the token. Includes `DEAFULT`, `authenticated`
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+
+```mdx-code-block
+<Tabs>
+<TabItem value="JavaScript">
+```
+
+```js
+const tokenResponse = await request
+    .post(`${PEDDLER_API_DOMAIN}/oauth/token`)
+    .set('Content-Type', 'application/x-www-form-urlencoded')
+    .send({
+        grant_type: 'client_credentials',
+        client_id,
+        client_secret,
+        scope: ['DEFAULT', 'authenticated'].join(' ')
+    })
+    .timeout({
+        response: 1000 * 60 * 3,
+        deadline: 1000 * 60 * 5
+    });
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="PHP">
+
+```php
+$tokenResponse = $client->request('POST', '/oauth/token', [
+    'form_params' => [
+        'grant_type' => 'client_credentials',
+        'client_id' => $clientId,
+        'client_secret' => $clientSecret,
+        'scope' => 'DEFAULT authenticated'
+    ]
+]);
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="Python">
+```
+    
+```python
+token_response = requests.post(
+    f'{PEDDLER_API_DOMAIN}/oauth/token',
+    data={
+        'grant_type': 'client_credentials',
+        'client_id': client_id,
+        'client_secret': client_secret,
+        'scope': 'DEFAULT authenticated'
+    }
+)
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
+
+## Receiving the bearer token (in the body, in json)
+
+```
+HTTP/1.1 200 OK
+Content-Type: application/json
+Cache-Control: no-store
+Pragma: no-cache
+
+{
+  "access_token":"FkzdyJV14zc73AaK9FmNCtyp5bUTegis",
+  "expires_in":7200,
+  "scope":"DEFAULT authenticated",
+  "token_type":"Bearer"
+}
+```
+
+OR
+
+```
+HTTP/1.1 403 FORBIDDEN
+Content-Type: application/json
+Cache-Control: no-store
+Pragma: no-cache
+
+{
+  "error":"access_denied",
+  "error_description":"Invalid subject: test" 
+}
+
+```

@@ -17,7 +17,6 @@ The parameters required for client authentication are:
 | `grant_type` | Set this to "client_credentials" |
 | `client_id` | Your application's Client ID |
 | `client_secret` | Your application's Client Secret |
-| `audience` | The audience for the token |
 | `scope` | The scope of the token. Includes `DEAFULT`, `authenticated` |
 
 
