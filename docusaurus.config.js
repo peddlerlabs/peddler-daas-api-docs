@@ -20,9 +20,13 @@ const config = {
     [
       "docusaurus-preset-openapi",
       /** @type {import('docusaurus-preset-openapi').Options} */
-      ({
+      {
         docs: {
+          routeBasePath: "/docs",
+          path: "docs",
           sidebarPath: require.resolve("./sidebars.js"),
+          // lastVersion: "current",
+          // onlyIncludedVersions: ["current"],
           // Please change this to your repo.
           // editUrl:
             // "https://github.com/Abinashbunty/peddler-daas-api-docs/",
@@ -31,9 +35,21 @@ const config = {
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
         },
-      }),
+      },
     ],
   ],
+
+  plugins: [
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'carrier-docs',
+        path: 'carrier-docs',
+        routeBasePath: 'carrier-docs',
+        sidebarPath: require.resolve('./sidebars.js'),
+      }, 
+    ]
+],
 
   themes: [
     // @ts-ignore
@@ -64,6 +80,11 @@ const config = {
             docId: "intro",
             position: "left",
             label: "📃Docs",
+          },
+          {
+            to: "/carrier-docs/intro",
+            label: "🚚Carrier Docs",
+            position: "left",
           },
           { to: "/api", label: "🧑🏻‍💻API", position: "left" },
           // { to: "/blog", label: "📰Blog", position: "left" },
