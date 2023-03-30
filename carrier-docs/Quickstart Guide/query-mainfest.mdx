@@ -7,7 +7,7 @@ sidebar_position: 4
 Upon creating a manifest [here](/carrier-docs/Quickstart%20Guide/create-manifest),
 you can query the entire manifest or particuler shipment(s) to get the status of the same. There are two ways to
 query the manifest:
-- JSON.stringify - This is the <span style={{color: 'green'}}>RECOMMENDED</span> method of querying the manifest.
+- *Stringified* query string - This is the <span style={{color: 'green'}}>RECOMMENDED</span> method of querying the manifest.
 - Array - This is the alternate method of querying the manifest.
 
 ## Query request
@@ -17,12 +17,12 @@ to the following endpoint:
 
 `/api/carrier/[CARRIER_ID]/getShipmentStatuses?trackingNumbers`
 
-### Querying the manifest using *JSON.stringify*
+### Querying the manifest using *stringified* query string
 
 The JSON.stringify method is the recommended method of querying the manifest.
 This method is used to query the manifest in a more readable format.
 
-```js
+```js title="Query string RECOMMENDED"
 const shipments = JSON.stringify([
     "PDXXXXXXXXX1",
     "PDXXXXXXXXX2",
@@ -37,7 +37,7 @@ const query = `${PEDDLER_API_DOMAIN}/api/carrier/${CARRIER_ID}/getShipmentStatus
 The Array method is the alternate method of querying the manifest. This method
 is used to query the manifest in a more compact format.
 
-```js
+```js title="Query string ALT"
 const query = `${PEDDLER_API_DOMAIN}/api/carrier/${CARRIER_ID}/getShipmentStatuses
 ?trackingNumbers[0]=PDXXXXXXXXX1&trackingNumbers[1]=PDXXXXXXXXX2&trackingNumbers[2]=PDXXXXBADXX3`
 ```
@@ -51,10 +51,18 @@ The maximum number of tracking numbers that can be queried at once is **100**.
 
 ## Query response
 
-```json
+:::info Inquiry number
+
+The `inquiryNumber` is the unique identifier for the shipment. It is used to query the shipment status.
+In other words, it is the tracking request number for the shipment.
+
+:::
+
+```json title="Response body"
 {
 	"data": [{
 		"inquiryNumber": "PDXXXXXXXXX1",
+		"trackingUrl": "https://pdlr.nl/track/PDXXXXXXXXX1",
 		"consignee": {
 			"address": {
 				"name": "PDC 01 AMS",

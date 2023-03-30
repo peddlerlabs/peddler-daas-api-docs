@@ -7,7 +7,7 @@ const darkCodeTheme = require("prism-react-renderer/themes/palenight");
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: "Peddler DaaS API",
-  tagline: "Guide to the Admin API",
+  tagline: "Guide to Peddler Shipping API",
   url: "https://peddler-daas-api-docs.vercel.app/",
   baseUrl: "/",
   onBrokenLinks: "throw",
@@ -79,14 +79,14 @@ const config = {
             type: "doc",
             docId: "intro",
             position: "left",
-            label: "📃Retailer Docs",
+            label: "Retailer Docs",
           },
           {
             to: "/carrier-docs/intro",
-            label: "🚚Carrier Docs",
+            label: "Enterprise Docs",
             position: "left",
           },
-          { to: "/api", label: "🧑🏻‍💻API", position: "left" },
+          { to: "/api", label: "DaaS API", position: "left" },
           // { to: "/blog", label: "📰Blog", position: "left" },
           {
             href: "https://github.com/peddlerlabs",

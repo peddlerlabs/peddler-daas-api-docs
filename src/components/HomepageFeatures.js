@@ -12,7 +12,7 @@ const FeatureList = [
         Guide for retailers or merchants to integrate with Peddler DaaS API.
       </>
     ),
-    buttonText: '📃',
+    buttonText: 'Retailer Shipping API',
     slug: '/docs/intro',
   },
   {
@@ -23,7 +23,7 @@ const FeatureList = [
         Guide for large scale enterprises to integrate with Peddler DaaS API. 
       </>
     ),
-    buttonText: '🚚',
+    buttonText: 'Enterprise Shipping API',
     slug: '/carrier-docs/intro',
   },
   {
@@ -34,7 +34,7 @@ const FeatureList = [
         Reference for all the API endpoints available in Peddler DaaS API.
       </>
     ),
-    buttonText: '🧑🏻‍💻',
+    buttonText: 'DaaS Endpoints',
     slug: '/api',
   },
 ];
@@ -53,7 +53,7 @@ function Feature({ Svg, title, description, slug, buttonText }) {
             className="button button--secondary button--lg"
             to={slug}
           >
-            Click here to proceed {buttonText}
+            {buttonText}
           </Link>
         </div>
       </div>

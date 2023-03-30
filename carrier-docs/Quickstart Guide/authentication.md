@@ -18,27 +18,28 @@ Keys should never be included or hard-coded into source code.
 
 **Example:**
 ```js title="Request"
-const tokenResponse = await request
-    .post(`${PEDDLER_API_DOMAIN}/oauth/token`)
-    .set('Content-Type', 'application/x-www-form-urlencoded')
-    .send({
-        grant_type: 'client_credentials',
-        client_id,
-        client_secret,
-        scope: ['DEFAULT', 'authenticated', 'XXX'].join(' ')
-    })
-    .timeout({
-        response: 1000 * 60 * 3,
-        deadline: 1000 * 60 * 5
-    })
-    .end(err, res) => {
-        const error = res.error || err;
-        if (error) {
-            console.log(error);
-        }
-        const appToken = res.body; // token!
-        console.log(appToken);
-    };    
+const url = `${PEDDLER_API_DOMAIN}/oauth/token`;
+const headers = { 'Content-Type': 'application/x-www-form-urlencoded' };
+const body = new URLSearchParams({
+  grant_type: 'client_credentials',
+  client_id,
+  client_secret,
+  scope: ['DEFAULT', 'authenticated', 'CARRIER_ID'].join(' ')
+}).toString();
+
+const tokenResponse = await fetch(url, {
+  method: 'POST',
+  headers,
+  body,
+  timeout: 1000 * 60 * 3
+}).then((response) => {
+  if (!response.ok) {
+    throw new Error('Network response was not ok');
+  }
+  return response.json();
+}).catch((error) => {
+  console.error('There was a problem with the fetch operation:', error);
+});    
 ```
 
 ```json title="Response"

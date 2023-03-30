@@ -14,10 +14,10 @@ The parameters required for client authentication are:
 
 | Parameter | Description |
 |:---:|:---:|
-| `grant_type` | Set this to "client_credentials" |
+| `grant_type` | Set this to ``client_credentials`` |
 | `client_id` | Your application's Client ID |
 | `client_secret` | Your application's Client Secret |
-| `scope` | The scope of the token. Includes `DEAFULT`, `authenticated` , `CARRIER_ID` |
+| `scope` | The scope of the token. Includes `DEFAULT`, `authenticated` , `CARRIER_ID` |
 
 
 :::danger Security

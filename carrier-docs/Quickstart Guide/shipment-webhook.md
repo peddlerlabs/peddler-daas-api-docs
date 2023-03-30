@@ -4,8 +4,8 @@ sidebar_position: 7
 
 # Webhooks
 
-We recommend creating a manifest including a valid webhook URI as part of the order instance. This enables real time updates of the shipment status.
-- The property `webhookUri` should be set on the order Instance should you wish to use the webhook callbacks.
+We recommend creating a manifest including a valid webhook URI as part of the shipping object. This enables real time updates of the shipment status.
+- The property `webhookUri` should be set on the shipping instance should you wish to use the webhook callbacks.
 - Webhooks are responded to using a POST request to the provided URL
 - Webhooks are triggered by any status update including those of individual shipments, i.e. when a specific delivery respective to a shipment has shipped.
 - Webhooks should accept the JSON content type `application/json`
