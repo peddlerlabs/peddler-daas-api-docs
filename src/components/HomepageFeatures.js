@@ -1,10 +1,11 @@
 import React from "react";
 import clsx from "clsx";
+import Link from "@docusaurus/Link";
 import styles from "./HomepageFeatures.module.css";
 
 const FeatureList = [
   {
-    title: 'Easy to follow',
+    title: 'Retailer API Docs',
     Svg: require('@site/static/img/easy-follow.svg').default,
     description: (
       <>
@@ -14,7 +15,7 @@ const FeatureList = [
     ),
   },
   {
-    title: 'Small examples to guide you',
+    title: 'Enterprise Shipping API Docs',
     Svg: require('@site/static/img/example-guide.svg').default,
     description: (
       <>
@@ -24,7 +25,7 @@ const FeatureList = [
     ),
   },
   {
-    title: 'Self-explanatory',
+    title: 'API Endpoints',
     Svg: require('@site/static/img/self-explain.svg').default,
     description: (
       <>
@@ -44,6 +45,14 @@ function Feature({ Svg, title, description }) {
       <div className="text--center padding-horiz--md">
         <h3>{title}</h3>
         <p>{description}</p>
+        <div className={styles.buttons}>
+          <Link
+            className="button button--secondary button--lg"
+            to="/docs/intro"
+          >
+            {title}
+          </Link>
+        </div>
       </div>
     </div>
   );
