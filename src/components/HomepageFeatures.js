@@ -6,7 +6,7 @@ import styles from "./HomepageFeatures.module.css";
 const FeatureList = [
   {
     title: 'Retailer API Docs',
-    Svg: require('@site/static/img/easy-follow.svg').default,
+    Svg: require('@site/static/img/shopping.svg').default,
     description: (
       <>
         Guide for retailers or merchants to integrate with Peddler DaaS API.
@@ -17,7 +17,7 @@ const FeatureList = [
   },
   {
     title: 'Enterprise Shipping API Docs',
-    Svg: require('@site/static/img/example-guide.svg').default,
+    Svg: require('@site/static/img/logistics.svg').default,
     description: (
       <>
         Guide for large scale enterprises to integrate with Peddler DaaS API. 
