@@ -19,8 +19,8 @@ To cancel a shipment, you need to send a `POST` request to the endpoint `/api/ca
 
 | Field | Type | Description |
 |:---:|---|---|
-| ``shipment_id`` | ``string`` | The shipment id |
-| ``reason`` | ``string`` | The reason for the cancellation |
+| ``trackingNumber`` | ``string`` | The shipment id |
+| ``reason`` | ``string`` | The reason for the cancellation (optional) |
 
 :::danger Important
 
