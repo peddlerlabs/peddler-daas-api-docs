@@ -10,9 +10,9 @@ In this section, you will find the explanation of how to cancel a shipment.
 
 To cancel a shipment, you need to send a `POST` request to the endpoint `/api/carrier/[CARRIER_ID]/cancelShipment` with the following body:
 
-```json
+```json title="Request body"
 {
-  "shipment_id": "string",
+  "trackingNumber": "string",
   "reason": "string"
 }
 ```
@@ -32,7 +32,16 @@ Shipments maybe canceled if they are in the ADDED state else they are charged.
 
 The response will be a `200` status code with the following body:
 
-```json
+```json title="Response body with 200 status"
+{
+  "status": "string",
+  "details": "string"
+}
+```
+
+The response will be a `404` status code with the following body if the tracking number is not valid or doesn't exist:
+
+```json title="Response body with 404 status"
 {
   "status": "string",
   "details": "string"

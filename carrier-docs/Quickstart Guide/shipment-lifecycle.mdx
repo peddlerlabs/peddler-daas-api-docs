@@ -34,11 +34,12 @@ import BrowserWindow from '@site/src/components/BrowserWindow'
 
 ## Status details
 
-When a shipment is queried, all the statuses for the shipment are returned. Each of the status has a timestamp `ts` and a description `details`.
+When a shipment is queried, all the statuses for the shipment are returned. Each of the status has a timestamp `ts`, a description `details` and a location `gps`.
 - The description is a human readable text that explains the status.
 - The timestamp is the time when the status was set.
+- The location is the location where the status was set.
 
-Apart from the aforementioned contents `ts` & `details`, some more information is returned for the statuses. These are described below.
+Apart from the aforementioned contents `ts`, `details` & `gps`, some more information is returned for the statuses. These are described below.
 ### ````SHIPMENT_CONFIRMED````
 
 - Shipment confirmed (est. date/time of arrival)

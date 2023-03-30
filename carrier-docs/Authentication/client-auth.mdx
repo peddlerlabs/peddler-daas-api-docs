@@ -35,41 +35,50 @@ The client authentication request is a POST request to the authorization server'
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
+```mdx-code-block	
+<Tabs>
+<TabItem value="cURL">
+```
+
+```bash
+curl --location --request POST '${PEDDLER_API_DOMAIN}/oauth/token' \
+--header 'Content-Type: application/x-www-form-urlencoded' \
+--data-urlencode 'grant_type=client_credentials' \
+--data-urlencode 'client_id=<insert_client_id_here>' \
+--data-urlencode 'client_secret=<insert_client_secret_here>' \
+--data-urlencode 'scope=DEFAULT authenticated CARRIER_ID' \
+--timeout 180000
+```
+
 
 ```mdx-code-block
-<Tabs>
+</TabItem>
 <TabItem value="JavaScript">
 ```
 
 ```js
-const tokenResponse = await request
-    .post(`${PEDDLER_API_DOMAIN}/oauth/token`)
-    .set('Content-Type', 'application/x-www-form-urlencoded')
-    .send({
-        grant_type: 'client_credentials',
-        client_id,
-        client_secret,
-        scope: ['DEFAULT', 'authenticated', 'CARRIER_ID'].join(' ')
-    })
-    .timeout({
-        response: 1000 * 60 * 3,
-        deadline: 1000 * 60 * 5
-    });
-```
+const url = `${PEDDLER_API_DOMAIN}/oauth/token`;
+const headers = { 'Content-Type': 'application/x-www-form-urlencoded' };
+const body = new URLSearchParams({
+  grant_type: 'client_credentials',
+  client_id,
+  client_secret,
+  scope: ['DEFAULT', 'authenticated', 'CARRIER_ID'].join(' ')
+}).toString();
 
-```mdx-code-block
-</TabItem>
-<TabItem value="PHP">
-
-```php
-$tokenResponse = $client->request('POST', '/oauth/token', [
-    'form_params' => [
-        'grant_type' => 'client_credentials',
-        'client_id' => $clientId,
-        'client_secret' => $clientSecret,
-        'scope' => 'DEFAULT authenticated CARRIER_ID'
-    ]
-]);
+const tokenResponse = await fetch(url, {
+  method: 'POST',
+  headers,
+  body,
+  timeout: 1000 * 60 * 3
+}).then((response) => {
+  if (!response.ok) {
+    throw new Error('Network response was not ok');
+  }
+  return response.json();
+}).catch((error) => {
+  console.error('There was a problem with the fetch operation:', error);
+});
 ```
 
 ```mdx-code-block
@@ -78,15 +87,26 @@ $tokenResponse = $client->request('POST', '/oauth/token', [
 ```
     
 ```python
-token_response = requests.post(
-    f'{PEDDLER_API_DOMAIN}/oauth/token',
-    data={
-        'grant_type': 'client_credentials',
-        'client_id': client_id,
-        'client_secret': client_secret,
-        'scope': 'DEFAULT authenticated CARRIER_ID'
-    }
-)
+import requests
+import urllib.parse
+
+url = f"{PEDDLER_API_DOMAIN}/oauth/token"
+headers = { "Content-Type": "application/x-www-form-urlencoded" }
+data = {
+  "grant_type": "client_credentials",
+  "client_id": client_id,
+  "client_secret": client_secret,
+  "scope": " ".join(["DEFAULT", "authenticated", "CARRIER_ID"])
+}
+
+encoded_data = urllib.parse.urlencode(data)
+
+response = requests.post(url, headers=headers, data=encoded_data, timeout=180000)
+try:
+    response.raise_for_status()
+    tokenResponse = response.json()
+except requests.exceptions.HTTPError as error:
+    print(f"HTTP Error: {error}")
 ```
 
 ```mdx-code-block
