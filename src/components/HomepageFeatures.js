@@ -1,41 +1,45 @@
 import React from "react";
 import clsx from "clsx";
+import Link from "@docusaurus/Link";
 import styles from "./HomepageFeatures.module.css";
 
 const FeatureList = [
   {
-    title: 'Easy to follow',
+    title: 'Retailer API Docs',
     Svg: require('@site/static/img/easy-follow.svg').default,
     description: (
       <>
-        The guide is divided into sections and subsections to make it 
-        easy to find the information you need.
+        Guide for retailers or merchants to integrate with Peddler DaaS API.
       </>
     ),
+    buttonText: '📃',
+    slug: '/docs/intro',
   },
   {
-    title: 'Small examples to guide you',
+    title: 'Enterprise Shipping API Docs',
     Svg: require('@site/static/img/example-guide.svg').default,
     description: (
       <>
-        The guide has small examples to guide you through the process of
-        understanding the admin resources. 
+        Guide for large scale enterprises to integrate with Peddler DaaS API. 
       </>
     ),
+    buttonText: '🚚',
+    slug: '/carrier-docs/intro',
   },
   {
-    title: 'Self-explanatory',
+    title: 'API Endpoints',
     Svg: require('@site/static/img/self-explain.svg').default,
     description: (
       <>
-        The guide is self-explanatory. But still, some prior knowledage of
-        web app development will be helpful.
+        Reference for all the API endpoints available in Peddler DaaS API.
       </>
     ),
+    buttonText: '🧑🏻‍💻',
+    slug: '/api',
   },
 ];
 
-function Feature({ Svg, title, description }) {
+function Feature({ Svg, title, description, slug, buttonText }) {
   return (
     <div className={clsx("col col--4")}>
       <div className="text--center">
@@ -44,6 +48,14 @@ function Feature({ Svg, title, description }) {
       <div className="text--center padding-horiz--md">
         <h3>{title}</h3>
         <p>{description}</p>
+        <div className={styles.buttons}>
+          <Link
+            className="button button--secondary button--lg"
+            to={slug}
+          >
+            Click here to proceed {buttonText}
+          </Link>
+        </div>
       </div>
     </div>
   );
