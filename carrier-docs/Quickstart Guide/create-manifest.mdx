@@ -185,110 +185,106 @@ request
 ```json title="mockedDeliveryshipmentResponse.json"
 [
     {
-        "id": "XXXXXX1",
-        "trackingNumber": "PDXXXXXXXXX1",
-        "metaData": "UNIQUE_SENDER_REFERENCE_1",
-        "status": "ADDED",
-        "details": { 
-            "deliveryAddress": {
-            "name": "Peddler BV",
-            "house": "12-46",
-            "address1": "John M. Keynesplein",
-            "address2": "B-toren, L.0.K.4",
-            "city": "Amsterdam",
-            "state": "Noord Holland",
-            "postCode": "1066 EP",
-            "country": "NL",
-            "phone": "+31623754473"
-        },
-        "deliveryEmail": "devops@peddler.com",
-        "deliveryShippingType": "LETTERBOX",
-        "deliveryContentsType": "GOODS",
-        "shippingValue": 10,
-        "shippingValueCurrency": "EUR",
-        "dimensions": "38.5cm * 35.5cm * 9.0cm",
-        "weight": "10",
-        "weightUnit": "KG",
-        "estimatedInjectionDate": "2023-07-10T15:43:24.133Z",
-        "carrierOptions": [
-          {
-            "key": "POD",
-            "value": "SIGNATURE"
-          },
-          {
-            "key": "ADR",
-            "value": "Description of ADR contents of package"
-          }
-        ],
-        "webhookUri": "https://carrierwebsite.com/api/webhooks",
-        "carrierServiceLevel": "NEXT_DAY_48"
-        }
-    },
-    {
-        "id": "XXXXXX2",
-        "trackingNumber": "PDXXXXXXXXX2",
-        "metaData": "UNIQUE_SENDER_REFERENCE_2",
-        "status": "ADDED",
-        "details": {
-            "details": { 
-            "deliveryAddress": {
-            "name": "Peddler BV",
-            "house": "12-46",
-            "address1": "John M. Keynesplein",
-            "address2": "B-toren, L.0.K.4",
-            "city": "Amsterdam",
-            "state": "Noord Holland",
-            "postCode": "1066 EP",
-            "country": "NL",
-            "phone": "+31623754473"
-            },
-            "deliveryEmail": "devops@peddler.com",
-            "deliveryShippingType": "LETTERBOX",
-            "deliveryContentsType": "GOODS",
-            "shippingValue": 10,
-            "shippingValueCurrency": "EUR",
-            "dimensions": "38.5cm * 35.5cm * 9.0cm",
-            "weight": "10",
-            "weightUnit": "KG",
-            "estimatedInjectionDate": "2023-07-10T15:43:24.133Z",
-            "carrierOptions": [
-            {
-                "key": "POD",
-                "value": "SIGNATURE"
-            },
-            {
-                "key": "ADR",
-                "value": "Description of ADR contents of package"
-            }
-            ],
-            "webhookUri": "https://carrierwebsite.com/api/webhooks",
-            "carrierServiceLevel": "NEXT_DAY_48"
-            }
-        },
-    },
-    {
-        "metaData": "UNIQUE_SENDER_REFERENCE_3",
-        "status": "ERROR",
-        "errorType": "INVALID_ADDRESS",
-        "error": "Error: Address invalid [\"postcode missing\"]"
-    },
-    {
-        "metaData": "UNIQUE_SENDER_REFERENCE_4",
-        "status": "ERROR",
-        "errorType": "INVALID_POSTCODE",
-        "error": "Error: Postcode not available for delivery [\"postcode\"]"
-    },
-    {
-        "metaData": "UNIQUE_SENDER_REFERENCE_5",
-        "status": "ERROR",
-        "errorType": "INVALID_FIELDS",
-        "error": "Error: Required fields missing [\"metaData\"]"
-    },
-    {
-        "metaData": "UNIQUE_SENDER_REFERENCE_6",
-        "status": "ERROR",
-        "errorType": "OTHER",
-        "error": "Error: Duplicate meta data"
-    }
+		"id": "XXXXXX1",
+		"trackingNumber": "PDXXXXXXXXX1",
+		"metaData": "UNIQUE_SENDER_REFERENCE_1",
+		"status": "ADDED",
+		"details": {
+			"deliveryAddress": {
+				"name": "Peddler BV",
+				"house": "12-46",
+				"address1": "John M. Keynesplein",
+				"address2": "B-toren, L.0.K.4",
+				"city": "Amsterdam",
+				"state": "Noord Holland",
+				"postCode": "1066 EP",
+				"country": "NL",
+				"phone": "+31623754473"
+			},
+			"deliveryEmail": "devops@peddler.com",
+			"deliveryShippingType": "LETTERBOX",
+			"deliveryContentsType": "GOODS",
+			"shippingValue": 10,
+			"shippingValueCurrency": "EUR",
+			"dimensions": "38.5cm * 35.5cm * 9.0cm",
+			"weight": "10",
+			"weightUnit": "KG",
+			"estimatedInjectionDate": "2023-07-10T15:43:24.133Z",
+			"carrierOptions": [{
+					"key": "POD",
+					"value": "SIGNATURE"
+				},
+				{
+					"key": "ADR",
+					"value": "Description of ADR contents of package"
+				}
+			],
+			"webhookUri": "https://carrierwebsite.com/api/webhooks",
+			"carrierServiceLevel": "NEXT_DAY_48"
+		}
+	},
+	{
+		"id": "XXXXXX2",
+		"trackingNumber": "PDXXXXXXXXX2",
+		"metaData": "UNIQUE_SENDER_REFERENCE_2",
+		"status": "ADDED",
+		"details": {
+			"deliveryAddress": {
+				"name": "Peddler BV",
+				"house": "12-46",
+				"address1": "John M. Keynesplein",
+				"address2": "B-toren, L.0.K.4",
+				"city": "Amsterdam",
+				"state": "Noord Holland",
+				"postCode": "1066 EP",
+				"country": "NL",
+				"phone": "+31623754473"
+			},
+			"deliveryEmail": "devops@peddler.com",
+			"deliveryShippingType": "LETTERBOX",
+			"deliveryContentsType": "GOODS",
+			"shippingValue": 10,
+			"shippingValueCurrency": "EUR",
+			"dimensions": "38.5cm * 35.5cm * 9.0cm",
+			"weight": "10",
+			"weightUnit": "KG",
+			"estimatedInjectionDate": "2023-07-10T15:43:24.133Z",
+			"carrierOptions": [{
+					"key": "POD",
+					"value": "SIGNATURE"
+				},
+				{
+					"key": "ADR",
+					"value": "Description of ADR contents of package"
+				}
+			],
+			"webhookUri": "https://carrierwebsite.com/api/webhooks",
+			"carrierServiceLevel": "NEXT_DAY_48"
+		}
+	},
+	{
+		"metaData": "UNIQUE_SENDER_REFERENCE_3",
+		"status": "ERROR",
+		"errorType": "INVALID_ADDRESS",
+		"error": "Error: Address invalid [\"postcode missing\"]"
+	},
+	{
+		"metaData": "UNIQUE_SENDER_REFERENCE_4",
+		"status": "ERROR",
+		"errorType": "INVALID_POSTCODE",
+		"error": "Error: Postcode not available for delivery [\"postcode\"]"
+	},
+	{
+		"metaData": "UNIQUE_SENDER_REFERENCE_5",
+		"status": "ERROR",
+		"errorType": "INVALID_FIELDS",
+		"error": "Error: Required fields missing [\"metaData\"]"
+	},
+	{
+		"metaData": "UNIQUE_SENDER_REFERENCE_6",
+		"status": "ERROR",
+		"errorType": "OTHER",
+		"error": "Error: Duplicate meta data"
+	}
 ]
 ```
