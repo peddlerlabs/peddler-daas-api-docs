@@ -60,10 +60,10 @@ import BrowserWindow from '@site/src/components/BrowserWindow'
 | ``deliveryAddress.address1`` | <span style={{color: 'red'}}>REQUIRED</span> | string | Include street amd house number |
 | ``deliveryAddress.phone`` | <span style={{color: 'green'}}>RECOMMENDED</span> | numeric | Customer mobile in [E.164 format](https://www.itu.int/rec/T-REC-E.164/) for SMS delivery notifications |
 | ``deliveryEmail`` | <span style={{color: 'green'}}>RECOMMENDED</span> | string |  email address for inflight options and delivery notifications |
-| ``deliveryShippingType`` | <span style={{color: 'green'}}>RECOMMENDED</span> | string | ENUM PACKAGE DEFAULT (higher rate), LETTERBOX (lower rate) |
+| ``deliveryShippingType`` | <span style={{color: 'green'}}>RECOMMENDED</span> | string | ``PACKAGE`` (DEFAULT) [higher rate], ``LETTERBOX`` [lower rate] |
 | ``deliveryContentsType`` | <span style={{color: 'green'}}>RECOMMENDED</span> | string | Possible values: ``GOODS`` (DEFAULT) ``FOOD``, ``ALCOHOL``, ``BOOKS`` OR ``ADR`` |
-| ``estimatedInjectionDate`` | <span style={{color: 'red'}}>REQUIRED</span> | string | JSON DATE "2023-07-10T15:43:24.133Z" estimation when the shipment will be injected to destination country |
-| ``carrierOptions`` | <span style={{color: 'green'}}>RECOMMENDED</span> | object | *Only when signature is required. SURCHARGE maybe applicable*<br /><pre lang="json">{<br />"key": "POD",<br />"value": "SIGNATURE"<br />}</pre><br /> *Required when shipping ADR goods*<br /><pre lang="json">{<br />"key": "ADR",<br />"value": "Description of ADR contents"<br />}</pre> |
+| ``estimatedInjectionDate`` | <span style={{color: 'red'}}>REQUIRED</span> | string | [JSON DATE](https://docs.jsonata.org/date-time#json-and-iso-8601) "2023-07-10T15:43:24.133Z" estimation when the shipment will be injected to destination country |
+| ``carrierOptions`` | <span style={{color: 'green'}}>RECOMMENDED</span> | object array | *Only when signature is required. SURCHARGE maybe applicable*<br /><pre lang="json">{<br />"key": "POD",<br />"value": "SIGNATURE"<br />}</pre><br /> *Required when shipping ADR goods*<br /><pre lang="json">{<br />"key": "ADR",<br />"value": "Description of ADR contents"<br />}</pre> |
 | ``carrierServiceLevel`` | <span style={{color: 'green'}}>RECOMMENDED</span> | string | Provided by Peddler "NEXT_DAY_48" |
 
 </BrowserWindow>

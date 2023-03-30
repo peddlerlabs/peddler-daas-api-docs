@@ -22,16 +22,15 @@ The Peddler API has a staging environment that can be used for testing purposes.
 
 ## High-level CRUD Operation examples
 
-1. If you want to create an "shipment", you should send a *POST* request to the API as follows:  
-    `https://lokl-api.peddler.com/api/shipments`
-2. If you want to read an "shipment", you should send a *GET* request to the API as follows:  
-    `https://lokl-api.peddler.com/api/shipments/{id}`
+1. If you want to create a "shipment", you should send a *POST* request to the API as follows:  
+    `https://lokl-api.peddler.com/api/carrier/{CARRIER_ID}/createShipments`
+2. If you want to read a "shipment", you should send a *GET* request to the API as follows:  
+    `https://lokl-api.peddler.com/api/carrier/{CARRIER_ID}/getShipmentStatuses?trackingNumbers`
 3. If you want to read multiple "shipments", you should send a *GET* request to the API as follows:  
-    `https://lokl-api.peddler.com/api/shipments/`
-4. If you want to update an "shipment" in Peddler, you should send a *PUT* request to the API as follows:  
-`https://lokl-api.peddler.com/api/shipments/{id}`
-5. If you want to add an delivery to an "shipment" in Peddler, you should POST to the API:  
-`https://lokl-api.peddler.com/api/shipments/{id}/deliveryLineItems/`
+    `https://lokl-api.peddler.com/api/carrier/{CARRIER_ID}/getShipmentStatuses?trackingNumbers[0]=string&trackingNumbers[1]=string`
+4. If you want to update a "shipment" in Peddler, you should send a *PUT* request to the API as follows:  
+`https://lokl-api.peddler.com/api/carrier/{CARRIER_ID}/updateShipments`
+
 
 - All parameters, where relevant, are required unless otherwise specified.
 - Peddler API uses OAuth2 based authentication methods. All keys are provided by the peddler team and are available on request.
