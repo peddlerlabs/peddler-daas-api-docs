@@ -17,22 +17,28 @@ import BrowserWindow from '@site/src/components/BrowserWindow'
 
 | **STATUS** | **Description** |
 |:---:|---|
-| ````SHIPMENT_CONFIRMED```` | Shipment confirmed (est. date/time of arrival) |
-| ``SHIPMENT_IN_WAREHOUSE`` | Shipment in warehouse (est. date/time of arrival + map) |
-| ``OUT_FOR_DELIVERY`` | Out for delivery (est. date/time of arrival + map) |
+| ````SHIPMENT_CONFIRMED```` | Shipment confirmed: Manifest booked into Peddler |
+| ``SHIPMENT_IN_WAREHOUSE`` | Shipment in warehouse: Arrival scan copmleted by Peddler |
+| ``OUT_FOR_DELIVERY`` | Out for delivery: Courier confirms package in vehicle & on route |
 | ``DELIVERED`` | Delivered (optional: delivered at neighbours + details) |
 | ``DELIVERED_COLLECTION_POINT`` | Delivered at Collection point (+ details) |
-| ``FAILED_ATTEMPT`` | (REASON: Customer not answering, Wrong/incomplete address, Issue with package, Refused by customer + NEXT ATTEMPT or CONTACT SUPPORT) |
+| ``FAILED_ATTEMPT`` | Shipment failed on route. REASON: ``Customer not answering``, ``Wrong/incomplete address``, ``Issue with package``, ``Refused by customer``.<br /> It may include optional information about next attempt or customer should contact support |
 | ``ON_HOLD`` | Shipment is currently on hold and waiting to be released on the designated timeslot or paused by support |
-| ``EXCEPTION`` | All other issues related to package or address |
+| ``EXCEPTION`` | All other issues related to the delivery or Delivery details pertaining to the package |
 | ``RETURN_TO_SENDER`` | Shipment has been returned to sender |
-| ``CANCELED`` | Shipment has been canceled by sender/carrier |
-| ``SHIPMENT_DETAILS_UPDATED`` | Delivery details updated - for example address change or change by consignee |
+| ``CANCELED`` | Shipment has been canceled by ``sender`` or ``carrier`` |
+| ``SHIPMENT_DETAILS_UPDATED`` | Delivery details updated - for example address change by ``sender`` or ``consignee`` |
 
 </BrowserWindow>
 ```
 
 ## Status details
+
+:::info Note
+
+All timestamps and date are in [JSON DATE ISO-8601](https://docs.jsonata.org/date-time#json-and-iso-8601) format.
+
+:::
 
 When a shipment is queried, all the statuses for the shipment are returned. Each of the status has a timestamp `ts`, a description `details` and a location `gps`.
 - The description is a human readable text that explains the status.

@@ -7,8 +7,8 @@ sidebar_position: 4
 Upon creating a manifest [here](/carrier-docs/Quickstart%20Guide/create-manifest),
 you can query the entire manifest or particuler shipment(s) to get the status of the same. There are two ways to
 query the manifest:
-- *Stringified* query string - This is the <span style={{color: 'green'}}>RECOMMENDED</span> method of querying the manifest.
-- Array - This is the alternate method of querying the manifest.
+- *Stringified* JSON object - This is the <span style={{color: 'green'}}>RECOMMENDED</span> method of querying the manifest.
+- Querystring array - This is the alternate method of querying the manifest.
 
 ## Query request
 
@@ -17,7 +17,7 @@ to the following endpoint:
 
 `/api/carrier/[CARRIER_ID]/getShipmentStatuses?trackingNumbers`
 
-### Querying the manifest using *stringified* query string
+### Querying the manifest using *stringified* JSON object
 
 The JSON.stringify method is the recommended method of querying the manifest.
 This method is used to query the manifest in a more readable format.
@@ -32,7 +32,7 @@ const shipments = JSON.stringify([
 const query = `${PEDDLER_API_DOMAIN}/api/carrier/${CARRIER_ID}/getShipmentStatuses?trackingNumbers=${shipments}`
 ```
 
-### Querying the manifest using *Array*
+### Querying the manifest using Querystring *array*
 
 The Array method is the alternate method of querying the manifest. This method
 is used to query the manifest in a more compact format.
@@ -53,8 +53,10 @@ The maximum number of tracking numbers that can be queried at once is **100**.
 
 :::info Inquiry number
 
-The `inquiryNumber` is the unique identifier for the shipment. It is used to query the shipment status.
-In other words, it is the tracking request number for the shipment.
+- The `inquiryNumber` is the unique identifier for the shipment. It is used to query the shipment status.
+  In other words, it is the tracking request number for the shipment.
+
+- The `events` array contains the status of the shipment in chronological (ascending) order.
 
 :::
 
@@ -191,7 +193,7 @@ In other words, it is the tracking request number for the shipment.
 						"lng": "5.0814312"
 					},
 					"details": {
-						"reason": "Customer not answering, Wrong/incomplete address, Issue with package, Issue with transport/courier, Refused by customer",
+						"reason": "Customer not answering,
 						"nextAttemptDate": "2023-07-10T15:43:24.133Z",
 						"contactSupport": true,
 						"description": {
@@ -241,7 +243,7 @@ In other words, it is the tracking request number for the shipment.
 					"ts": "2023-07-10T15:43:24.133Z",
 					"details": {
 						"description": {
-							"en": "The shipment details have been updated by: sender|support|consignee",
+							"en": "The shipment details have been updated by: sender",
 							"originalShipment": " ...shipment",
 							"updatedByType": "CONSIGNEE",
 							"updatedByName": "Jon doe",
@@ -267,6 +269,25 @@ In other words, it is the tracking request number for the shipment.
 			]
     }
   }]
+}
+```
+
+:::caution 404 Not Found
+
+If the trackingNumber cannot be found, it will contain an error object. But the HTTP status code will be 200.
+
+```json	title="Not Found Response"
+{
+  "data": [
+    {
+        "inquiryNumber": "PDXXXXBADXX3",
+        "error": {
+          "code": 404,
+          "message": "NOT FOUND"
+        },
+        "package": null
+    }
+  ]
 }
 ```
 

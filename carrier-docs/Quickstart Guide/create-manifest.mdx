@@ -53,7 +53,7 @@ import BrowserWindow from '@site/src/components/BrowserWindow'
 
 | **Parameter** | **Type** | **Format** | **Description** |
 |---|:---:|:---:|---|
-| ``metaData`` | <span style={{color: 'red'}}>REQUIRED</span> | string | A unique code for you to identify the individual shipment and to avoid duplication of shipments within our system |
+| ``metaData`` | <span style={{color: 'red'}}>REQUIRED</span> | string | A unique ID for you to identify the individual shipment and to avoid duplication of shipments within our system |
 | ``deliveryAddress`` | <span style={{color: 'red'}}>REQUIRED</span> | object | Address object containing consignee details pertaining to delivery |
 | ``deliveryAddress.name`` | <span style={{color: 'green'}}>RECOMMENDED</span> | string | Include the consignee name or company name |
 | ``deliveryAddress.house`` | <span style={{color: 'green'}}>RECOMMENDED</span> | string | Include the house number unless included in ``address1`` field |
@@ -61,15 +61,15 @@ import BrowserWindow from '@site/src/components/BrowserWindow'
 | ``deliveryAddress.address2`` | <span style={{color: 'green'}}>RECOMMENDED</span> | string | Include any additional address information |
 | ``deliveryAddress.city`` | <span style={{color: 'red'}}>REQUIRED</span> | string | A valid city name |
 | ``deliveryAddress.state`` | <span style={{color: 'green'}}>RECOMMENDED</span> | string | State name |
-| ``deliveryAddress.postCode`` | <span style={{color: 'red'}}>REQUIRED</span> | string | A valid Dutch 6PP postcode (<span style={{color: 'green'}}>PREFERRED</span>) or 4PP postcode.<br />6PP postcode example: ``1066EP``<br />4PP postcode example: ``1066`` |
-| ``deliveryAddress.country`` | <span style={{color: 'red'}}>REQUIRED</span> | string | [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country code |
+| ``deliveryAddress.postCode`` | <span style={{color: 'red'}}>REQUIRED</span> | string | If your country code is ``NL``, you provide a valid Dutch 6PP postcode (<span style={{color: 'green'}}>PREFERRED</span>) or 4PP postcode.<br />6PP postcode example: ``1066EP``<br />4PP postcode example: ``1066`` |
+| ``deliveryAddress.country`` | <span style={{color: 'red'}}>REQUIRED</span> | string | [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country code DEFAULT: ``NL`` |
 | ``deliveryAddress.phone`` | <span style={{color: 'green'}}>RECOMMENDED</span> | numeric | Customer mobile in [E.164 format](https://www.itu.int/rec/T-REC-E.164/) for SMS delivery notifications |
 | ``deliveryEmail`` | <span style={{color: 'green'}}>RECOMMENDED</span> | string |  Email address for inflight options and delivery notifications |
 | ``deliveryShippingType`` | <span style={{color: 'green'}}>RECOMMENDED</span> | string | ``PACKAGE`` (DEFAULT) [*higher rate*], ``LETTERBOX`` [*lower rate*] |
 | ``deliveryContentsType`` | <span style={{color: 'green'}}>RECOMMENDED</span> | string | Possible values: ``GOODS`` (DEFAULT) ``FOOD``, ``ALCOHOL``, ``BOOKS`` or ``ADR`` |
 | ``shippingValue`` | <span style={{color: 'green'}}>RECOMMENDED</span> | numeric | Value of goods in shipment |
 | ``shippingValueCurrency`` | <span style={{color: 'green'}}>RECOMMENDED</span> | string | [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code |
-| ``dimensions`` | <span style={{color: 'green'}}>RECOMMENDED</span> | string | Dimensions of the shipment. <br />Example: ``"38.5cm * 35.5cm * 9.0cm"`` |
+| ``dimensions`` | <span style={{color: 'green'}}>RECOMMENDED</span> | string | Dimensions of the shipment. <br />Example: ``38.5cm * 35.5cm * 9.0cm`` |
 | ``weight`` | <span style={{color: 'green'}}>RECOMMENDED</span> | numeric | Weight of the shipment |
 | ``weightUnit`` | <span style={{color: 'green'}}>RECOMMENDED</span> | string | Possible values: ``KG`` (DEFAULT), ``LB`` |
 | ``estimatedInjectionDate`` | <span style={{color: 'red'}}>REQUIRED</span> | string | [JSON DATE ISO 8601](https://docs.jsonata.org/date-time#json-and-iso-8601) ``2023-07-10T15:43:24.133Z`` estimation when the shipment will be injected to destination distribution hub |
@@ -89,7 +89,7 @@ ADR requires additional description in carrierOptions
 
 :::caution Blank fields
 
-Any fields that are not required or recommended should **NOT** be left blank.
+Any fields that are blank should **NOT** be included in the payload.
 
 :::
 
