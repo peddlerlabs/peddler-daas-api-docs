@@ -1,0 +1,155 @@
+---
+sidebar_position: 6
+---
+
+# Shipping label
+
+In this section, you will find the explanation of how to create a shipping label.
+
+## Shipping label request
+
+To get a shipping label, you need to send a `GET` request to the endpoint `/api/carrier/[CARRIER_ID]/shippingLabel` with the request body.
+
+The request body should contain the following fields:
+
+| **Field** | **Type** | **Format** | **Description** |
+|:---|:---:|---|---|
+| ``trackingNumber`` | <span style={{color: 'red'}}>REQUIRED</span> | string | The tracking number of the shipment |
+| ``type`` | <span style={{color: 'red'}}>REQUIRED</span> | string | Type of label.<br />Possble values are ``MANIFEST``,  ``ROUTE``, ``RETURN_TO_SENDER``  |
+| ``format`` | <span style={{color: 'red'}}>REQUIRED</span> | string | The output format of the label.<br />Possible values are ``ZPL`` or ``PDF`` |
+
+Here's an example in JavaScript of sending a request to create a shipping label:
+
+```js title="shippingLabel.js"
+const labelBody = [
+  {
+    trackingNumber: '123456789',
+    type: 'MANIFEST',
+    format: 'PDF',
+  },
+];
+fetch('https://api-lokl.peddler.com/api/carrier/CARRIER_ID/shippingLabel', {
+  method: 'GET',
+  headers: {
+    'Authorization': `Bearer ${access_token}`,
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify(labelBody)
+})
+.then(response => response.json())
+.then(data => {
+console.log(data);
+})
+.catch(error => {
+console.error(error);
+});
+```
+
+## Shipping label response
+
+For each output format, the response will be different.
+
+### ZPL
+
+If the output format is `ZPL`, the response will be a string containing the ZPL code.
+
+```json title="ZPL response 200 OK"
+HTTP/1.1 200 OK
+Content-Type: application/json
+Content-Length: 12345
+
+{
+  "trackingNumber": "123456789",
+  "type": "MANIFEST",
+  "format": "ZPL",
+  "label": "^XA^FO50,50^A0N,50,50^FD123456789^FS^XZ"
+}
+```
+
+```json title="ZPL response 404 Not Found"
+HTTP/1.1 404 Not Found
+Content-Type: application/json
+Content-Length: 12345
+
+{
+  "error": "Not Found",
+  "message": "No label found for tracking number 123456789",
+  "path": "/api/carrier/CARRIER_ID/shippingLabel"
+}
+```
+
+```json title="ZPL response 422 Wrong parameters"
+HTTP/1.1 422 Wrong parameters
+Content-Type: application/json
+Content-Length: 12345
+
+{
+  "error": "Wrong parameters",
+  "message": "The request body is not valid. See 'details' for more information.",
+  "path": "/api/carrier/CARRIER_ID/shippingLabel",
+  "details": [
+    {
+      "field": "trackingNumber",
+      "message": "The tracking number is required."
+    },
+    {
+      "field": "type",
+      "message": "The type is required."
+    },
+    {
+      "field": "format",
+      "message": "The format is required."
+    }
+  ]
+}
+```
+
+### PDF
+
+If the output format is `PDF`, the response will be a base64 encoded string containing the PDF file.
+
+```json title="PDF response 200 OK"
+HTTP/1.1 200 OK
+Content-Type: application/pdf
+Content-Length: 12345
+Content-Disposition: attachment; filename="XXXXXX1.pdf"
+Content-Transfer-Encoding: base64
+```
+
+```json title="PDF response 404 Not Found"
+HTTP/1.1 404 Not Found
+Content-Type: application/json
+Content-Length: 12345
+
+{
+  "error": "Not Found",
+  "message": "No label found for tracking number 123456789",
+  "path": "/api/carrier/CARRIER_ID/shippingLabel"
+}
+```
+
+```json title="PDF response 422 Wrong parameters"
+HTTP/1.1 422 Wrong parameters
+Content-Type: application/json
+Content-Length: 12345
+
+{
+  "error": "Wrong parameters",
+  "message": "The request body is not valid. See 'details' for more information.",
+  "path": "/api/carrier/CARRIER_ID/shippingLabel",
+  "details": [
+    {
+      "field": "trackingNumber",
+      "message": "The tracking number is required."
+    },
+    {
+      "field": "type",
+      "message": "The type is required."
+    },
+    {
+      "field": "format",
+      "message": "The format is required."
+    }
+  ]
+}
+```
