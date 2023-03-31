@@ -1,6 +1,6 @@
 # Peddler Admin API Docs
 
-> **Important**: This is the documentation for the Peddler Admin API. It is a work in progress.
+> **Description**: This is the documentation for the Peddler Admin API. It is a work in progress.
 
 - The Peddler API is a RESTful web service for developers to programmatically interact with Peddler's data and real-time order/delivery management services.
 - All data exchanged between clients and the API is JSON (unless specified otherwise) over HTTPS.
