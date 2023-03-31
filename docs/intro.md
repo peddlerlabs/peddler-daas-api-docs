@@ -2,9 +2,9 @@
 sidebar_position: 1
 ---
 
-# Peddler API Docs
+# Retailer API Docs
 
-- The Peddler API is a RESTful web service for developers to programmatically interact with Peddler's data and real-time order/delivery management services.
+- The Peddler Retailer API is a RESTful web service for developers to programmatically interact with Peddler's data and real-time order/delivery management services.
 - All data exchanged between clients and the API is JSON (unless specified otherwise) over HTTPS.
 - The base URL for the Peddler API is `https://lokl-api.peddler.com`
 - Peddler utilises the CRUD standardised use of HTTP Action Verbs.
