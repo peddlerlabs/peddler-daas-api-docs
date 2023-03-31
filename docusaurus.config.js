@@ -104,8 +104,12 @@ const config = {
             title: "More",
             items: [
               {
-                label: "API Docs",
+                label: "Retailer API Docs",
                 to: "/docs/intro",
+              },
+              {
+                label: "Enterprise API Docs",
+                to: "/carrier-docs/intro",
               },
               {
                 label: "About us",
