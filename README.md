@@ -1,6 +1,6 @@
 # Peddler Admin API Docs
 
-> **Important**: This is the documentation for the Peddler Admin API. It is a work in progress.
+> **Description**: This is the documentation for the Peddler Admin API. It is a work in progress.
 
 - The Peddler API is a RESTful web service for developers to programmatically interact with Peddler's data and real-time order/delivery management services.
 - All data exchanged between clients and the API is JSON (unless specified otherwise) over HTTPS.
@@ -22,6 +22,14 @@
 4. If you want to update an "Order" in Peddler, you should send a *PUT* request to the API as follows:  
 `https://lokl-api.peddler.com/api/Orders/{id}`
 5. If you want to add an delivery to an "Order" in Peddler, you should POST to the API: `https://lokl-api.peddler.com/api/Orders/{id}/deliveryLineItems/`
+6. If you want to create a "shipment", you should send a *POST* request to the API as follows:  
+    `https://lokl-api.peddler.com/api/carrier/{CARRIER_ID}/createShipments`
+7. If you want to read a "shipment", you should send a *GET* request to the API as follows:  
+    `https://lokl-api.peddler.com/api/carrier/{CARRIER_ID}/getShipmentStatuses?trackingNumbers`
+8. If you want to read multiple "shipments", you should send a *GET* request to the API as follows:  
+    `https://lokl-api.peddler.com/api/carrier/{CARRIER_ID}/getShipmentStatuses?trackingNumbers[0]=string&trackingNumbers[1]=string`
+9. If you want to update a "shipment" in Peddler, you should send a *PUT* request to the API as follows:  
+`https://lokl-api.peddler.com/api/carrier/{CARRIER_ID}/updateShipments`
 
 - All parameters, where relevant, are required unless otherwise specified.
 - Peddler API uses OAuth2 based authentication methods. All keys are provided by the peddler team and are available on request.
