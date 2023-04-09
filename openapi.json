@@ -7805,6 +7805,127 @@
           }
         }
       }
+    },
+    "/api/carrier/[CARRIER_ID]/getShipmentStatuses": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "Request was successful",
+            "headers": {},
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "examples": {
+                  "response": {
+                    "value": {}
+                  }
+                }
+              }
+            }
+          }
+        },
+        "summary": "Query manifest - JSON array",
+        "operationId": "Query manifest",
+        "description": "Stringified JSON object - This is the RECOMMENDED method of querying the manifest. \nQuerystring array - This is the alternate method of querying the manifest.",
+        "tags": [
+          "Carrier"
+        ],
+        "parameters": [
+          {
+            "name": "CARRIER_ID",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Accept",
+            "in": "header",
+            "description": "e.g. application/json",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "trackingNumbers",
+            "in": "query",
+            "description": "JSON stringified array of tracking numbers",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "example": "[\"1234567890\",\"1234567891\"]"
+          }
+        ]
+      }
+    },
+    "/api/carrier/[CARRIER_ID]/getShipmentStatuses/": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "Request was successful",
+            "headers": {},
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "examples": {
+                  "response": {
+                    "value": {}
+                  }
+                }
+              }
+            }
+          }
+        },
+        "summary": "Query manifest - Query string",
+        "operationId": "Query manifest",
+        "description": "Query string array - This is the alternate method of querying the manifest. \nStringified JSON object - This is the RECOMMENDED method of querying the manifest.",
+        "tags": [
+          "Carrier"
+        ],
+        "parameters": [
+          {
+            "name": "CARRIER_ID",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Accept",
+            "in": "header",
+            "description": "e.g. application/json",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "trackingNumbers",
+            "in": "query",
+            "description": "Array of tracking numbers",
+            "required": true,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              }
+            },
+            "example": "1234567890"
+          }
+        ]
+      }
     }
   },
   "tags": [
