@@ -7642,6 +7642,169 @@
           }
         }
       }
+    },
+    "/api/carrier/[CARRIER_ID]/createShipments": {
+      "post": {
+        "responses": {
+          "200": {
+            "description": "Request was successful",
+            "headers": {},
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "examples": {
+                  "response": {
+                    "value": {}
+                  }
+                }
+              }
+            }
+          }
+        },
+        "summary": "Create shipments",
+        "operationId": "Create shipments",
+        "description": "",
+        "tags": [
+          "Carrier"
+        ],
+        "parameters": [
+          {
+            "name": "CARRIER_ID",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Accept",
+            "in": "header",
+            "description": "e.g. application/json",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "shipments": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "metaData": {
+                          "type": "string"
+                        },
+                        "deliveryAddress": {
+                          "type": "object",
+                          "properties": {
+                            "name": {
+                              "type": "string",
+                              "required": true
+                            },
+                            "house": {
+                              "type": "string"
+                            },
+                            "address1": {
+                              "type": "string"
+                            },
+                            "address2": {
+                              "type": "string"
+                            },
+                            "city": {
+                              "type": "string"
+                            },
+                            "state": {
+                              "type": "string"
+                            },
+                            "postCode": {
+                              "type": "string"
+                            },
+                            "country": {
+                              "type": "string"
+                            },
+                            "phone": {
+                              "type": "string"
+                            }
+                          },
+                          "required": [
+                            "address1",
+                            "city",
+                            "postCode",
+                            "country"
+                          ]
+                        },
+                        "deliveryEmail": {
+                          "type": "string"
+                        },
+                        "deliveryShippingType": {
+                          "type": "string"
+                        },
+                        "deliveryContentsType": {
+                          "type": "string"
+                        },
+                        "shippingValue": {
+                          "type": "number"
+                        },
+                        "shippingValueCurrency": {
+                          "type": "string"
+                        },
+                        "dimensions": {
+                          "type": "string"
+                        },
+                        "weight": {
+                          "type": "number"
+                        },
+                        "weightUnit": {
+                          "type": "string"
+                        },
+                        "estimatedInjectionDate": {
+                          "type": "string"
+                        },
+                        "carrierOptions": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "key": {
+                                "type": "string"
+                              },
+                              "value": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        },
+                        "webhookUri": {
+                          "type": "string"
+                        },
+                        "carrierServiceLevel": {
+                          "enum": [
+                            "NEXT_DAY_48",
+                            "SAME_DAY_24",
+                            "EXPRESS_0930",
+                            "EXPRESS_1030",
+                            "NEXT_DAY_60"
+                          ]
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "tags": [
@@ -7653,6 +7816,9 @@
     },
     {
       "name": "Peddlers"
+    },
+    {
+      "name": "Carrier"
     }
   ],
   "components": {
