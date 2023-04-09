@@ -6431,15 +6431,6 @@
             }
           },
           {
-            "name": "xordernumber",
-            "in": "path",
-            "description": "e.g. application/json",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
             "name": "Accept",
             "in": "header",
             "description": "e.g. application/json",
