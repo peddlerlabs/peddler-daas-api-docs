@@ -7926,6 +7926,174 @@
           }
         ]
       }
+    },
+    "/api/carrier/[CARRIER_ID]/shippingLabel": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "Request was successful",
+            "headers": {},
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "examples": {
+                  "response": {
+                    "value": {}
+                  }
+                }
+              }
+            }
+          }
+        },
+        "summary": "Get shipping label",
+        "operationId": "Get shipping label",
+        "description": "Get shipping label",
+        "tags": [
+          "Carrier"
+        ],
+        "parameters": [
+          {
+            "name": "CARRIER_ID",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Accept",
+            "in": "header",
+            "description": "e.g. application/json",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "trackingNumber": {
+                    "type": "string"
+                  },
+                  "type": {
+                    "type": "string",
+                    "enum": [
+                      "MANIFEST",
+                      "ROUTE",
+                      "RETURN_TO_SENDER"
+                    ]
+                  },
+                  "format": {
+                    "type": "string",
+                    "enum": [
+                      "ZPL",
+                      "PDF"
+                    ]
+                  }
+                },
+                "required": [
+                  "trackingNumber",
+                  "type",
+                  "format"
+                ]
+              },
+              "examples": {
+                "request": {
+                  "value": {
+                    "trackingNumber": "1234567890",
+                    "type": "MANIFEST",
+                    "format": "ZPL"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/carrier/[CARRIER_ID]/cancelShipment": {
+      "post": {
+        "responses": {
+          "200": {
+            "description": "Request was successful",
+            "headers": {},
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                },
+                "examples": {
+                  "response": {
+                    "value": {}
+                  }
+                }
+              }
+            }
+          }
+        },
+        "summary": "Cancel shipment",
+        "operationId": "Cancel shipment",
+        "description": "Cancel shipment",
+        "tags": [
+          "Carrier"
+        ],
+        "parameters": [
+          {
+            "name": "CARRIER_ID",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Accept",
+            "in": "header",
+            "description": "e.g. application/json",
+            "required": false,
+            "example": "application/json",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "trackingNumber": {
+                    "type": "string"
+                  },
+                  "reason": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "trackingNumber"
+                ]
+              },
+              "examples": {
+                "request": {
+                  "value": {
+                    "trackingNumber": "1234567890"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "tags": [
