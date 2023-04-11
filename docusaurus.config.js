@@ -8,7 +8,7 @@ const darkCodeTheme = require("prism-react-renderer/themes/palenight");
 const config = {
   title: "Peddler DaaS API",
   tagline: "Guide to Peddler Shipping API",
-  url: "https://peddler-daas-api-docs.vercel.app/",
+  url: "https://shipping-api-docs.pdlr.nl/",
   baseUrl: "/",
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
@@ -152,6 +152,10 @@ const config = {
             ],
           },
         ],
+        logo: {
+          alt: 'Peddler logo',
+          src: 'https://www.peddler.com/images/5b987eb7aa7aee05c01036832b57105d-logo.svg',
+        },
         copyright: `Copyright © ${new Date().getFullYear()} Peddler Labs.`,
       },
       prism: {
