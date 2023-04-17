@@ -22,7 +22,7 @@
       "description": "Staging server"
     },
     {
-      "url": "https://lokl-api.peddler.com",
+      "url": "https://api-lokl.peddler.com",
       "description": "Production server"
     }
   ],
