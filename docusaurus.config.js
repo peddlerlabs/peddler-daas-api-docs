@@ -152,10 +152,10 @@ const config = {
             ],
           },
         ],
-        logo: {
-          alt: 'Peddler logo',
-          src: 'https://www.peddler.com/images/5b987eb7aa7aee05c01036832b57105d-logo.svg',
-        },
+        // logo: {
+        //   alt: 'Peddler logo',
+        //   src: 'https://www.peddler.com/images/5b987eb7aa7aee05c01036832b57105d-logo.svg',
+        // },
         copyright: `Copyright © ${new Date().getFullYear()} Peddler Labs.`,
       },
       prism: {
