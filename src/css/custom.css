@@ -6,10 +6,10 @@
 
 /* You can override the default Infima variables here. */
 
-@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
 
 :root {
-  --ifm-font-family-base: 'Nunito Sans', sans-serif;
+  --ifm-font-family-base: 'Nunito', sans-serif;
   --ifm-color-primary: #6c41d9;
   --ifm-color-primary-dark: #6c44dc;
   --ifm-color-primary-darker: #613dc6;
