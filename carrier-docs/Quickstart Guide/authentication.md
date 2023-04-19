@@ -16,6 +16,12 @@ Keys should never be included or hard-coded into source code.
 
 :::
 
+:::info Note on CARRIER_ID
+
+The `CARRIER_ID` is a unique identifier for your carrier account. It is provided to you by Peddler.
+
+:::
+
 **Example:**
 ```js title="Request"
 const url = `${PEDDLER_API_DOMAIN}/oauth/token`;
@@ -24,7 +30,7 @@ const body = new URLSearchParams({
   grant_type: 'client_credentials',
   client_id,
   client_secret,
-  scope: ['DEFAULT', 'authenticated', 'CARRIER_ID'].join(' ')
+  scope: ['DEFAULT', 'authenticated', 'CARRIER_ID_HERE'].join(' ')
 }).toString();
 
 const tokenResponse = await fetch(url, {
