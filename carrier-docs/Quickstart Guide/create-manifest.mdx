@@ -75,7 +75,7 @@ import BrowserWindow from '@site/src/components/BrowserWindow'
 | ``estimatedInjectionDate`` | <span style={{color: 'green'}}>RECOMMENDED</span> | string | [JSON DATE ISO 8601](https://docs.jsonata.org/date-time#json-and-iso-8601) ``2023-07-10T15:43:24.133Z`` estimation when the shipment will be injected to destination distribution hub |
 | ``carrierOptions`` | <span style={{color: 'green'}}>RECOMMENDED</span> | object array | <pre lang="json"> [<br />//*Only when signature is required.*<br />//*SURCHARGE maybe applicable*<br />    {<br />        "key": "POD",<br />        "value": "SIGNATURE"<br />    },<br />//*Required when shipping ADR goods*<br />    {<br />        "key": "ADR",<br />        "value": "Description of ADR contents"<br />    }<br />]</pre> |
 | ``webhookUri`` | <span style={{color: 'green'}}>RECOMMENDED</span> | string | URI to receive webhook notifications. Each webhook can be unique to the shipment.<br/>Example: https://peddl.free.beeceptor.com/webhook/metadata |
-| ``carrierServiceLevel`` | <span style={{color: 'green'}}>RECOMMENDED</span> | string | Possible values: ``NEXT_DAY_48`` (DEFAULT), ``SAME_DAY_24``,  ``EXPRESS_0930``, ``EXPRESS_1030`` or ``NEXT_DAY_60`` |
+| ``carrierServiceLevel`` | <span style={{color: 'green'}}>RECOMMENDED</span> | string | Possible values: ``NEXT_DAY_48`` (DEFAULT), ``NEXT_DAY_60``, ``SAME_DAY_24``, ``SAME_DAY_SAT_24``, ``SAME_DAY_SUN_24``, ``EXPRESS_0900``, ``EXPRESS_1030``, ``EXPRESS_1200``, ``EXPRESS_1700``, ``EXPRESS_1800``, ``EXPRESS_2200``, ``EXPRESS_SAT``, ``EXPRESS_SUN``, ``INSTANT_02`` |
 
 </BrowserWindow>
 ```
