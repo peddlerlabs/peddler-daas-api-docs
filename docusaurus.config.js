@@ -73,6 +73,7 @@ const config = {
         logo: {
           alt: "Peddler Logo",
           src: "https://www.peddler.com/images/5b987eb7aa7aee05c01036832b57105d-logo.svg",
+          width: 100,
         },
         items: [
           {

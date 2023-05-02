@@ -4,6 +4,8 @@ sidebar_position: 1
 
 # Enterprise Shipping Service
 
+<img src="/img/cargo-bike.png" width="300" height="400" />
+
 - The Peddler Enterprise Shipping Service API is a RESTful web service for developers to programmatically interact with Peddler's data and real-time shipment/delivery management services.
 - All data exchanged between clients and the API is JSON (unless specified otherwise) over HTTPS.
 - The base URL for the Peddler API is `https://api-lokl.peddler.com`
