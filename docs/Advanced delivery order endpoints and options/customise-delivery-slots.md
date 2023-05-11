@@ -152,9 +152,9 @@ request
 
 When there are multiple stores in your account you can query the endpoint with a specific storeId to get the available delivery slots for that store. You can use our `GET /api/Orders/getDeliveryServiceSlotsByStoreIds` endpoint to get the available delivery slots for multiple stores. This endpoint will return an array of delivery slots for each storeId you provide. 
 
-## Example request and response
+### Request with multiple storeIds
 
-```json
+```json title="Example request with 2 storeIds"
 request
     .get('/api/Orders/getDeliveryServiceSlotsByStoreIds')
     .set('Authorization', `Bearer ${access_token}`)
@@ -184,9 +184,9 @@ request
 // response 200 OK LIST OF [DELIVERY DATES][DELIVERY SLOTS][PICKUP SLOTS] available
 ```
 
-## Example response
+### Rresponse with multiple storeIds
 
-```json
+```json title="Example response with delivery slots for 2 storeIds"
 [
     {
     "storeId": "JYS4vreb9",
@@ -277,4 +277,75 @@ request
         }
     }
 }
+```
+
+:::info Empty response
+
+If the storeId is invalid or no delivery slots are available, you will receive an empty array result for that ``storeId``.
+
+- Empty response when no delivery slots available
+```json title="No Delivery Slots available"
+[
+    {
+        "storeId": "JYS4vreb9",
+        "deliverySlots": []
+    },
+    {
+        "storeId": "wOwJ1yBjvh",
+        "deliverySlots": []
+    }
+]
+```
+- Empty response when storeId is invalid
+```json title="Invalid storeId"
+[
+    {
+        "storeId": "123455",
+        "deliverySlots": []
+    },
+    {
+    "storeId": "JYS4vreb9",
+        {
+            "day": "Monday",
+            "date": "2021-07-05",
+            "deliverySlots": [
+            {
+                "between": {
+                "start": "16:00",
+                "end": "18:00"
+                },
+                "betweenUTC": {
+                "start": "2021-07-12T12:00:00.000Z",
+                "end": "2021-07-12T14:00:00.000Z"
+                },
+                "pickupSlots": [
+                {
+                    "between": {
+                    "start": "12:00",
+                    "end": "14:00"
+                    },
+                    "betweenUTC": {
+                    "start": "2021-07-12T08:00:00.000Z",
+                    "end": "2021-07-12T10:00:00.000Z"
+                    }
+                },
+                {
+                    "between": {
+                    "start": "14:00",
+                    "end": "16:00"
+                    },
+                    "betweenUTC": {
+                    "start": "2021-07-12T10:00:00.000Z",
+                    "end": "2021-07-12T12:00:00.000Z"
+                    }
+                }
+                ]
+            },
+            {
+                ...
+            }
+            ]
+        }
+    }
+]
 ```
