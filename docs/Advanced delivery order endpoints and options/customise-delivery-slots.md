@@ -147,3 +147,134 @@ request
         console.log(deliveryOrderInstance);
     });
 ```
+
+## Querying the endpoint with a specific storeIds
+
+When there are multiple stores in your account you can query the endpoint with a specific storeId to get the available delivery slots for that store. You can use our `GET /api/Orders/getDeliveryServiceSlotsByStoreIds` endpoint to get the available delivery slots for multiple stores. This endpoint will return an array of delivery slots for each storeId you provide. 
+
+## Example request and response
+
+```json
+request
+    .get('/api/Orders/getDeliveryServiceSlotsByStoreIds')
+    .set('Authorization', `Bearer ${access_token}`)
+    .query({
+        "storeId": ["JYS4vreb9", "wOwJ1yBjvh"], // array of storeIds]",
+        "deliveryAddress": {
+            "firstName": "recipient",
+            "lastName": "Peddler BV",
+            "house": "12-46",
+            "address1": "John M. Keynesplein",
+            "address2": "B-toren, L.0.K.4",
+            "city": "Amsterdam",
+            "state": "Noord Holland",
+            "postCode": "1066 EP",
+            "country": "NL",
+            "phone": "+31623754473"
+        }
+    })
+    .end((err, res) => {
+        const error = res.error || err;
+        if (error) {
+            console.log(error);
+        }
+        console.log(res);
+    });
+    
+// response 200 OK LIST OF [DELIVERY DATES][DELIVERY SLOTS][PICKUP SLOTS] available
+```
+
+## Example response
+
+```json
+[
+    {
+    "storeId": "JYS4vreb9",
+        {
+            "day": "Monday",
+            "date": "2021-07-05",
+            "deliverySlots": [
+            {
+                "between": {
+                "start": "16:00",
+                "end": "18:00"
+                },
+                "betweenUTC": {
+                "start": "2021-07-12T12:00:00.000Z",
+                "end": "2021-07-12T14:00:00.000Z"
+                },
+                "pickupSlots": [
+                {
+                    "between": {
+                    "start": "12:00",
+                    "end": "14:00"
+                    },
+                    "betweenUTC": {
+                    "start": "2021-07-12T08:00:00.000Z",
+                    "end": "2021-07-12T10:00:00.000Z"
+                    }
+                },
+                {
+                    "between": {
+                    "start": "14:00",
+                    "end": "16:00"
+                    },
+                    "betweenUTC": {
+                    "start": "2021-07-12T10:00:00.000Z",
+                    "end": "2021-07-12T12:00:00.000Z"
+                    }
+                }
+                ]
+            },
+            {
+                ...
+            }
+            ]
+        }
+    },
+    {
+    "storeId": "wOwJ1yBjvh",
+        {
+            "day": "Monday",
+            "date": "2021-07-05",
+            "deliverySlots": [
+            {
+                "between": {
+                "start": "16:00",
+                "end": "18:00"
+                },
+                "betweenUTC": {
+                "start": "2021-07-12T12:00:00.000Z",
+                "end": "2021-07-12T14:00:00.000Z"
+                },
+                "pickupSlots": [
+                {
+                    "between": {
+                    "start": "12:00",
+                    "end": "14:00"
+                    },
+                    "betweenUTC": {
+                    "start": "2021-07-12T08:00:00.000Z",
+                    "end": "2021-07-12T10:00:00.000Z"
+                    }
+                },
+                {
+                    "between": {
+                    "start": "14:00",
+                    "end": "16:00"
+                    },
+                    "betweenUTC": {
+                    "start": "2021-07-12T10:00:00.000Z",
+                    "end": "2021-07-12T12:00:00.000Z"
+                    }
+                }
+                ]
+            },
+            {
+                ...
+            }
+            ]
+        }
+    }
+}
+```
