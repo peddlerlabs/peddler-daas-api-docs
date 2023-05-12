@@ -8,7 +8,7 @@ In order to customise delivery datetime by selecting available slots you can use
 This endpoint will provide a list of dynamic available delivery slots for the next 14 days in ASC order with available delivery and respective "pickup slots".
 - A delivery slot is a time period donated as start/end UTC ISO-8601 JSON timestamps between which the item is delivery to the customer
 - The `pickupSlots` property is a child array of the available delivery slots (mutually dependent) and donates the time between which the item is collected/picked-up from the store.
-- `deliverySlot` times and `pickupSlots` times are always assigned as pairs and validated as such, you cannot randomly select different periods.
+- `deliverySlots` times and `pickupSlots` times are always assigned as pairs and validated as such, you cannot randomly select different periods.
 
 :::tip Recommendation
 
