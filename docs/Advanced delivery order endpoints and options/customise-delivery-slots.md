@@ -148,9 +148,15 @@ request
     });
 ```
 
-## Querying the endpoint with a specific storeIds
+## Querying the endpoint with a multiple storeIds
 
-When there are multiple stores in your account you can query the endpoint with a specific storeId to get the available delivery slots for that store. You can use our `GET /api/Orders/getDeliveryServiceSlotsByStoreIds` endpoint to get the available delivery slots for multiple stores. This endpoint will return an array of delivery slots for each storeId you provide. 
+When there are multiple stores in your account you can query the endpoint with a specific ``storeId`` to get the available delivery slots for that store. You can use our `GET /api/Orders/getDeliveryServiceSlotsByStoreIds` endpoint to get the available delivery slots for multiple stores. This endpoint will return an array of delivery slots for each storeId you provide. 
+
+:::tip Note
+
+This is a GET request. So you will have to URL encode and JSON stringify the URL parameters.
+
+:::
 
 ### Request with multiple storeIds
 
@@ -180,16 +186,15 @@ request
         }
         console.log(res);
     });
-    
-// response 200 OK LIST OF [DELIVERY DATES][DELIVERY SLOTS][PICKUP SLOTS] available
 ```
 
-### Rresponse with multiple storeIds
+### Response with multiple storeIds
+
+If storeIds provided are correct and delivery slots are available for the provided storeIds, the response will be an object containing storeIds as key with value containing day-wise pickup/delivery slots for each storeId provided in the request.
 
 ```json title="Example response with delivery slots for 2 storeIds"
-[
-    {
-    "storeId": "JYS4vreb9",
+{
+    "JYS4vreb9": [
         {
             "day": "Monday",
             "date": "2021-07-05",
@@ -231,9 +236,8 @@ request
             }
             ]
         }
-    },
-    {
-    "storeId": "wOwJ1yBjvh",
+    ],
+    "wOwJ1yBjvh": [
         {
             "day": "Monday",
             "date": "2021-07-05",
@@ -275,7 +279,7 @@ request
             }
             ]
         }
-    }
+    ]
 }
 ```
 
@@ -285,26 +289,16 @@ If the storeId is invalid or no delivery slots are available, you will receive a
 
 - Empty response when no delivery slots available
 ```json title="No Delivery Slots available"
-[
-    {
-        "storeId": "JYS4vreb9",
-        "deliverySlots": []
-    },
-    {
-        "storeId": "wOwJ1yBjvh",
-        "deliverySlots": []
-    }
-]
+{
+    "JYS4vreb9": [],
+    "wOwJ1yBjvh": []
+}
 ```
 - Empty response when storeId is invalid
 ```json title="Invalid storeId"
-[
-    {
-        "storeId": "123455",
-        "deliverySlots": []
-    },
-    {
-    "storeId": "JYS4vreb9",
+{
+    "123455": [],
+    "JYS4vreb9": [
         {
             "day": "Monday",
             "date": "2021-07-05",
@@ -346,6 +340,6 @@ If the storeId is invalid or no delivery slots are available, you will receive a
             }
             ]
         }
-    }
-]
+    ]
+}
 ```
