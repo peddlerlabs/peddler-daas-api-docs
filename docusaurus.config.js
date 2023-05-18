@@ -170,6 +170,12 @@ const config = {
         }
       }
     }),
+  scripts: [
+    {
+      src:"https://peddler.instatus.com/en/47dda54c/widget/script.js",
+      async: true
+    }
+  ]
 };
 
 module.exports = config;
