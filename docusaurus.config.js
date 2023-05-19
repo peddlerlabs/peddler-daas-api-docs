@@ -133,6 +133,10 @@ const config = {
                 label: '📦Delivery Service',
                 href: 'https://www.peddler.express/',
               },
+              {
+                label: '⚙️DaaS API Status',
+                href: 'https://peddler.instatus.com/',
+              }
             ],
           },
           {
