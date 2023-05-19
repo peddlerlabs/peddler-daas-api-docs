@@ -44,3 +44,9 @@ or submit a request through our Support Center at [*helpdesk@peddler.com*](mailt
 We will never ask you for credentials/API keys so do not provide them.
 
 :::
+
+:::tip API Status
+
+The Peddler API has 100% uptime and is monitored 24/7. To check the status of the API, check the following status page: [Peddler API System status](https://peddler.instatus.com/). If you are experiencing issues with the API, please contact us at [devops@peddler.com](mailto:devops@peddler.com).
+
+:::
