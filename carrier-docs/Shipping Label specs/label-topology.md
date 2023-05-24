@@ -4,7 +4,7 @@ sidebar_position: 2
 
 # Topology of label
 
-## Specifications
+## Structure of the label
 
 The various sections of the label are described below:
 
@@ -67,7 +67,7 @@ More information about the barcode can be found in the [Barcode section](/docs/s
 
 ### 7. Recipient contact details / additional information
 
-This is an optional section and is used to provide additional information about the recipient. Additional information can be phone number, email address, etc.
+This is an optional section and is used to provide additional information about the recipient. Additional information can be phone number.
 
 ### 8. Final Destination depot code
 
