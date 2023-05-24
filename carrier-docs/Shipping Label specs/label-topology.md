@@ -49,19 +49,13 @@ Colli is a term used in the shipping industry to refer to the number of packages
 
 This is a mandatory field and is used to identify the shipment. This is a 1D barcode and is used to identify the shipment. This barcode is used by the carrier to track the shipment through the carrier's network. It is always ``19`` character in length and starts with the letter '**P**'.
 
-:::note Note
-
-More information about the barcode can be found in the [Barcode section](/docs/shipping-label-specs/barcode).
-
-:::
-
 ### 6. 2-Dimensional QR Code (alphanumeric)
 
 This is a mandatory field and is used to identify the shipment. This is a 2D barcode and is used to identify the shipment. This barcode is used by the carrier to track the shipment through the carrier's network. It is in ALPHANUMERIC format and is always ``54`` characters long.
 
-:::note Note
+:::tip Note
 
-More information about the barcode can be found in the [Barcode section](/docs/shipping-label-specs/barcode).
+More information about both 1-Dimensional Linear Barcode (Code 128) and 2-Dimensional QR Code (alphanumeric) can be found in the [Barcode section](/carrier-docs/Shipping%20Label%20specs/barcode).
 
 :::
 

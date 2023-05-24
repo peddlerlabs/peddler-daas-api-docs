@@ -33,9 +33,9 @@ The constraints along with the field name and description for the Peddler Shippi
 | REF_LBL_1  | Title for Reference | Value: **REF** |
 | REF_INF_1  | Reference/Waybill number | Alphanumeric with maximum of 16 characters |
 | REF_LBL_2  | Title for Ship on date | Value: **SHIP ON** |
-| REF_INF_2  | Date of shipping | Format: DD/MM/YYYY |
+| REF_INF_2  | Date of shipping | Format: DD/MM/YYYY For example: ``30/12/2023`` |
 | REF_LBL_3  | Title for Weight | Value: **WEIGHT** |
-| REF_INF_3  | Weight of the shipment | Numeric value + units of weight. Maximum value can be <= 20 For example: 19.99 KG |
+| REF_INF_3  | Weight of the shipment | Numeric value + units of weight. String with maximum length of 8 characters. For example: ``19.99 KG`` |
 | C | Colli | Value can be integer (eg: 1) or fraction (eg: 2/3) |
 
 ## Constaints of Peddler-only fields
@@ -47,7 +47,7 @@ These fields are for internal use only and are not relevant to the Enterprise. T
 | LOOP_LBL_1  | Title for Route | Value: **Route** |
 | L_1  | Route number associated with the shipment | Numeric with maximum of 5 digits |
 | LOOP_LBL_2 | Title for Delivery date | Value: DLR DATE |
-| L_2  | Expected delivery date + time | Format: DD/MM/YYYY HH:MM |
+| L_2  | Expected delivery date + time | Format: DD/MM/YYYY HH:MM For example: ``30/12/2023 22:30`` |
 | LOOP_EXTRA_1  | Whether package has to be delivered at the neighbours | Value: **Neighbour** + boolean value (Yes/No) |
 | LOOP_EXTRA_2  | Whether package has to be collected from nearest Pick-up/Drop-off point | Value: **PUDO** + boolean value (Yes/No) |
 | P | Position of the shipment in its route | Numeric value with a maximum of 3 digits |
