@@ -1,6 +1,8 @@
-# Peddler Admin API Docs
+<p align="center">
+<img src="https://www.peddler.com/images/5b987eb7aa7aee05c01036832b57105d-logo.svg" width=400 height=200></img>
+</p>
 
-> **Description**: This is the documentation for the Peddler Admin API. It is a work in progress.
+<h1 align="center">Peddler Shipping API Docs</h1>
 
 - The Peddler API is a RESTful web service for developers to programmatically interact with Peddler's data and real-time order/delivery management services.
 - All data exchanged between clients and the API is JSON (unless specified otherwise) over HTTPS.
