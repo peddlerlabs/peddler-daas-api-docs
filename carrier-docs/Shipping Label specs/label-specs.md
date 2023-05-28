@@ -37,6 +37,7 @@ The constraints along with the field name and description for the Peddler Shippi
 | REF_LBL_3  | Title for Weight | Value: **WEIGHT** |
 | REF_INF_3  | Weight of the shipment | Numeric value + units of weight. String with maximum length of 8 characters. For example: ``19.99 KG`` |
 | C | Colli | Value can be integer (eg: 1) or fraction (eg: 2/3) |
+| BARCODE_LABEL_1  | 1-Dimensional Linear Barcode (Code 128) | String with **fixed** length of 19 characters. <br /> Format: `P{α} {β} {γ} {δ}` where, `α`: 5-digit epoch number, `β`: 2-digit service level indicator, `γ`: 10-digit hash of Peddler package manifest ID & `δ`: Luhn check digit |
 
 ## Constaints of Peddler-only fields
 
