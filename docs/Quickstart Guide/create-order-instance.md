@@ -101,6 +101,34 @@ request
     });
 ```
 
+### Combine order instance creation with finalising order
+
+You can combine the order instance creation with payment by adding the `complete-delivery-order` header key with any value to the request.
+
+```js title="Add complete-delivery-order in header"
+request
+    .post('https://api-lokl.peddler.com/api/Orders')
+    .set('Authorization', `Bearer ${access_token}`)
+    .set('complete-delivery-order', 'true')
+    .send(mockedDeliveryOrder)
+    .end((err, res) => {
+        const error = res.error || err;
+        if (error) {
+            console.log(error);
+        }
+        const deliveryOrderInstance = res.body;
+        console.log(deliveryOrderInstance);
+    });
+```
+
+By following this approach, you won't have to call the completeOrder endpoint separately to finalise the order as mentioned in the [Finalise delivery order](/docs/Quickstart%20Guide/finalise-delivery-order.md) section. 
+
+:::danger Important note
+
+If you are using the `complete-delivery-order` header key, you will not have the opportunity to review/edit the order before finalising it.
+
+:::
+
 ## Mock delivery order response
 
 - Any validation errors would result in a **422** HTTP status code response, and validation errors in the response

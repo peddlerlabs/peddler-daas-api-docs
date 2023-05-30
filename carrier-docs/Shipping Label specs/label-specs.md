@@ -17,17 +17,17 @@ The constraints along with the field name and description for the Peddler Shippi
 | **Field** | **Description** | **Constraints** |
 |:---|:---|:---|
 | PARTNER_CLIENT_NAME | The Enterprise which is using Peddler Express services | String with maximum of 16 characters |
-| SENDER_ADR_LINE_1 | Company Name of the Sender | String with maximum of 22 characters |
-| SENDER_ADR_LINE_2 | Name of the Sender | String with maximum of 20 characters |
-| SENDER_ADR_LINE_3 | Street name + House number | String with maximum of 20 characters |
-| SENDER_ADR_LINE_4  | Postal Code + City | String with maximum of 20 characters |
-| SENDER_ADR_LINE_5  | Country | String with maximum of 20 characters |
+| SENDER_ADR_LINE_1 | Company Name of the Sender | String with maximum of 24 characters |
+| SENDER_ADR_LINE_2 | Name of the Sender | String with maximum of 24 characters |
+| SENDER_ADR_LINE_3 | Street name + House number | String with maximum of 24 characters |
+| SENDER_ADR_LINE_4  | Postal Code + City | String with maximum of 24 characters |
+| SENDER_ADR_LINE_5  | Country | String with maximum of 24 characters |
 | RECEIVER_ADR_LINE_1 | Company Name of the Recipient | String with maximum of 18 characters |
-| RECEIVER_ADR_LINE_2 | Name of the Recipient | String with maximum of 18 characters |
-| RECEIVER_ADR_LINE_3  | Street name + House number | String with maximum of 20 characters |
-| RECEIVER_ADR_LINE_4  | Additional info about address | String with maximum of 20 characters |
-| RECEIVER_ADR_LINE_5  | Postal Code + City | String with maximum of 20 characters |
-| RECEIVER_ADR_LINE_6 | Country | String with maximum of 20 characters |
+| RECEIVER_ADR_LINE_2 | Name of the Recipient | String with maximum of 24 characters |
+| RECEIVER_ADR_LINE_3  | Street name + House number | String with maximum of 24 characters |
+| RECEIVER_ADR_LINE_4  | Additional info about address | String with maximum of 24 characters |
+| RECEIVER_ADR_LINE_5  | Postal Code + City | String with maximum of 24 characters |
+| RECEIVER_ADR_LINE_6 | Country | String with maximum of 24 characters |
 | OPT_INF_1…OPT_INF_5 | Additional information related to the consignment | If field contains only alphabets (for field title), maximum of 9 characters are allowed. If field contains only digits + special characters, a maximum of 14 characters are allowed. |
 | D | 3-character code for Final Destination depot. Example: AMS (for Amsterdam-1) | String with maximum of 3 characters |
 | REF_LBL_1  | Title for Reference | Value: **REF** |

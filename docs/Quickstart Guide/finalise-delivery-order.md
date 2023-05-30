@@ -6,7 +6,7 @@ sidebar_position: 4
 
 Once the order is ready to ship and the respective delivery line-items have been added, we finalise the order for delivery.
 Upon finalising an order, it is processed by our PSP or accounts systems, it can not be modified once its status has changed from `CREATED` (more on statuses [here](/docs/Quickstart%20Guide/delivery-order-status-lifecycles.md#order-status)).
-It is possible to programmatically CANCEL an order (see cancelling an order).
+It is possible to programmatically CANCEL an order (see [Cancel order](/docs/Advanced%20delivery%20order%20endpoints%20and%20options/cancel-order.md)).
 
 :::tip Notes 
 - You will require the `id` property of the order for the `POST /api/Orders/${id}/completeOrder` endpoint.
