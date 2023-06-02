@@ -7787,7 +7787,7 @@
                         "webhookUri": {
                           "type": "string"
                         },
-                        "carrierServiceLevel": {
+                        "serviceLevel": {
                           "enum": [
                             "NEXT_DAY_48",
                             "SAME_DAY_24",

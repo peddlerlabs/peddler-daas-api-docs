@@ -54,6 +54,7 @@ import BrowserWindow from '@site/src/components/BrowserWindow'
 | **Parameter** | **Type** | **Format** | **Description** |
 |---|:---:|:---:|---|
 | ``metaData`` | <span style={{color: 'red'}}>REQUIRED</span> | string | A unique ID for you to identify the individual shipment and to avoid duplication of shipments within our system |
+| ``senderAddress`` | <span style={{color: 'red'}}>REQUIRED</span> | object | Address object containing sender details pertaining to delivery |
 | ``deliveryAddress`` | <span style={{color: 'red'}}>REQUIRED</span> | object | Address object containing consignee details pertaining to delivery |
 | ``deliveryAddress.name`` | <span style={{color: 'green'}}>RECOMMENDED</span> | string | Include the consignee name or company name |
 | ``deliveryAddress.house`` | <span style={{color: 'green'}}>RECOMMENDED</span> | string | Include the house number unless included in ``address1`` field |
@@ -69,13 +70,15 @@ import BrowserWindow from '@site/src/components/BrowserWindow'
 | ``deliveryContentsType`` | <span style={{color: 'green'}}>RECOMMENDED</span> | string | Possible values: ``GOODS`` (DEFAULT) ``FOOD``, ``ALCOHOL``, ``BOOKS`` or ``ADR`` |
 | ``shippingValue`` | <span style={{color: 'green'}}>RECOMMENDED</span> | numeric | Value of goods in shipment |
 | ``shippingValueCurrency`` | <span style={{color: 'green'}}>RECOMMENDED</span> | string | [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code |
+| ``bundleId`` | <span style={{color: 'green'}}>RECOMMENDED</span> | string | A unique ID (if applicable) for the big box freight in case shipments are bundled together in a big box. |
+| ``coliMasterId`` | <span style={{color: 'green'}}>RECOMMENDED</span> | string | A unique ID (if applicable) for the colli which will be used to identify all packages (all collo) constituting the colli. |
 | ``dimensions`` | <span style={{color: 'green'}}>RECOMMENDED</span> | string | Dimensions of the shipment. <br />Example: ``38.5cm * 35.5cm * 9.0cm`` |
 | ``weight`` | <span style={{color: 'green'}}>RECOMMENDED</span> | numeric | Weight of the shipment |
 | ``weightUnit`` | <span style={{color: 'green'}}>RECOMMENDED</span> | string | Possible values: ``KG`` (DEFAULT), ``LB`` |
 | ``estimatedInjectionDate`` | <span style={{color: 'green'}}>RECOMMENDED</span> | string | [JSON DATE ISO 8601](https://docs.jsonata.org/date-time#json-and-iso-8601) ``2023-07-10T15:43:24.133Z`` estimation when the shipment will be injected to destination distribution hub |
 | ``carrierOptions`` | <span style={{color: 'green'}}>RECOMMENDED</span> | object array | <pre lang="json"> [<br />//*Only when signature is required.*<br />//*SURCHARGE maybe applicable*<br />    {<br />        "key": "POD",<br />        "value": "SIGNATURE"<br />    },<br />//*Required when shipping ADR goods*<br />    {<br />        "key": "ADR",<br />        "value": "Description of ADR contents"<br />    }<br />]</pre> |
 | ``webhookUri`` | <span style={{color: 'green'}}>RECOMMENDED</span> | string | URI to receive webhook notifications. Each webhook can be unique to the shipment.<br/>Example: https://peddl.free.beeceptor.com/webhook/metadata |
-| ``carrierServiceLevel`` | <span style={{color: 'green'}}>RECOMMENDED</span> | string | Possible values: ``NEXT_DAY_48`` (DEFAULT), ``NEXT_DAY_60``, ``SAME_DAY_24``, ``SAME_DAY_SAT_24``, ``SAME_DAY_SUN_24``, ``EXPRESS_0900``, ``EXPRESS_1030``, ``EXPRESS_1200``, ``EXPRESS_1700``, ``EXPRESS_1800``, ``EXPRESS_2200``, ``EXPRESS_SAT``, ``EXPRESS_SUN``, ``INSTANT_02`` |
+| ``serviceLevel`` | <span style={{color: 'green'}}>RECOMMENDED</span> | string | Possible values: ``NEXT_DAY_48`` (DEFAULT), ``NEXT_DAY_60``, ``SAME_DAY_24``, ``SAME_DAY_SAT_24``, ``SAME_DAY_SUN_24``, ``EXPRESS_0900``, ``EXPRESS_1030``, ``EXPRESS_1200``, ``EXPRESS_1700``, ``EXPRESS_1800``, ``EXPRESS_2200``, ``EXPRESS_SAT``, ``EXPRESS_SUN``, ``INSTANT_02`` |
 
 </BrowserWindow>
 ```
@@ -128,7 +131,7 @@ const mockedDeliveryshipment = [
           }
         ],
         webhookUri: "https://carrierwebsite.com/api/webhooks",
-        "carrierServiceLevel": "NEXT_DAY_48"
+        "serviceLevel": "NEXT_DAY_48"
     }
 ]
 
@@ -231,7 +234,7 @@ console.error(error);
 				}
 			],
 			"webhookUri": "https://carrierwebsite.com/api/webhooks",
-			"carrierServiceLevel": "NEXT_DAY_48"
+			"serviceLevel": "NEXT_DAY_48"
 		}
 	},
 	{
@@ -270,7 +273,7 @@ console.error(error);
 				}
 			],
 			"webhookUri": "https://carrierwebsite.com/api/webhooks",
-			"carrierServiceLevel": "NEXT_DAY_48"
+			"serviceLevel": "NEXT_DAY_48"
 		}
 	},
 	{
