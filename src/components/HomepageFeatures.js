@@ -5,7 +5,7 @@ import styles from "./HomepageFeatures.module.css";
 
 const FeatureList = [
   {
-    title: 'Retailer API Docs',
+    title: 'Retailer Docs',
     Svg: require('@site/static/img/shopping.svg').default,
     description: (
       <>
@@ -16,7 +16,7 @@ const FeatureList = [
     slug: '/docs/intro',
   },
   {
-    title: 'Enterprise Shipping API Docs',
+    title: 'Enterprise Docs',
     Svg: require('@site/static/img/logistics.svg').default,
     description: (
       <>

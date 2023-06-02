@@ -54,7 +54,7 @@ import BrowserWindow from '@site/src/components/BrowserWindow'
 | **Parameter** | **Type** | **Format** | **Description** |
 |---|:---:|:---:|---|
 | ``metaData`` | <span style={{color: 'red'}}>REQUIRED</span> | string | A unique ID for you to identify the individual shipment and to avoid duplication of shipments within our system |
-| ``senderAddress`` | <span style={{color: 'red'}}>REQUIRED</span> | object | Address object containing sender details pertaining to delivery |
+| ``senderAddress`` | <span style={{color: 'purple'}}>OPTIONAL</span> | object | Address object containing sender details pertaining to delivery |
 | ``deliveryAddress`` | <span style={{color: 'red'}}>REQUIRED</span> | object | Address object containing consignee details pertaining to delivery |
 | ``deliveryAddress.name`` | <span style={{color: 'green'}}>RECOMMENDED</span> | string | Include the consignee name or company name |
 | ``deliveryAddress.house`` | <span style={{color: 'green'}}>RECOMMENDED</span> | string | Include the house number unless included in ``address1`` field |
@@ -71,7 +71,8 @@ import BrowserWindow from '@site/src/components/BrowserWindow'
 | ``shippingValue`` | <span style={{color: 'green'}}>RECOMMENDED</span> | numeric | Value of goods in shipment |
 | ``shippingValueCurrency`` | <span style={{color: 'green'}}>RECOMMENDED</span> | string | [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code |
 | ``bundleId`` | <span style={{color: 'green'}}>RECOMMENDED</span> | string | A unique ID (if applicable) for the big box freight in case shipments are bundled together in a big box. |
-| ``coliMasterId`` | <span style={{color: 'green'}}>RECOMMENDED</span> | string | A unique ID (if applicable) for the colli which will be used to identify all packages (all collo) constituting the colli. |
+| ``colliMasterId`` | <span style={{color: 'green'}}>RECOMMENDED</span> | string | A unique ID (if applicable) for the colli which will be used to identify all packages (all collo) constituting the colli. |
+| ``colliCount`` | <span style={{color: 'green'}}>RECOMMENDED</span> | numeric | Number of packages (collo) constituting the colli. |
 | ``dimensions`` | <span style={{color: 'green'}}>RECOMMENDED</span> | string | Dimensions of the shipment. <br />Example: ``38.5cm * 35.5cm * 9.0cm`` |
 | ``weight`` | <span style={{color: 'green'}}>RECOMMENDED</span> | numeric | Weight of the shipment |
 | ``weightUnit`` | <span style={{color: 'green'}}>RECOMMENDED</span> | string | Possible values: ``KG`` (DEFAULT), ``LB`` |
