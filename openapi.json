@@ -7643,7 +7643,7 @@
         }
       }
     },
-    "/api/carrier/[CARRIER_ID]/createShipments": {
+    "/api/Carriers/[CARRIER_ID]/createShipments": {
       "post": {
         "responses": {
           "200": {
@@ -7806,7 +7806,7 @@
         }
       }
     },
-    "/api/carrier/[CARRIER_ID]/getShipmentStatuses": {
+    "/api/Carriers/[CARRIER_ID]/getShipmentStatuses": {
       "get": {
         "responses": {
           "200": {
@@ -7865,7 +7865,7 @@
         ]
       }
     },
-    "/api/carrier/[CARRIER_ID]/getShipmentStatuses/": {
+    "/api/Carriers/[CARRIER_ID]/getShipmentStatuses/": {
       "get": {
         "responses": {
           "200": {
@@ -7927,7 +7927,7 @@
         ]
       }
     },
-    "/api/carrier/[CARRIER_ID]/shippingLabel": {
+    "/api/Carriers/[CARRIER_ID]/shippingLabel": {
       "get": {
         "responses": {
           "200": {
@@ -8019,7 +8019,7 @@
         }
       }
     },
-    "/api/carrier/[CARRIER_ID]/cancelShipment": {
+    "/api/Carriers/[CARRIER_ID]/cancelShipment": {
       "post": {
         "responses": {
           "200": {

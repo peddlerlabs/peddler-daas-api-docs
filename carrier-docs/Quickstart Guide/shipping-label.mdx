@@ -8,7 +8,7 @@ In this section, you will find the explanation of how to create a shipping label
 
 ## Shipping label request
 
-To get a shipping label, you need to send a `GET` request to the endpoint `/api/carrier/[CARRIER_ID]/shippingLabel` with the request body.
+To get a shipping label, you need to send a `GET` request to the endpoint `/api/Carriers/[CARRIER_ID]/shippingLabel` with the request body.
 
 The request body should contain the following fields:
 
@@ -28,7 +28,7 @@ const labelBody = [
     format: 'PDF',
   },
 ];
-fetch('https://api-lokl.peddler.com/api/carrier/CARRIER_ID/shippingLabel', {
+fetch('https://api-lokl.peddler.com/api/Carriers/CARRIER_ID/shippingLabel', {
   method: 'GET',
   headers: {
     'Authorization': `Bearer ${access_token}`,
@@ -74,7 +74,7 @@ Content-Length: 12345
 {
   "error": "Not Found",
   "message": "No label found for tracking number 123456789",
-  "path": "/api/carrier/CARRIER_ID/shippingLabel"
+  "path": "/api/Carriers/CARRIER_ID/shippingLabel"
 }
 ```
 
@@ -86,7 +86,7 @@ Content-Length: 12345
 {
   "error": "Wrong parameters",
   "message": "The request body is not valid. See 'details' for more information.",
-  "path": "/api/carrier/CARRIER_ID/shippingLabel",
+  "path": "/api/Carriers/CARRIER_ID/shippingLabel",
   "details": [
     {
       "field": "trackingNumber",
@@ -124,7 +124,7 @@ Content-Length: 12345
 {
   "error": "Not Found",
   "message": "No label found for tracking number 123456789",
-  "path": "/api/carrier/CARRIER_ID/shippingLabel"
+  "path": "/api/Carriers/CARRIER_ID/shippingLabel"
 }
 ```
 
@@ -136,7 +136,7 @@ Content-Length: 12345
 {
   "error": "Wrong parameters",
   "message": "The request body is not valid. See 'details' for more information.",
-  "path": "/api/carrier/CARRIER_ID/shippingLabel",
+  "path": "/api/Carriers/CARRIER_ID/shippingLabel",
   "details": [
     {
       "field": "trackingNumber",

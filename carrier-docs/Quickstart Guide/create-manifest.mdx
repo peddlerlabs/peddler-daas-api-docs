@@ -42,7 +42,7 @@ This is not strictly enforced however it should be applied if packaging weights 
 
 In order to create a manifest instance, you will need to make a ``POST`` request to the following endpoint:
 
-`/api/carrier/[CARRIER_ID]/createShipments`
+`/api/Carriers/[CARRIER_ID]/createShipments`
 
 The request body should contain a JSON encoded array of objects where each object corresponds to a shipment with the following properties:
 
@@ -136,7 +136,7 @@ const mockedDeliveryshipment = [
     }
 ]
 
-fetch('https://api-lokl.peddler.com/api/carrier/CARRIER_ID/createShipments', {
+fetch('https://api-lokl.peddler.com/api/Carriers/CARRIER_ID/createShipments', {
   method: 'POST',
   headers: {
     'Authorization': `Bearer ${access_token}`,
@@ -172,7 +172,7 @@ const mockedDeliveryshipment = [
     }
 ]
 
-fetch('https://api-lokl.peddler.com/api/carrier/CARRIER_ID/createShipments', {
+fetch('https://api-lokl.peddler.com/api/Carriers/CARRIER_ID/createShipments', {
   method: 'POST',
   headers: {
     'Authorization': `Bearer ${access_token}`,

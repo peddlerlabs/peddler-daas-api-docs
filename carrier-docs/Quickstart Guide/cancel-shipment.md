@@ -8,7 +8,7 @@ In this section, you will find the explanation of how to cancel a shipment.
 
 ## Cancel shipment request
 
-To cancel a shipment, you need to send a `POST` request to the endpoint `/api/carrier/[CARRIER_ID]/cancelShipment` with the following body:
+To cancel a shipment, you need to send a `POST` request to the endpoint `/api/Carriers/[CARRIER_ID]/cancelShipment` with the following body:
 
 ```json title="Request body"
 {
