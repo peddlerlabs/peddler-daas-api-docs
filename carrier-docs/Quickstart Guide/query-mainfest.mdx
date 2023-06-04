@@ -15,7 +15,7 @@ query the manifest:
 In either of the ways, the query is made using the `GET` method. The query is made
 to the following endpoint:
 
-`/api/carrier/[CARRIER_ID]/getShipmentStatuses?trackingNumbers`
+`/api/Carriers/[CARRIER_ID]/getShipmentStatuses?trackingNumbers`
 
 ### Querying the manifest using *stringified* JSON object
 
@@ -29,7 +29,7 @@ const shipments = JSON.stringify([
     "PDXXXXBADXX3"
 ])
 
-const query = `${PEDDLER_API_DOMAIN}/api/carrier/${CARRIER_ID}/getShipmentStatuses?trackingNumbers=${shipments}`
+const query = `${PEDDLER_API_DOMAIN}/api/Carriers/${CARRIER_ID}/getShipmentStatuses?trackingNumbers=${shipments}`
 ```
 
 ### Querying the manifest using Querystring *array*
@@ -38,7 +38,7 @@ The Array method is the alternate method of querying the manifest. This method
 is used to query the manifest in a more compact format.
 
 ```js title="Query string ALT"
-const query = `${PEDDLER_API_DOMAIN}/api/carrier/${CARRIER_ID}/getShipmentStatuses
+const query = `${PEDDLER_API_DOMAIN}/api/Carriers/${CARRIER_ID}/getShipmentStatuses
 ?trackingNumbers[0]=PDXXXXXXXXX1&trackingNumbers[1]=PDXXXXXXXXX2&trackingNumbers[2]=PDXXXXBADXX3`
 ```
 

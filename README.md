@@ -25,13 +25,13 @@
 `https://api-lokl.peddler.com/api/Orders/{id}`
 5. If you want to add an delivery to an "Order" in Peddler, you should POST to the API: `https://api-lokl.peddler.com/api/Orders/{id}/deliveryLineItems/`
 6. If you want to create a "shipment", you should send a *POST* request to the API as follows:  
-    `https://api-lokl.peddler.com/api/carrier/{CARRIER_ID}/createShipments`
+    `https://api-lokl.peddler.com/api/Carriers/{CARRIER_ID}/createShipments`
 7. If you want to read a "shipment", you should send a *GET* request to the API as follows:  
-    `https://api-lokl.peddler.com/api/carrier/{CARRIER_ID}/getShipmentStatuses?trackingNumbers`
+    `https://api-lokl.peddler.com/api/Carriers/{CARRIER_ID}/getShipmentStatuses?trackingNumbers`
 8. If you want to read multiple "shipments", you should send a *GET* request to the API as follows:  
-    `https://api-lokl.peddler.com/api/carrier/{CARRIER_ID}/getShipmentStatuses?trackingNumbers[0]=string&trackingNumbers[1]=string`
+    `https://api-lokl.peddler.com/api/Carriers/{CARRIER_ID}/getShipmentStatuses?trackingNumbers[0]=string&trackingNumbers[1]=string`
 9. If you want to update a "shipment" in Peddler, you should send a *PUT* request to the API as follows:  
-`https://api-lokl.peddler.com/api/carrier/{CARRIER_ID}/updateShipments`
+`https://api-lokl.peddler.com/api/Carriers/{CARRIER_ID}/updateShipments`
 
 - All parameters, where relevant, are required unless otherwise specified.
 - Peddler API uses OAuth2 based authentication methods. All keys are provided by the peddler team and are available on request.

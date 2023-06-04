@@ -23,13 +23,13 @@ The Peddler API has a staging environment that can be used for testing purposes.
 ## High-level CRUD Operation examples
 
 1. If you want to create a "shipment", you should send a *POST* request to the API as follows:  
-    `https://api-lokl.peddler.com/api/carrier/{CARRIER_ID}/createShipments`
+    `https://api-lokl.peddler.com/api/Carriers/{CARRIER_ID}/createShipments`
 2. If you want to read a "shipment", you should send a *GET* request to the API as follows:  
-    `https://api-lokl.peddler.com/api/carrier/{CARRIER_ID}/getShipmentStatuses?trackingNumbers`
+    `https://api-lokl.peddler.com/api/Carriers/{CARRIER_ID}/getShipmentStatuses?trackingNumbers`
 3. If you want to read multiple "shipments", you should send a *GET* request to the API as follows:  
-    `https://api-lokl.peddler.com/api/carrier/{CARRIER_ID}/getShipmentStatuses?trackingNumbers[0]=string&trackingNumbers[1]=string`
+    `https://api-lokl.peddler.com/api/Carriers/{CARRIER_ID}/getShipmentStatuses?trackingNumbers[0]=string&trackingNumbers[1]=string`
 4. If you want to update a "shipment" in Peddler, you should send a *PUT* request to the API as follows:  
-`https://api-lokl.peddler.com/api/carrier/{CARRIER_ID}/updateShipments`
+`https://api-lokl.peddler.com/api/Carriers/{CARRIER_ID}/updateShipments`
 
 
 - All parameters, where relevant, are required unless otherwise specified.
