@@ -30,8 +30,6 @@
     `https://api-lokl.peddler.com/api/Carriers/{CARRIER_ID}/getShipmentStatuses?trackingNumbers`
 8. If you want to read multiple "shipments", you should send a *GET* request to the API as follows:  
     `https://api-lokl.peddler.com/api/Carriers/{CARRIER_ID}/getShipmentStatuses?trackingNumbers[0]=string&trackingNumbers[1]=string`
-9. If you want to update a "shipment" in Peddler, you should send a *PUT* request to the API as follows:  
-`https://api-lokl.peddler.com/api/Carriers/{CARRIER_ID}/updateShipments`
 
 - All parameters, where relevant, are required unless otherwise specified.
 - Peddler API uses OAuth2 based authentication methods. All keys are provided by the peddler team and are available on request.

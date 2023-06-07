@@ -28,8 +28,6 @@ The Peddler API has a staging environment that can be used for testing purposes.
     `https://api-lokl.peddler.com/api/Carriers/{CARRIER_ID}/getShipmentStatuses?trackingNumbers`
 3. If you want to read multiple "shipments", you should send a *GET* request to the API as follows:  
     `https://api-lokl.peddler.com/api/Carriers/{CARRIER_ID}/getShipmentStatuses?trackingNumbers[0]=string&trackingNumbers[1]=string`
-4. If you want to update a "shipment" in Peddler, you should send a *PUT* request to the API as follows:  
-`https://api-lokl.peddler.com/api/Carriers/{CARRIER_ID}/updateShipments`
 
 
 - All parameters, where relevant, are required unless otherwise specified.
