@@ -67,308 +67,96 @@ The `CARRIER_ID` is a unique identifier for your carrier account. It is provided
 :::
 
 ```json title="Response body"
-{
-	"data": {
-		"inquiryNumber": "PD001",
-		"trackingUrl": "https://track.pdlr.nl/PD001",
-		"consignee": {
-			"address": {
-				"displayAddress": "12 John M. Keynesplein, 1066 EP, Amsterdam, NL",
-				"name": "PDC 01 AMS",
-				"house": "12",
-				"address1": "John M. Keynesplein",
-				"address2": "B gebouw amsterdam",
-				"city": "Amsterdam",
-				"postCode": "1066 EP",
-				"country": "NL",
-				"location": {
-					"lat": "52.1031255",
-					"lng": "5.0814312"
-				}
-			}
-		},
-		"sender": {
-			"address": {
-				"displayAddress": "12 John M. Keynesplein, 1066 EP, Amsterdam, NL",
-				"name": "Enterprise Carrier",
-				"house": "101",
-				"address1": "John M. Keynesplein",
-				"city": "Amsterdam",
-				"postCode": "1066 EP",
-				"country": "NL",
-				"location": {
-					"lat": "52.1031255",
-					"lng": "5.0814312"
-				}
-			}
-		},
-		"package": {
-			"trackingNumber": "PD001",
-			"estimatedDeliveryDate": "2023-07-18T15:43:24.133Z",
-			"deliveryDate": "2023-07-10T15:43:24.133Z",
-			"canceledDate": "2023-07-10T15:43:24.133Z",
-			"returnToSenderDate": "2023-07-10T15:43:24.133Z",
-			"status": "OUT_FOR_DELIVERY",
-			"events": [{
-				"status": "SHIPMENT_CONFIRMED",
-				"ts": "2023-07-10T15:43:24.133Z",
-				"details": {
-					"lang": {
-						"en": {
-							"headline": "Shipment confirmed",
-							"description": "Shipment created by sender"
-						},
-						"nl": {
-							"headline": "Verzending bevestigd",
-							"description": "Verzending aangemaakt door afzender"
-						}
-					},
-					"estimatedDeliveryDate": "2023-07-18T15:43:24.133Z"
-				}
-			}, {
-				"status": "SHIPMENT_ENROUTE_TO_WAREHOUSE",
-				"ts": "2023-07-11T15:43:24.133Z",
-				"gps": {
-					"lat": "52.1031255",
-					"lng": "5.0814312"
-				},
-				"details": {
-					"lang": {
-						"en": {
-							"headline": "Enroute to depot",
-							"description": "Shipment enroute to depot"
-						},
-						"nl": {
-							"headline": "Onderweg naar depot",
-							"description": "Verzending onderweg naar depot"
-						}
-					},
-					"estimatedDeliveryDate": "2023-07-18T15:43:24.133Z"
-				}
-			}, {
-				"status": "SHIPMENT_IN_WAREHOUSE",
-				"ts": "2023-07-12T15:43:24.133Z",
-				"gps": {
-					"lat": "52.1031255",
-					"lng": "5.0814312"
-				},
-				"details": {
-					"lang": {
-						"en": {
-							"headline": "Package at local warehouse",
-							"description": "Package scanned at local warehouse"
-						},
-						"nl": {
-							"headline": "Pakket in lokaal depot",
-							"description": "Pakket gescanned in lokaal depot"
-						}
-					},
-					"estimatedDeliveryDate": "2023-07-18T15:43:24.133Z"
-				}
-			}, {
-				"status": "OUT_FOR_DELIVERY",
-				"ts": "2023-07-18T15:43:24.133Z",
-				"gps": {
-					"lat": "52.1031255",
-					"lng": "5.0814312"
-				},
-				"details": {
-					"lang": {
-						"en": {
-							"headline": "Out for delivery",
-							"description": "Package enroute to destination"
-						},
-						"nl": {
-							"headline": "Uit voor levering",
-							"description": "Pakket onderweg naar bestemming"
-						}
-					},
-					"courierName": "jay",
-					"estimatedDeliveryDate": "2023-07-18T15:43:24.133Z"
-				}
-			}, {
-				"status": "DELIVERED",
-				"ts": "2023-07-10T15:43:24.133Z",
-				"gps": {
-					"lat": "52.1031255",
-					"lng": "5.0814312"
-				},
-				"details": {
-					"lang": {
-						"en": {
-							"headline": "Delivered",
-							"description": "Package delivered"
-						},
-						"nl": {
-							"headline": "Bezorgd",
-							"description": "Pakket bezorgd"
-						}
-					},
-					"deliveryDate": "2023-07-18T15:43:24.133Z",
-					"courierName": "jay",
-					"courierComment": "FRONT DOOR",
-					"deliveredAtNeighbours": "46 John M. Keynesplein"
-				}
-			}, {
-				"status": "DELIVERED_COLLECTION_POINT",
-				"ts": "2023-07-19T15:43:24.133Z",
-				"gps": {
-					"lat": "52.1031255",
-					"lng": "5.0814312"
-				},
-				"details": {
-					"lang": {
-						"en": {
-							"headline": "Delivered at collection point",
-							"description": "Package delivered at collection point"
-						},
-						"nl": {
-							"headline": "Afgeleverd op afhaalpunt",
-							"description": "Pakket afgeleverd op afhaalpunt"
-						}
-					},
-					"collectionPoint": {
-						"address": {
-							"displayAddress": "12 John M. Keynesplein, 1066 EP, Amsterdam, NL",
-							"name": "COLLECT 01 AMS",
-							"address1": "John M. Keynesplein",
-							"city": "Amsterdam",
-							"postCode": "1066 EP",
-							"country": "NL",
-							"location": {
-								"lat": "52.1031255",
-								"lng": "5.0814312"
-							}
-						}
-					},
-					"courierName": "jay",
-					"courierComment": "Scanned by collectionpoint"
-				}
-			}, {
-				"status": "FAILED_ATTEMPT",
-				"ts": "2023-07-20T15:43:24.133Z",
-				"gps": {
-					"lat": "52.1031255",
-					"lng": "5.0814312"
-				},
-				"details": {
-					"reason": "customer-not-answering",
-					"nextAttemptDate": "2023-07-10T15:43:24.133Z",
-					"contactSupport": true,
-					"lang": {
-						"en": {
-							"headline": "Delivery failed",
-							"reason": "Customer not answering",
-							"description": "Delivery attempt failed at destination"
-						},
-						"nl": {
-							"headline": "Afleverpoging mislukt",
-							"reason": "Klant geeft geen gehoor",
-							"description": "Afleverpoging mislukt op bestemming"
-						}
-					}
-				}
-			}, {
-				"status": "ON_HOLD",
-				"ts": "2023-07-10T15:43:24.133Z",
-				"details": {
-					"lang": {
-						"en": {
-							"headline": "Shipment on hold",
-							"description": "Shipment is currently on hold and waiting to be released by support"
-						},
-						"nl": {
-							"headline": "Verzending opgeschort",
-							"description": "De zending is momenteel opgeschort en wacht op vrijgave"
-						}
-					}
-				}
-			}, {
-				"status": "EXCEPTION",
-				"ts": "2023-07-10T15:43:24.133Z",
-				"details": {
-					"reason": "An issue described by the support team",
-					"lang": {
-						"en": {
-							"headline": "Exception",
-							"reason": "Issue with consignment",
-							"description": "Shipment is currently being processed by support"
-						},
-						"nl": {
-							"headline": "Uitzondering",
-							"reason": "Probleem met verzending",
-							"description": "Verzending wordt momenteel verwerkt door support"
-						}
-					}
-				}
-			}, {
-				"status": "RETURN_TO_SENDER",
-				"ts": "2023-07-10T15:43:24.133Z",
-				"details": {
-					"lang": {
-						"en": {
-							"headline": "Return to sender",
-							"description": "Shipment is returned to sender"
-						},
-						"nl": {
-							"headline": "Terug naar afzender",
-							"description": "Verzending wordt teruggestuurd naar afzender"
-						}
-					}
-				}
-			}, {
-				"status": "CANCELED",
-				"ts": "2023-07-10T15:43:24.133Z",
-				"details": {
-					"lang": {
-						"en": {
-							"headline": "Canceled",
-							"description": "Shipment has been canceled"
-						},
-						"nl": {
-							"headline": "Geannuleerd",
-							"description": "Verzending is geannuleerd"
-						}
-					}
-				}
-			}, {
-				"status": "SHIPMENT_DETAILS_UPDATED",
-				"ts": "2023-07-10T15:43:24.133Z",
-				"details": {
-					"lang": {
-						"en": {
-							"headline": "Shipment details updated",
-							"description": "Shipment has been updated by consignee or support"
-						},
-						"nl": {
-							"headline": "Verzendingsgegevens bijgewerkt",
-							"description": "Verzending is bijgewerkt door ontvanger of support"
-						}
-					},
-					"originalShipment": " ...shipment",
-					"updatedByType": "CONSIGNEE",
-					"updatedByName": "Jon doe",
-					"updated": {
-						"deliveryDate": "2023-07-10T15:43:24.133Z",
-						"collectionPoint": {
-							"address": {
-								"name": "COLLECT 01 AMS",
-								"address1": "John M. Keynesplein",
-								"city": "Amsterdam",
-								"postCode": "1066 EP",
-								"country": "NL",
-								"location": {
-									"lat": "52.1031255",
-									"lng": "5.0814312"
-								}
-							}
-						}
-					}
-				}
-			}]
-		}
-	}
-}
+[
+    {
+        "inquiryNumber": "P123456789012345678",
+        "packages": [
+            {
+                "trackingNumber": "P123456789012345678",
+                "status": "DELIVERED",
+                "estimatedDeliveryDate": "2023-07-10T20:00:00.000Z",
+                "consignee": {
+                    "address": {
+                        "location": {
+                            "lat": 52.3798095,
+                            "lng": 4.893396099999999
+                        },
+                        "name": "John Doe",
+                        "house": "30",
+                        "address1": "Haarlemmerstraat",
+                        "city": "Amsterdam",
+                        "state": "Noord Holland",
+                        "postCode": "1013 ER",
+                        "country": "NL",
+                        "phone": "+31612345678",
+                        "displayAddress": "Haarlemmerstraat 30, 1013 ER Amsterdam, Netherlands",
+                        "previousAddress": "Haarlemmerstraat 30, 1013ER Amsterdam, NL"
+                    }
+                },
+                "events": [
+                    {
+                        "status": "DELIVERED",
+                        "details": {
+                            "lang": {
+                                "en": {
+                                    "headline": "Delivered",
+                                    "description": "Package delivered"
+                                },
+                                "nl": {
+                                    "headline": "Bezorgd",
+                                    "description": "Pakket bezorgd"
+                                }
+                            },
+                            "courierName": "Charlie"
+                        },
+                        "ts": "2023-06-12T14:41:16.059Z",
+                        "gps": {
+                            "lat": 52.340996,
+                            "lng": 4.8236524
+                        }
+                    },
+                    {
+                        "status": "OUT_FOR_DELIVERY",
+                        "details": {
+                            "lang": {
+                                "en": {
+                                    "headline": "Out for delivery",
+                                    "description": "Package enroute to destination"
+                                },
+                                "nl": {
+                                    "headline": "Uit voor levering",
+                                    "description": "Pakket onderweg naar bestemming"
+                                }
+                            },
+                            "courierName": "Charlie"
+                        },
+                        "ts": "2023-06-12T14:37:16.574Z",
+                        "gps": {
+                            "lat": 52.340996,
+                            "lng": 4.8236524
+                        }
+                    },
+                    {
+                        "status": "SHIPMENT_CONFIRMED",
+                        "details": {
+                            "lang": {
+                                "en": {
+                                    "headline": "Shipment confirmed",
+                                    "description": "Shipment created by sender"
+                                },
+                                "nl": {
+                                    "headline": "Verzending bevestigd",
+                                    "description": "Verzending aangemaakt door afzender"
+                                }
+                            }
+                        },
+                        "ts": "2023-06-12T14:32:34.810Z"
+                    }
+                ]
+            }
+        ]
+    }
+]
 ```
 
 :::caution 404 Not Found
@@ -376,19 +164,19 @@ The `CARRIER_ID` is a unique identifier for your carrier account. It is provided
 If the trackingNumber cannot be found, it will contain an error object. But the HTTP status code will be 200.
 
 ```json	title="Not Found Response"
-{
-  "data": [
+[
     {
-        "inquiryNumber": "PDXXXXBADXX3",
+        "inquiryNumber": "P123456789012345670",
+        "packages": null,
         "error": {
-          "code": 404,
-          "message": "NOT FOUND"
-        },
-        "package": null
+            "code": 404,
+            "message": "NOT FOUND"
+        }
     }
-  ]
-}
+]
 ```
+
+:::
 
 :::tip Description of statuses
 
