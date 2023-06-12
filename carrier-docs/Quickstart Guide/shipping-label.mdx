@@ -9,26 +9,60 @@ In this section, you will find the explanation of how to create a shipping label
 ## Shipping label request
 
 To get a shipping label, you need to send a `GET` request to the endpoint `/api/Carriers/[CARRIER_ID]/shippingLabel` with the request body.
+The path will be different depending on the output format you want. Here are the different paths:
+
+| **Output format** | **Path** |
+|:---|:---|
+| ZPL | `/api/Carriers/[CARRIER_ID]/shippingLabel/zpl` |
+| PDF | `/api/Carriers/[CARRIER_ID]/shippingLabel/pdf` |
 
 The request body should contain the following fields:
 
 | **Field** | **Type** | **Format** | **Description** |
 |:---|:---:|---|---|
 | ``trackingNumber`` | <span style={{color: 'red'}}>REQUIRED</span> | string | The tracking number of the shipment |
-| ``type`` | <span style={{color: 'red'}}>REQUIRED</span> | string | Type of label.<br />Possble values are ``MANIFEST`` (DEFAULT),  ``ROUTE``, ``RETURN_TO_SENDER``  |
-| ``format`` | <span style={{color: 'red'}}>REQUIRED</span> | string | The output format of the label.<br />Possible values are ``ZPL`` or ``PDF`` |
+| ``type`` | <span style={{color: 'red'}}>REQUIRED</span> | string | Type of label.<br />Value: ``MANIFEST``  |
 
-Here's an example in JavaScript of sending a request to create a shipping label:
+### ZPL
+
+Here's an example in JavaScript of sending a request to create a shipping label in ZPL format:
 
 ```js title="shippingLabel.js"
 const labelBody = [
   {
     trackingNumber: '123456789',
     type: 'MANIFEST',
-    format: 'PDF',
   },
 ];
-fetch('https://api-lokl.peddler.com/api/Carriers/CARRIER_ID/shippingLabel', {
+fetch('https://api-lokl.peddler.com/api/Carriers/CARRIER_ID/shippingLabel/zpl', {
+  method: 'GET',
+  headers: {
+    'Authorization': `Bearer ${access_token}`,
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify(labelBody)
+})
+.then(response => response.json())
+.then(data => {
+console.log(data);
+})
+.catch(error => {
+console.error(error);
+});
+```
+
+### PDF
+
+Here's an example in JavaScript of sending a request to create a shipping label in PDF format:
+
+```js title="shippingLabel.js"
+const labelBody = [
+  {
+    trackingNumber: '123456789',
+    type: 'MANIFEST',
+  },
+];
+fetch('https://api-lokl.peddler.com/api/Carriers/CARRIER_ID/shippingLabel/pdf', {
   method: 'GET',
   headers: {
     'Authorization': `Bearer ${access_token}`,
@@ -47,7 +81,7 @@ console.error(error);
 
 ## Shipping label response
 
-For each output format, the response will be different.
+Depending on the output format, the response will be different.
 
 ### ZPL
 
@@ -61,7 +95,6 @@ Content-Length: 12345
 {
   "trackingNumber": "123456789",
   "type": "MANIFEST",
-  "format": "ZPL",
   "label": "^XA^FO50,50^A0N,50,50^FD123456789^FS^XZ"
 }
 ```
@@ -73,34 +106,7 @@ Content-Length: 12345
 
 {
   "error": "Not Found",
-  "message": "No label found for tracking number 123456789",
-  "path": "/api/Carriers/CARRIER_ID/shippingLabel"
-}
-```
-
-```json title="ZPL response 422 Wrong parameters"
-HTTP/1.1 422 Wrong parameters
-Content-Type: application/json
-Content-Length: 12345
-
-{
-  "error": "Wrong parameters",
-  "message": "The request body is not valid. See 'details' for more information.",
-  "path": "/api/Carriers/CARRIER_ID/shippingLabel",
-  "details": [
-    {
-      "field": "trackingNumber",
-      "message": "The tracking number is required."
-    },
-    {
-      "field": "type",
-      "message": "The type is required."
-    },
-    {
-      "field": "format",
-      "message": "The format is required."
-    }
-  ]
+  "message": "No label found for tracking number 123456789"
 }
 ```
 
@@ -123,33 +129,6 @@ Content-Length: 12345
 
 {
   "error": "Not Found",
-  "message": "No label found for tracking number 123456789",
-  "path": "/api/Carriers/CARRIER_ID/shippingLabel"
-}
-```
-
-```json title="PDF response 422 Wrong parameters"
-HTTP/1.1 422 Wrong parameters
-Content-Type: application/json
-Content-Length: 12345
-
-{
-  "error": "Wrong parameters",
-  "message": "The request body is not valid. See 'details' for more information.",
-  "path": "/api/Carriers/CARRIER_ID/shippingLabel",
-  "details": [
-    {
-      "field": "trackingNumber",
-      "message": "The tracking number is required."
-    },
-    {
-      "field": "type",
-      "message": "The type is required."
-    },
-    {
-      "field": "format",
-      "message": "The format is required."
-    }
-  ]
+  "message": "No label found for tracking number 123456789"
 }
 ```
