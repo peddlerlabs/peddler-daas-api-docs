@@ -78,13 +78,12 @@ const config = {
         items: [
           {
             type: "doc",
-            docId: "retailer-api-docs",
+            docId: "intro",
             position: "left",
             label: "Retailer Docs",
           },
           {
             to: "/carrier-docs/intro",
-            docId: "intro",
             label: "Enterprise Docs",
             position: "left",
           },
