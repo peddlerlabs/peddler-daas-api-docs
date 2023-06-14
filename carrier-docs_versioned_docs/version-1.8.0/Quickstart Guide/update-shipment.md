@@ -1,0 +1,161 @@
+---
+sidebar_position: 8
+---
+
+# Update shipment
+
+In this section, you will find the explanation of how to update a shipment.
+
+## Update shipment request
+
+To update a shipment you need to send a `POST` request to the endpoint `/api/Carriers/[CARRIER_ID]/updateShipment/:trackingNumber` with the following body:
+
+```json title="Request body"
+{
+    "deliveryAddress": <object>,
+    "deliveryEmail": "<string>",
+}
+```
+
+| Field | Type | Format | Description |
+|:---:|---|---|---|
+| ``deliveryAddress`` | <span style={{color: 'purple'}}>OPTIONAL</span> | ``object`` | The delivery address |
+| ``deliveryEmail`` | <span style={{color: 'purple'}}>OPTIONAL</span> | ``string`` | The delivery email |
+
+An example of a request:
+
+```bash title="cURL example"
+curl --location 'https://alphadev-api.peddler.com/api/Carriers/[CARRIER_ID]/updateShipment/P123456789012345678' \
+--header 'Content-Type: application/json' \
+--header 'Accept: application/json' \
+--header 'Authorization: Bearer <bearer-token-here>' \
+--data-raw '{
+    "deliveryAddress": {
+        "name": "John Doe",
+        "house": "8",
+        "address1": "Heidelberglaan",
+        "city": "Utrecht",
+        "state": "Noord Holland",
+        "postCode": "3584 CS",
+        "country": "NL",
+        "phone": "+31612345678"
+    },
+    
+    "deliveryEmail": "abc@xyz.com",
+}'
+```
+
+:::tip Note
+
+The delivery address is optional, but if you want to update it, you need to send the complete address object. You can find the complete address object in the [Create shipment](create-manifest) section.
+
+:::
+
+## Update shipment response
+
+A standard response will be a `200` status code with the following body:
+
+```json title="Response body with 200 status"
+[
+    {
+        "id": "Lc7rRTyivvk_lC0w8kLoU",
+        "metaData": "SHIP_AMS_1004",
+        "bundleId": "1234",
+        "colliMasterId": "4321",
+        "groupId": "cIJanlViPHBT6h5WF7VbH",
+        "deliveryShippingType": "PACKAGE",
+        "deliveryContentsType": "GOODS",
+        "quantity": 1,
+        "status": "SHIPMENT_CONFIRMED",
+        "importError": null,
+        "scheduledDeliveryStart": "2023-07-10T15:43:24.133Z",
+        "scheduledDeliveryEnd": "2023-07-10T20:00:00.000Z",
+        "slaDeliveryDate": "2023-07-12T15:43:24.133Z",
+        "estimatedInjectionDate": "2023-07-10T15:43:24.133Z",
+        "deliveryAddress": {
+            "location": {
+                "lat": 52.0852978,
+                "lng": 5.1756637
+            },
+            "name": "John Doe",
+            "house": "8",
+            "address1": "Heidelberglaan",
+            "city": "Utrecht",
+            "state": "Noord Holland",
+            "postCode": "3584 CS",
+            "country": "NL",
+            "phone": "+31612345678",
+            "displayAddress": "Heidelberglaan 8, 3584CS Utrecht, NL"
+        },
+        "pickupAddress": {
+            "location": {
+                "lat": 52.3411544,
+                "lng": 4.823209299999999
+            },
+            "house": "12",
+            "address1": "John M. Keynesplein",
+            "city": "Amsterdam",
+            "postCode": "1066 EP",
+            "country": "NL",
+            "displayAddress": "John M. Keynesplein 12, 1066EP Amsterdam, NL"
+        },
+        "deliveryEmail": "abc@xyz.com",
+        "customDeliveryTemplate": "CARRIER_GENERIC",
+        "carrierTrackingNumber": "P123456789012345678",
+        "priority": "NEXT_DAY_48",
+        "serviceLevel": "NEXT_DAY_48",
+        "carrierOptions": [
+            {
+                "key": "POD",
+                "value": "SIGNATURE"
+            }
+        ],
+        "shippingValue": 50,
+        "shippingValueCurrency": "EUR",
+        "dimensions": "38.5cm * 35.5cm * 9.0cm",
+        "weight": 10,
+        "weightUnit": "KG",
+        "carrierData": "[{\"metaData\":\"SHIP_AMS_1004\",\"deliveryAddress\":{\"location\":{\"lat\":52.3798095,\"lng\":4.893396099999999},\"name\":\"John Doe\",\"house\":\"30\",\"address1\":\"Haarlemmerstraat\",\"city\":\"Amsterdam\",\"state\":\"Noord Holland\",\"postCode\":\"1013 ER\",\"country\":\"NL\",\"phone\":\"+31612345678\",\"displayAddress\":\"Haarlemmerstraat 30, 1013 ER Amsterdam, Netherlands\",\"previousAddress\":\"Haarlemmerstraat 30, 1013ER Amsterdam, NL\"},\"bundleId\":\"1234\",\"colliMasterId\":\"4321\",\"colliCount\":2,\"deliveryEmail\":\"abc@xyz.com\",\"deliveryShippingType\":\"PACKAGE\",\"deliveryContentsType\":\"GOODS\",\"shippingValue\":\"50\",\"shippingValueCurrency\":\"EUR\",\"dimensions\":\"38.5cm * 35.5cm * 9.0cm\",\"weight\":\"10\",\"weightUnit\":\"KG\",\"estimatedInjectionDate\":\"2023-07-10T15:43:24.133Z\",\"carrierOptions\":[{\"key\":\"POD\",\"value\":\"SIGNATURE\"}],\"webhookUri\":\"https://peddler-daas-api.free.beeceptor.com/api/carriers/shipments\",\"serviceLevel\":\"NEXT_DAY_48\",\"carrierId\":\"CARRIER_ID\",\"status\":\"ADDED\",\"storeId\":\"Ri9-AyUV2Z\"}]",
+        "unitPrice": 4.23,
+        "totalAmount": 4.23,
+        "taxAmount": 0.73,
+        "taxRate": 0.21,
+        "orderCreatedOn": "2023-06-14T10:32:20.375Z",
+        "failedReason": null,
+        "webhookUri": "https://peddler-daas-api.free.beeceptor.com/api/carriers/shipments",
+        "orderId": "5maerJD0faWC0IiFjlKLX",
+        "storeId": "MsnCZyRwu0",
+        "carrierId": "CARRIER_ID",
+        "createdOn": "2023-06-14T10:32:20.358Z",
+        "updatedOn": "2023-06-14T10:44:11.479Z"
+    }
+]
+```
+
+If the tracking number is not found, the response will be a `404` status code with the following body:
+
+```json title="Response body with 404 status"
+{
+    "error": {
+        "statusCode": 404,
+        "name": "tracking-number-not-found",
+        "message": "TRACKING NUMBER NOT FOUND"
+    }
+}
+```
+
+:::danger Note
+
+The shipment cannot be updated if the status is `DELIVERED`. In that case, you will get a `422` status code with the following body:
+
+```json title="Response body with 422 status"
+{
+    "error": {
+        "statusCode": 422,
+        "name": "shipment-status-does-not-allow-update",
+        "message": "SHIPMENT STATUS DOES NOT ALLOW UPDATE"
+    }
+}
+```
+
+:::

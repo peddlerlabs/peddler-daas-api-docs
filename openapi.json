@@ -2,7 +2,7 @@
   "openapi": "3.1.0",
   "info": {
     "title": "Peddler Delivery as a Service API",
-    "version": "1.0.0",
+    "version": "1.8.0",
     "summary": "Useful CRUD operations for Peddler Delivery as a Service",
     "description": "The Peddler Delivery as a Service API is a RESTful API that allows you to create, read, update and delete orders. The API is organized around REST. Our API has predictable resource-oriented URLs, accepts form-encoded request bodies, returns JSON-encoded responses, and uses standard HTTP response codes, authentication, and verbs. ",
     "contact": {
