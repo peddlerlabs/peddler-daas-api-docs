@@ -1,0 +1,305 @@
+---
+sidebar_position: 3
+---
+
+# Create manifest
+
+The manifest (referred to as an 'instance') is a container for a set of delivery instructions and their respective attributes. 
+Each manifest instance contains one or more delivery objects, referred to as 'shipments'.
+
+In this example we will start with a basic 'manifest instance' and a single 'shipment'. More complex delivery options are provided in subsequent examples.
+
+:::info Note on CARRIER_ID
+
+The `CARRIER_ID` is a unique identifier for your carrier account. It is provided to you by Peddler.
+
+:::
+
+## Create a manifest instance
+
+<!-- Each 'shipment Instance' can have many `shipments` ([array] property) which contain instructions for each delivery to take place.
+
+- At least one or more deliveryLineItems (denoting the delivery details addresses/type/times)
+- Each delivery line item must specify:
+    - `deliveryContentsType`: (enum 'string') FOOD, ALCOHOL, GOODS, BOOKS
+    - `deliveryShippingType`: (enum 'string') PACKAGE, LETTERBOX, CUSTOM (the latter should always be used when a pre-agreed rate is desired)
+    - `storeId`: ('string') required when shipping from a specific store
+      - The SAME `storeId` must be used when defining multiple line items at once
+    - `preferredDeliveryDate` OR `custom delivery slots`: ('string' YYYY-MM-DD) this allows you to select a preferred delivery data else it will default to the most immediate next available slot
+    - `deliveryAddress`: ('object' Address) required address to be delivered to
+
+:::tip Note on quantity 
+
+This refers to the shipping quantity defined by physical package constraint:
+- `quantity`: ('integer') denotes the number of packages being delivered within our package constraints i.e. < h: 75cm w: 50cm d: 50cm AND < 20KG, 
+- If the items in total exceed the constraints, you will have to increase the quantity for each collection of items that exceed this constraint in shipment to avoid refusal of pickup.
+    
+> For example, if you are shipping 25 x 1kg wine bottles to a single address, you will have to apply quantity 2.
+
+This is not strictly enforced however it should be applied if packaging weights are known.
+
+::: -->
+
+In order to create a manifest instance, you will need to make a ``POST`` request to the following endpoint:
+
+`/api/Carriers/[CARRIER_ID]/createShipments`
+
+The request body should contain a JSON encoded array of objects where each object corresponds to a shipment with the following properties:
+
+import BrowserWindow from '@site/src/components/BrowserWindow'
+
+```mdx-code-block
+<BrowserWindow url="https://alphadev-api.peddler.com/">
+
+| **Parameter** | **Type** | **Format** | **Description** |
+|---|:---:|:---:|---|
+| ``metaData`` | <span style={{color: 'red'}}>REQUIRED</span> | string | A unique ID for you to identify the individual shipment and to avoid duplication of shipments within our system |
+| ``senderAddress`` | <span style={{color: 'purple'}}>OPTIONAL</span> | object | Address object containing sender details pertaining to delivery |
+| ``deliveryAddress`` | <span style={{color: 'red'}}>REQUIRED</span> | object | Address object containing consignee details pertaining to delivery |
+| ``deliveryAddress.name`` | <span style={{color: 'green'}}>RECOMMENDED</span> | string | Include the consignee name or company name |
+| ``deliveryAddress.house`` | <span style={{color: 'green'}}>RECOMMENDED</span> | string | Include the house number unless included in ``address1`` field |
+| ``deliveryAddress.address1`` | <span style={{color: 'red'}}>REQUIRED</span> | string | Include street and house number unless house number is included in ``house`` field |
+| ``deliveryAddress.address2`` | <span style={{color: 'green'}}>RECOMMENDED</span> | string | Include any additional address information |
+| ``deliveryAddress.city`` | <span style={{color: 'red'}}>REQUIRED</span> | string | A valid city name |
+| ``deliveryAddress.state`` | <span style={{color: 'green'}}>RECOMMENDED</span> | string | State name |
+| ``deliveryAddress.postCode`` | <span style={{color: 'red'}}>REQUIRED</span> | string | If your country code is ``NL``, you provide a valid Dutch 6PP postcode (<span style={{color: 'green'}}>PREFERRED</span>) or 4PP postcode.<br />6PP postcode example: ``1066EP``<br />4PP postcode example: ``1066`` |
+| ``deliveryAddress.country`` | <span style={{color: 'red'}}>REQUIRED</span> | string | [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country code DEFAULT: ``NL`` |
+| ``deliveryAddress.phone`` | <span style={{color: 'green'}}>RECOMMENDED</span> | numeric | Customer mobile in [E.164 format](https://www.itu.int/rec/T-REC-E.164/) for SMS delivery notifications |
+| ``deliveryEmail`` | <span style={{color: 'green'}}>RECOMMENDED</span> | string |  Email address for inflight options and delivery notifications |
+| ``deliveryShippingType`` | <span style={{color: 'green'}}>RECOMMENDED</span> | string | ``PACKAGE`` (DEFAULT) [*higher rate*], ``LETTERBOX`` [*lower rate*] |
+| ``deliveryContentsType`` | <span style={{color: 'green'}}>RECOMMENDED</span> | string | Possible values: ``GOODS`` (DEFAULT) ``FOOD``, ``ALCOHOL``, ``BOOKS`` or ``ADR`` |
+| ``shippingValue`` | <span style={{color: 'green'}}>RECOMMENDED</span> | numeric | Value of goods in shipment |
+| ``shippingValueCurrency`` | <span style={{color: 'green'}}>RECOMMENDED</span> | string | [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code |
+| ``bundleId`` | <span style={{color: 'green'}}>RECOMMENDED</span> | string | A unique ID (if applicable) for the big box freight in case shipments are bundled together in a big box. |
+| ``colliMasterId`` | <span style={{color: 'green'}}>RECOMMENDED</span> | string | A unique ID (if applicable) for the colli which will be used to identify all packages (all collo) constituting the colli. |
+| ``colliCount`` | <span style={{color: 'green'}}>RECOMMENDED</span> | numeric | Number of packages (collo) constituting the colli. |
+| ``dimensions`` | <span style={{color: 'green'}}>RECOMMENDED</span> | string | Dimensions of the shipment. <br />Example: ``38.5cm * 35.5cm * 9.0cm`` |
+| ``weight`` | <span style={{color: 'green'}}>RECOMMENDED</span> | numeric | Weight of the shipment |
+| ``weightUnit`` | <span style={{color: 'green'}}>RECOMMENDED</span> | string | Possible values: ``KG`` (DEFAULT), ``LB`` |
+| ``estimatedInjectionDate`` | <span style={{color: 'green'}}>RECOMMENDED</span> | string | [JSON DATE ISO 8601](https://docs.jsonata.org/date-time#json-and-iso-8601) ``2023-07-10T15:43:24.133Z`` estimation when the shipment will be injected to destination distribution hub |
+| ``carrierOptions`` | <span style={{color: 'green'}}>RECOMMENDED</span> | object array | <pre lang="json"> [<br />//*Only when signature is required.*<br />//*SURCHARGE maybe applicable*<br />    {<br />        "key": "POD",<br />        "value": "SIGNATURE"<br />    },<br />//*Required when shipping ADR goods*<br />    {<br />        "key": "ADR",<br />        "value": "Description of ADR contents"<br />    }<br />]</pre> |
+| ``webhookUri`` | <span style={{color: 'green'}}>RECOMMENDED</span> | string | URI to receive webhook notifications. Each webhook can be unique to the shipment.<br/>Example: https://peddl.free.beeceptor.com/webhook/metadata |
+| ``serviceLevel`` | <span style={{color: 'green'}}>RECOMMENDED</span> | string | Possible values: ``NEXT_DAY_48`` (DEFAULT), ``NEXT_DAY_60``, ``SAME_DAY_24``, ``SAME_DAY_SAT_24``, ``SAME_DAY_SUN_24``, ``EXPRESS_0900``, ``EXPRESS_1030``, ``EXPRESS_1200``, ``EXPRESS_1700``, ``EXPRESS_1800``, ``EXPRESS_2200``, ``EXPRESS_SAT``, ``EXPRESS_SUN``, ``INSTANT_02`` |
+
+</BrowserWindow>
+```
+:::info Note on carrierOptions
+
+ADR requires additional description in carrierOptions
+
+:::
+
+## Mock delivery shipment request
+
+:::caution Blank fields
+
+Any fields that are blank should **NOT** be included in the payload.
+
+:::
+
+```js title="mockedDeliveryshipment.js"
+const mockedDeliveryshipment = [
+    {
+        "metaData": "UNIQUE_SENDER_REFERENCE_1",
+        "deliveryAddress": {
+            "name": "Peddler BV",
+            "house": "12-46",
+            "address1": "John M. Keynesplein",
+            "address2": "B-toren, L.0.K.4",
+            "city": "Amsterdam",
+            "state": "Noord Holland",
+            "postCode": "1066 EP",
+            "country": "NL",
+            "phone": "+31623754473"
+        },
+        "deliveryEmail": "devops@peddler.com",
+        "deliveryShippingType": "LETTERBOX",
+        "deliveryContentsType": "GOODS",
+        "shippingValue": 10,
+        "shippingValueCurrency": "EUR",
+        "dimensions": "38.5cm * 35.5cm * 9.0cm",
+        "weight": "10",
+        "weightUnit": "KG",
+        "estimatedInjectionDate": "2023-07-10T15:43:24.133Z",
+        "carrierOptions": [
+          {
+            "key": "POD",
+            "value": "SIGNATURE"
+          },
+          {
+            "key": "ADR",
+            "value": "Description of ADR contents of package"
+          }
+        ],
+        webhookUri: "https://carrierwebsite.com/api/webhooks",
+        "serviceLevel": "NEXT_DAY_48"
+    }
+]
+
+fetch('https://api-lokl.peddler.com/api/Carriers/CARRIER_ID/createShipments', {
+  method: 'POST',
+  headers: {
+    'Authorization': `Bearer ${access_token}`,
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify(mockedDeliveryshipment)
+})
+.then(response => response.json())
+.then(data => {
+console.log(data);
+})
+.catch(error => {
+console.error(error);
+});
+```
+
+:::tip Minimum required fields
+
+A shipment can be created with the minimum required fields, however, we recommend including as much information as possible to ensure a smooth delivery experience.
+
+An example of a minimum required shipment is shown below:
+
+```js title="minimumRequiredShipment.js"
+const mockedDeliveryshipment = [
+    {
+        "metaData": "UNIQUE_SENDER_REFERENCE_2",
+        "deliveryAddress": {
+            "address1": "John M. Keynesplein 12",
+            "city": "Amsterdam",
+            "postCode": "1066 EP",
+            "country": "NL"
+        }
+    }
+]
+
+fetch('https://api-lokl.peddler.com/api/Carriers/CARRIER_ID/createShipments', {
+  method: 'POST',
+  headers: {
+    'Authorization': `Bearer ${access_token}`,
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify(mockedDeliveryshipment)
+})
+.then(response => response.json())
+.then(data => {
+console.log(data);
+})
+.catch(error => {
+console.error(error);
+});
+```
+:::
+
+
+## Mock delivery shipment response
+
+- Any validation errors would result in a **422** HTTP status code response, and validation errors in the response
+- The most common validation error is utilising a postcode not in our catchment area (we will provide a postcode validation example below)
+
+
+```json title="mockedDeliveryshipmentResponse.json"
+[
+    {
+		"id": "XXXXXX1",
+		"trackingNumber": "PDXXXXXXXXX1",
+		"metaData": "UNIQUE_SENDER_REFERENCE_1",
+		"status": "ADDED",
+		"details": {
+			"deliveryAddress": {
+				"name": "Peddler BV",
+				"house": "12-46",
+				"address1": "John M. Keynesplein",
+				"address2": "B-toren, L.0.K.4",
+				"city": "Amsterdam",
+				"state": "Noord Holland",
+				"postCode": "1066 EP",
+				"country": "NL",
+				"phone": "+31623754473"
+			},
+			"deliveryEmail": "devops@peddler.com",
+			"deliveryShippingType": "LETTERBOX",
+			"deliveryContentsType": "GOODS",
+			"shippingValue": 10,
+			"shippingValueCurrency": "EUR",
+			"dimensions": "38.5cm * 35.5cm * 9.0cm",
+			"weight": "10",
+			"weightUnit": "KG",
+			"estimatedInjectionDate": "2023-07-10T15:43:24.133Z",
+			"carrierOptions": [{
+					"key": "POD",
+					"value": "SIGNATURE"
+				},
+				{
+					"key": "ADR",
+					"value": "Description of ADR contents of package"
+				}
+			],
+			"webhookUri": "https://carrierwebsite.com/api/webhooks",
+			"serviceLevel": "NEXT_DAY_48"
+		}
+	},
+	{
+		"id": "XXXXXX2",
+		"trackingNumber": "PDXXXXXXXXX2",
+		"metaData": "UNIQUE_SENDER_REFERENCE_2",
+		"status": "ADDED",
+		"details": {
+			"deliveryAddress": {
+				"name": "Peddler BV",
+				"house": "12-46",
+				"address1": "John M. Keynesplein",
+				"address2": "B-toren, L.0.K.4",
+				"city": "Amsterdam",
+				"state": "Noord Holland",
+				"postCode": "1066 EP",
+				"country": "NL",
+				"phone": "+31623754473"
+			},
+			"deliveryEmail": "devops@peddler.com",
+			"deliveryShippingType": "LETTERBOX",
+			"deliveryContentsType": "GOODS",
+			"shippingValue": 10,
+			"shippingValueCurrency": "EUR",
+			"dimensions": "38.5cm * 35.5cm * 9.0cm",
+			"weight": "10",
+			"weightUnit": "KG",
+			"estimatedInjectionDate": "2023-07-10T15:43:24.133Z",
+			"carrierOptions": [{
+					"key": "POD",
+					"value": "SIGNATURE"
+				},
+				{
+					"key": "ADR",
+					"value": "Description of ADR contents of package"
+				}
+			],
+			"webhookUri": "https://carrierwebsite.com/api/webhooks",
+			"serviceLevel": "NEXT_DAY_48"
+		}
+	},
+	{
+		"metaData": "UNIQUE_SENDER_REFERENCE_3",
+		"status": "ERROR",
+		"errorType": "INVALID_ADDRESS",
+		"error": "Error: Address invalid [\"postcode missing\"]"
+	},
+	{
+		"metaData": "UNIQUE_SENDER_REFERENCE_4",
+		"status": "ERROR",
+		"errorType": "INVALID_POSTCODE",
+		"error": "Error: Postcode not available for delivery [\"postcode\"]"
+	},
+	{
+		"metaData": "UNIQUE_SENDER_REFERENCE_5",
+		"status": "ERROR",
+		"errorType": "INVALID_FIELDS",
+		"error": "Error: Required fields missing [\"metaData\"]"
+	},
+	{
+		"metaData": "UNIQUE_SENDER_REFERENCE_6",
+		"status": "ERROR",
+		"errorType": "OTHER",
+		"error": "Error: Duplicate meta data"
+	}
+]
+```
