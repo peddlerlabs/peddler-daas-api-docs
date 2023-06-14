@@ -8,19 +8,21 @@ In this section, you will find the explanation of how to cancel a shipment.
 
 ## Cancel shipment request
 
-To cancel a shipment, you need to send a `POST` request to the endpoint `/api/Carriers/[CARRIER_ID]/cancelShipment` with the following body:
+To cancel a shipment, you need to send a `POST` request to the endpoint `/api/Carriers/[CARRIER_ID]/cancelShipment/:trackingNumber` with the following body:
 
 ```json title="Request body"
 {
-  "trackingNumber": "string",
-  "reason": "string"
+  "cancelReason": "string",
+  "destroyPackage": "boolean",
+  "returnToSender": "boolean"
 }
 ```
 
-| Field | Type | Description |
-|:---:|---|---|
-| ``trackingNumber`` | ``string`` | The shipment id |
-| ``reason`` | ``string`` | The reason for the cancellation (optional) |
+| Field | Type | Format | Description |
+|:---:|---|---|---|
+| ``cancelReason`` | <span style={{color: 'purple'}}>OPTIONAL</span> | ``string`` | The reason for the cancellation |
+| ``destroyPackage`` | <span style={{color: 'purple'}}>OPTIONAL</span> | ``boolean`` | Whether the package should be destroyed |
+| ``returnToSender`` | <span style={{color: 'purple'}}>OPTIONAL</span> | ``boolean`` | Whether the package should be returned to the sender |
 
 :::danger Important
 
@@ -28,14 +30,40 @@ Shipments maybe canceled if they are in the ADDED state else they are charged.
 
 :::
 
+An example of a request:
+
+```bash title="cURL example"
+curl --location 'https://alphadev-api.peddler.com/api/Carriers/[CARRIER_ID]/cancelShipment/P123456789012345678' \
+--header 'Content-Type: application/json' \
+--header 'Accept: application/json' \
+--header 'Authorization: Bearer <bearer-token-here>' \
+--data '{
+    "cancelReason": "Customer requested to receive a new variant"
+}'
+```
+
 ## Cancel shipment response
 
-The response will be a `200` status code with the following body:
+A standard response will be a `200` status code with the following body:
 
 ```json title="Response body with 200 status"
 {
-  "status": "string",
-  "details": "string"
+    "status": "<string>",
+    "count": "<number>"
+}
+```
+
+| Field | Type | Description |
+|:---:|---|---|
+| ``status`` | ``string`` | The status of the cancellation |
+| ``count`` | ``number`` | The number of shipments canceled |
+
+An example response body:
+
+```json title="Response body example"
+{
+    "status": "SUCCESS",
+    "count": 1
 }
 ```
 
@@ -43,21 +71,32 @@ The response will be a `404` status code with the following body if the tracking
 
 ```json title="Response body with 404 status"
 {
-  "status": "string",
-  "details": "string"
+    "error": {
+        "statusCode": 404,
+        "name": "tracking-number-not-found",
+        "message": "TRACKING NUMBER NOT FOUND"
+    }
 }
 ```
 
 | Field | Type | Description |
 |:---:|---|---|
-| ``status`` | ``string`` | The status of the cancellation |
-| ``details`` | ``string`` | The details of the cancellation |
+| ``statusCode`` | ``string`` | The status of the cancellation |
+| ``name`` | ``string`` | The details of the cancellation |
+| ``message`` | ``string`` | The message of the cancellation |
 
-## Cancel shipment status
+:::danger Important
 
-The status of the cancellation can be one of the following:
+The shipment cannot be cancel if it is in the ``DELIVERED`` or ``OUT_FOR_DELIVERY`` state. In such a case, you will receive the following as response:
 
-| STATUS | Description |
-|:---:|---|
-| ``SUCCESS`` | The shipment has been successfully canceled |
-| ``FAILED`` | The shipment could not be canceled |
+```json title="Response body with 422 status"
+{
+    "error": {
+        "statusCode": 422,
+        "name": "shipment-status-does-not-allow-cancelation",
+        "message": "SHIPMENT STATUS DOES NOT ALLOW CANCELATION"
+    }
+}
+```
+
+:::
