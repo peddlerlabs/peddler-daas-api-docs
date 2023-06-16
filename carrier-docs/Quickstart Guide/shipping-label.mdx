@@ -27,6 +27,30 @@ The request body should contain the following fields:
 
 Here's an example in JavaScript of sending a request to create a shipping label in ZPL format:
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+```mdx-code-block	
+<Tabs>
+<TabItem value="cURL">
+```
+
+```bash
+curl --location --globoff --request GET 'https://alphadev-api.peddler.com/api/Carriers/[CARRIER_ID]/shippingLabel/zpl' \
+--header 'Content-Type: application/json' \
+--header 'Accept: application/json' \
+--header 'Authorization: Bearer RRMg2ef7jspI7Ze0NG6DjV6P8CVHJpr7' \
+--data '{
+    "trackingNumber": "P195214835232769147",
+    "type": "MANIFEST"
+}'
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="JavaScript">
+```
+
 ```js title="shippingLabel.js"
 const labelBody = [
   {
@@ -50,10 +74,36 @@ console.log(data);
 console.error(error);
 });
 ```
+  
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
 
 ### PDF
 
 Here's an example in JavaScript of sending a request to create a shipping label in PDF format:
+
+```mdx-code-block
+<Tabs>
+<TabItem value="cURL">
+```
+
+```bash
+curl --location --globoff --request GET 'https://alphadev-api.peddler.com/api/Carriers/[CARRIER_ID]/shippingLabel/pdf' \
+--header 'Content-Type: application/json' \
+--header 'Accept: application/json' \
+--header 'Authorization: Bearer RRMg2ef7jspI7Ze0NG6DjV6P8CVHJpr7' \
+--data '{
+    "trackingNumber": "P195214835232769147",
+    "type": "MANIFEST"
+}'
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="JavaScript">
+```
 
 ```js title="shippingLabel.js"
 const labelBody = [
@@ -77,6 +127,11 @@ console.log(data);
 .catch(error => {
 console.error(error);
 });
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
 ```
 
 ## Shipping label response

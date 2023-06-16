@@ -22,6 +22,25 @@ to the following endpoint:
 The JSON.stringify method is the recommended method of querying the manifest.
 This method is used to query the manifest in a more readable format.
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+```mdx-code-block	
+<Tabs>
+<TabItem value="cURL">
+```
+
+```bash
+curl --location --globoff 'https://alphadev-api.peddler.com/api/Carriers/[CARRIER_ID]/getShipmentStatuses?trackingNumbers=%5B%22PDXXXXXXXXX1%22%2C%22PDXXXXXXXXX2%22%2C%22PDXXXXBADXX3%22%5D' \
+--header 'Accept: application/json' \
+--header 'Authorization: Bearer o1runbqmh4PzBTAaXJhkCstzT4ssSBpP'
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="JavaScript">
+```
+
 ```js title="Query string RECOMMENDED"
 const shipments = JSON.stringify([
     "PDXXXXXXXXX1",
@@ -32,14 +51,40 @@ const shipments = JSON.stringify([
 const query = `${PEDDLER_API_DOMAIN}/api/Carriers/${CARRIER_ID}/getShipmentStatuses?trackingNumbers=${shipments}`
 ```
 
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
+
 ### Querying the manifest using Querystring *array*
 
 The Array method is the alternate method of querying the manifest. This method
 is used to query the manifest in a more compact format.
 
+```mdx-code-block	
+<Tabs>
+<TabItem value="cURL">
+```
+
+```bash
+curl --location --globoff 'https://alphadev-api.peddler.com/api/Carriers/[CARRIER_ID]/getShipmentStatuses?trackingNumbers=PDXXXXXXXXX1&trackingNumbers=PDXXXXXXXXX2&trackingNumbers=PDXXXXXXXXX3' \
+--header 'Accept: application/json' \
+--header 'Authorization: Bearer nFzmOyturnztDiQT1gpijrgYczz2mBNW'
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="JavaScript">
+```
+
 ```js title="Query string ALT"
 const query = `${PEDDLER_API_DOMAIN}/api/Carriers/${CARRIER_ID}/getShipmentStatuses
 ?trackingNumbers=PDXXXXXXXXX1&trackingNumbers=PDXXXXXXXXX2&trackingNumbers=PDXXXXBADXX3`
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
 ```
 
 :::caution Limit of tracking numbers
