@@ -97,6 +97,63 @@ Any fields that are blank should **NOT** be included in the payload.
 
 :::
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+```mdx-code-block	
+<Tabs>
+<TabItem value="cURL">
+```
+
+```bash
+curl --location --globoff 'https://alphadev-api.peddler.com/api/Carriers/[CARRIER_ID]/createShipments' \
+--header 'Content-Type: application/json' \
+--header 'Accept: application/json' \
+--header 'Authorization: Bearer nFzmOyturnztDiQT1gpijrgYczz2mBNW' \
+--data-raw '[
+    {
+        "metaData": "UNIQUE_SENDER_REFERENCE_1",
+        "deliveryAddress": {
+            "name": "Peddler BV",
+            "house": "12-46",
+            "address1": "John M. Keynesplein",
+            "address2": "B-toren, L.0.K.4",
+            "city": "Amsterdam",
+            "state": "Noord Holland",
+            "postCode": "1066 EP",
+            "country": "NL",
+            "phone": "+31623754473"
+        },
+        "deliveryEmail": "devops@peddler.com",
+        "deliveryShippingType": "LETTERBOX",
+        "deliveryContentsType": "GOODS",
+        "shippingValue": 10,
+        "shippingValueCurrency": "EUR",
+        "dimensions": "38.5cm * 35.5cm * 9.0cm",
+        "weight": "10",
+        "weightUnit": "KG",
+        "estimatedInjectionDate": "2023-07-10T15:43:24.133Z",
+        "carrierOptions": [
+          {
+            "key": "POD",
+            "value": "SIGNATURE"
+          },
+          {
+            "key": "ADR",
+            "value": "Description of ADR contents of package"
+          }
+        ],
+        "webhookUri": "https://carrierwebsite.com/api/webhooks",
+        "serviceLevel": "NEXT_DAY_48"
+    }
+]'
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="JavaScript">
+```
+
 ```js title="mockedDeliveryshipment.js"
 const mockedDeliveryshipment = [
     {
@@ -151,6 +208,11 @@ console.log(data);
 .catch(error => {
 console.error(error);
 });
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
 ```
 
 :::tip Minimum required fields

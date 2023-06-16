@@ -24,6 +24,14 @@ To update a shipment you need to send a `POST` request to the endpoint `/api/Car
 
 An example of a request:
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+```mdx-code-block
+<Tabs>
+<TabItem value="cURL">
+```
+
 ```bash title="cURL example"
 curl --location 'https://alphadev-api.peddler.com/api/Carriers/[CARRIER_ID]/updateShipment/P123456789012345678' \
 --header 'Content-Type: application/json' \
@@ -44,6 +52,46 @@ curl --location 'https://alphadev-api.peddler.com/api/Carriers/[CARRIER_ID]/upda
     "deliveryEmail": "abc@xyz.com",
 }'
 ```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="JavaScript">
+```
+
+```js title="JavaScript example"
+var request = require('request');
+var options = {
+  'method': 'POST',
+  'url': 'https://alphadev-api.peddler.com/api/Carriers/[CARRIER_ID]/updateShipment/P123456789012345678',
+  'headers': {
+    'Content-Type': 'application/json',
+    'Accept': 'application/json',
+    'Authorization': 'Bearer <bearer-token-here>'
+  },
+  body: JSON.stringify({
+    "deliveryAddress": {
+      "name": "John Doe",
+      "house": "8",
+      "address1": "Heidelberglaan",
+      "city": "Utrecht",
+      "state": "Noord Holland",
+      "postCode": "3584 CS",
+      "country": "NL",
+      "phone": "+31612345678"
+    },
+    "deliveryEmail": "abc@xyz.com"
+  })
+
+};
+request(options, function (error, response) {
+  if (error) throw new Error(error);
+  console.log(response.body);
+});
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
 
 :::tip Note
 

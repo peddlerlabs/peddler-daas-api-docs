@@ -23,14 +23,39 @@ The `CARRIER_ID` is a unique identifier for your carrier account. It is provided
 :::
 
 **Example:**
-```js title="Request"
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+```mdx-code-block	
+<Tabs>
+<TabItem value="cURL">
+```
+
+```bash
+curl --location --request POST '${PEDDLER_API_DOMAIN}/oauth/token' \
+--header 'Content-Type: application/x-www-form-urlencoded' \
+--data-urlencode 'grant_type=client_credentials' \
+--data-urlencode 'client_id=<insert_client_id_here>' \
+--data-urlencode 'client_secret=<insert_client_secret_here>' \
+--data-urlencode 'scope=DEFAULT authenticated CARRIER_ID' \
+--timeout 180000
+```
+
+
+```mdx-code-block
+</TabItem>
+<TabItem value="JavaScript">
+```
+
+```js
 const url = `${PEDDLER_API_DOMAIN}/oauth/token`;
 const headers = { 'Content-Type': 'application/x-www-form-urlencoded' };
 const body = new URLSearchParams({
   grant_type: 'client_credentials',
   client_id,
   client_secret,
-  scope: ['DEFAULT', 'authenticated', 'CARRIER_ID_HERE'].join(' ')
+  scope: ['DEFAULT', 'authenticated', 'CARRIER_ID'].join(' ')
 }).toString();
 
 const tokenResponse = await fetch(url, {
@@ -45,7 +70,12 @@ const tokenResponse = await fetch(url, {
   return response.json();
 }).catch((error) => {
   console.error('There was a problem with the fetch operation:', error);
-});    
+});
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
 ```
 
 ```json title="Response"

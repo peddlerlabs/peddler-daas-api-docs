@@ -32,7 +32,15 @@ Shipments maybe canceled if they are in the ADDED state else they are charged.
 
 An example of a request:
 
-```bash title="cURL example"
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+```mdx-code-block
+<Tabs>
+<TabItem value="cURL">
+```
+
+```bash
 curl --location 'https://alphadev-api.peddler.com/api/Carriers/[CARRIER_ID]/cancelShipment/P123456789012345678' \
 --header 'Content-Type: application/json' \
 --header 'Accept: application/json' \
@@ -40,6 +48,37 @@ curl --location 'https://alphadev-api.peddler.com/api/Carriers/[CARRIER_ID]/canc
 --data '{
     "cancelReason": "Customer requested to receive a new variant"
 }'
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="JavaScript">
+```
+
+```js title="Cancel shipment"
+var request = require('request');
+var options = {
+  'method': 'POST',
+  'url': 'https://alphadev-api.peddler.com/api/Carriers/[CARRIER_ID]/cancelShipment/P123456789012345678',
+  'headers': {
+    'Content-Type': 'application/json',
+    'Accept': 'application/json',
+    'Authorization': 'Bearer <bearer-token-here>'
+  },
+  body: JSON.stringify({
+    "cancelReason": "Customer requested to receive a new variant"
+  })
+
+};
+request(options, function (error, response) {
+  if (error) throw new Error(error);
+  console.log(response.body);
+});
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
 ```
 
 ## Cancel shipment response
