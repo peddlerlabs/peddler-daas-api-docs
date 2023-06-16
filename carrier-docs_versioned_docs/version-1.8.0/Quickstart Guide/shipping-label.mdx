@@ -21,7 +21,6 @@ The request body should contain the following fields:
 | **Field** | **Type** | **Format** | **Description** |
 |:---|:---:|---|---|
 | ``trackingNumber`` | <span style={{color: 'red'}}>REQUIRED</span> | string | The tracking number of the shipment |
-| ``type`` | <span style={{color: 'red'}}>REQUIRED</span> | string | Type of label.<br />Value: ``MANIFEST``  |
 
 ### ZPL
 
@@ -41,8 +40,7 @@ curl --location --globoff --request GET 'https://alphadev-api.peddler.com/api/Ca
 --header 'Accept: application/json' \
 --header 'Authorization: Bearer RRMg2ef7jspI7Ze0NG6DjV6P8CVHJpr7' \
 --data '{
-    "trackingNumber": "P195214835232769147",
-    "type": "MANIFEST"
+    "trackingNumber": "P195214835232769147"
 }'
 ```
 
@@ -54,8 +52,7 @@ curl --location --globoff --request GET 'https://alphadev-api.peddler.com/api/Ca
 ```js title="shippingLabel.js"
 const labelBody = [
   {
-    trackingNumber: '123456789',
-    type: 'MANIFEST',
+    trackingNumber: '123456789'
   },
 ];
 fetch('https://api-lokl.peddler.com/api/Carriers/CARRIER_ID/shippingLabel/zpl', {
@@ -95,8 +92,7 @@ curl --location --globoff --request GET 'https://alphadev-api.peddler.com/api/Ca
 --header 'Accept: application/json' \
 --header 'Authorization: Bearer RRMg2ef7jspI7Ze0NG6DjV6P8CVHJpr7' \
 --data '{
-    "trackingNumber": "P195214835232769147",
-    "type": "MANIFEST"
+    "trackingNumber": "P195214835232769147"
 }'
 ```
 
@@ -108,8 +104,7 @@ curl --location --globoff --request GET 'https://alphadev-api.peddler.com/api/Ca
 ```js title="shippingLabel.js"
 const labelBody = [
   {
-    trackingNumber: '123456789',
-    type: 'MANIFEST',
+    trackingNumber: '123456789'
   },
 ];
 fetch('https://api-lokl.peddler.com/api/Carriers/CARRIER_ID/shippingLabel/pdf', {
@@ -144,14 +139,10 @@ If the output format is `ZPL`, the response will be a string containing the ZPL 
 
 ```json title="ZPL response 200 OK"
 HTTP/1.1 200 OK
-Content-Type: application/json
-Content-Length: 12345
+Content-Type: text/plain
 
-{
-  "trackingNumber": "123456789",
-  "type": "MANIFEST",
-  "label": "^XA^FO50,50^A0N,50,50^FD123456789^FS^XZ"
-}
+^XA^FO50,50^A0N,50,50^FD123456789^FS^XZ
+
 ```
 
 ```json title="ZPL response 404 Not Found"
@@ -160,8 +151,11 @@ Content-Type: application/json
 Content-Length: 12345
 
 {
-  "error": "Not Found",
-  "message": "No label found for tracking number 123456789"
+  "error": {
+      "statusCode": 404,
+      "name": "tracking-number-not-found",
+      "message": "TRACKING NUMBER NOT FOUND"
+  }
 }
 ```
 
@@ -179,11 +173,13 @@ Content-Transfer-Encoding: base64
 
 ```json title="PDF response 404 Not Found"
 HTTP/1.1 404 Not Found
-Content-Type: application/json
-Content-Length: 12345
+Content-Type: application/pdf
 
 {
-  "error": "Not Found",
-  "message": "No label found for tracking number 123456789"
+  "error": {
+      "statusCode": 404,
+      "name": "tracking-number-not-found",
+      "message": "TRACKING NUMBER NOT FOUND"
+  }
 }
 ```
