@@ -175,7 +175,10 @@ const config = {
       }
     }),
   scripts: [
-    "https://peddler.instatus.com/en/47dda54c/widget/script.js"
+    {
+      src: "instatus.js",
+      async: true,
+    },
   ]
 };
 
