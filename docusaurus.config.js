@@ -176,7 +176,7 @@ const config = {
     }),
   scripts: [
     {
-      src: "instatus.js",
+      src: "/instatus.js",
       async: true,
     },
   ]
