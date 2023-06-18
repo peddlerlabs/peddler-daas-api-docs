@@ -6,7 +6,7 @@
 
 /* You can override the default Infima variables here. */
 
-@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@500&display=swap');
 
 :root {
   --ifm-font-family-base: 'Nunito', sans-serif;
