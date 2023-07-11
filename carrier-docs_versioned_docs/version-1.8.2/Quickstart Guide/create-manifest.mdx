@@ -56,7 +56,8 @@ import BrowserWindow from '@site/src/components/BrowserWindow'
 | ``metaData`` | <span style={{color: 'red'}}>REQUIRED</span> | string | A unique ID for you to identify the individual shipment and to avoid duplication of shipments within our system |
 | ``senderAddress`` | <span style={{color: 'purple'}}>OPTIONAL</span> | object | Address object containing sender details pertaining to delivery |
 | ``deliveryAddress`` | <span style={{color: 'red'}}>REQUIRED</span> | object | Address object containing consignee details pertaining to delivery |
-| ``deliveryAddress.name`` | <span style={{color: 'green'}}>RECOMMENDED</span> | string | Include the consignee name or company name |
+| ``deliveryAddress.company`` | <span style={{color: 'purple'}}>OPTIONAL</span> | string | Include the company name |
+| ``deliveryAddress.name`` | <span style={{color: 'green'}}>RECOMMENDED</span> | string | Include the consignee name |
 | ``deliveryAddress.house`` | <span style={{color: 'green'}}>RECOMMENDED</span> | string | Include the house number unless included in ``address1`` field |
 | ``deliveryAddress.address1`` | <span style={{color: 'red'}}>REQUIRED</span> | string | Include street and house number unless house number is included in ``house`` field |
 | ``deliveryAddress.address2`` | <span style={{color: 'green'}}>RECOMMENDED</span> | string | Include any additional address information |
