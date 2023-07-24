@@ -102,7 +102,7 @@ request
 // response 200 OK LIST OF [DELIVERY DATES][DELIVERY SLOTS][PICKUP SLOTS] available
 ```
 
-### Utilising the `deliverySlots` times and `pickupSlots` times when creating OR updating an order:
+### Utilising the `deliverySlots` times and `pickupSlots` times when creating OR updating an order
 
 ```js
 const mockedDeliveryOrder = {
@@ -147,6 +147,13 @@ request
         console.log(deliveryOrderInstance);
     });
 ```
+
+:::warning Note
+
+- The `deliverySlots` times and `pickupSlots` times are always assigned as pairs and validated as such, you cannot randomly select different periods.
+- It is recommended NOT to use `preferredDeliveryDate` when custom pickup/delivery slots are used. If you do use `preferredDeliveryDate` it will be ignored and the custom slots chosen will have preference.
+
+:::
 
 ## Querying the endpoint with a multiple storeIds
 

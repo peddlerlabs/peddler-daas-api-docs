@@ -21,7 +21,7 @@ Each 'Order Instance' can have many `deliveryLineItems` ([array] property) which
     - `deliveryShippingType`: (enum 'string') PACKAGE, LETTERBOX, CUSTOM (the latter should always be used when a pre-agreed rate is desired)
     - `storeId`: ('string') required when shipping from a specific store
       - The SAME `storeId` must be used when defining multiple line items at once
-    - `preferredDeliveryDate` OR `custom delivery slots`: ('string' YYYY-MM-DD) this allows you to select a preferred delivery data else it will default to the most immediate next available slot
+    - `preferredDeliveryDate`: ('string' YYYY-MM-DD) this allows you to select a preferred delivery date. By default, this allows whole day delivery instead of any particular time slot. If not specified, the next available delivery slot will be used. In order to choose a preferred delivery time slot along with the date, please refer to the [Customise delivery slots](/docs/Advanced%20delivery%20order%20endpoints%20and%20options/customise-delivery-slots.md) section.
     - `deliveryAddress`: ('object' Address) required address to be delivered to
 
 :::tip Note on quantity 
