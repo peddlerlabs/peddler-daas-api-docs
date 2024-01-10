@@ -77,6 +77,7 @@ import BrowserWindow from '@site/src/components/BrowserWindow'
 | ``dimensions`` | <span style={{color: 'green'}}>RECOMMENDED</span> | string | Dimensions of the shipment. <br />Example: ``38.5cm * 35.5cm * 9.0cm`` |
 | ``weight`` | <span style={{color: 'green'}}>RECOMMENDED</span> | numeric | Weight of the shipment |
 | ``weightUnit`` | <span style={{color: 'green'}}>RECOMMENDED</span> | string | Possible values: ``KG`` (DEFAULT), ``LB`` |
+| ``returnType`` | <span style={{color: 'green'}}>RECOMMENDED</span> | string | Possible values: ``RETURN_TO_SENDER``, ``RETURN_AND_DESTROY``, ``RETURN_AND_DONATE`` |
 | ``estimatedInjectionDate`` | <span style={{color: 'green'}}>RECOMMENDED</span> | string | [JSON DATE ISO 8601](https://docs.jsonata.org/date-time#json-and-iso-8601) ``2023-07-10T15:43:24.133Z`` estimation when the shipment will be injected to destination distribution hub |
 | ``carrierOptions`` | <span style={{color: 'green'}}>RECOMMENDED</span> | object array | <pre lang="json"> [<br />//*Only when signature is required.*<br />//*SURCHARGE maybe applicable*<br />    {<br />        "key": "POD",<br />        "value": "SIGNATURE"<br />    },<br />//*Required when shipping ADR goods*<br />    {<br />        "key": "ADR",<br />        "value": "Description of ADR contents"<br />    }<br />]</pre> |
 | ``webhookUri`` | <span style={{color: 'green'}}>RECOMMENDED</span> | string | URI to receive webhook notifications. Each webhook can be unique to the shipment.<br/>Example: https://peddl.free.beeceptor.com/webhook/metadata |
