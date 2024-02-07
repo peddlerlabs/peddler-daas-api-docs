@@ -194,7 +194,19 @@ If the tracking number is not found, the response will be a `404` status code wi
 
 :::danger Note
 
-The shipment cannot be updated if the status is `DELIVERED`. In that case, you will get a `422` status code with the following body:
+The shipment cannot be updated if it has one of the following statuses:
+- `SHIPMENT_CONFIRMED`
+- `SHIPMENT_ENROUTE_TO_WAREHOUSE`
+- `SHIPMENT_IN_WAREHOUSE`
+- `OUT_FOR_DELIVERY`
+- `DELIVERED`
+- `DELIVERED_COLLECTION_POINT`
+- `CANCELED`
+- `IMPORT_ERROR`
+- `RETURN_TO_SENDER`
+
+
+In that case, you will get a `422` status code with the following body:
 
 ```json title="Response body with 422 status"
 {
