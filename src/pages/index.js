@@ -5,6 +5,7 @@ import Link from "@docusaurus/Link";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import styles from "./index.module.css";
 import HomepageFeatures from "../components/HomepageFeatures";
+import { WebsiteCarbonBadge } from 'react-websitecarbon-badge';
 
 function HomepageHeader() {
   const { siteConfig } = useDocusaurusContext();
@@ -13,6 +14,12 @@ function HomepageHeader() {
       <div className="container">
         <h1 className="hero__title">{siteConfig.title}</h1>
         <p className="hero__subtitle">{siteConfig.tagline}</p>
+        <WebsiteCarbonBadge
+          url="shipping-api-docs.pdlr.nl"
+          co2="0.06"
+          percentage="95"
+          dark={true}
+          />
         {/* <div className={styles.buttons}>
           <Link
             className="button button--secondary button--lg"
