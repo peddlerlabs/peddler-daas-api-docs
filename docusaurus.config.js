@@ -24,6 +24,8 @@ const config = {
           routeBasePath: "/docs",
           path: "docs",
           sidebarPath: require.resolve("./sidebars.js"),
+          showLastUpdateAuthor: true,
+          showLastUpdateTime: true,
           // lastVersion: "current",
           // onlyIncludedVersions: ["current"],
           // Please change this to your repo.
@@ -46,6 +48,8 @@ const config = {
         path: 'carrier-docs',
         routeBasePath: '/carrier-docs',
         sidebarPath: require.resolve('./sidebars.js'),
+        showLastUpdateAuthor: true,
+        showLastUpdateTime: true,
       }, 
     ]
 ],
