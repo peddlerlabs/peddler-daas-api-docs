@@ -29,12 +29,17 @@ The JWT assertion is created using the following steps:
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
+<Tabs
+  groupId="jwt-assertion"
+  defaultValue="NodeJS"
+  values={[
+    { label: 'NodeJS', value: 'NodeJS' },
+    { label: 'PHP', value: 'PHP' },
+    { label: 'Python', value: 'Python' },
+  ]
+}>
 
-```mdx-code-block
-<Tabs>
-<TabItem value="JavaScript">
-```
-
+<TabItem value="NodeJS">
 ```js title="jwt-assertion.js"
 const jwt = require('jws');
 
@@ -60,12 +65,9 @@ const body = {
 // Create a JWT assertion
 const assertion = jwt.sign(body);
 ```
-
-```mdx-code-block
 </TabItem>
-<TabItem value="PHP">
-```
 
+<TabItem value="PHP">
 ```php title="jwt-assertion.php"
 <?php
 
@@ -146,10 +148,10 @@ class JWTBuilder
 }
 ```
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="Python">
-```
+
 
 ```python title="jwt-assertion.py"
 import os
@@ -192,10 +194,10 @@ else:
     exit()
 ```
 
-```mdx-code-block
+
 </TabItem>
 </Tabs>
-```
+
 
 
 :::tip Note
@@ -229,7 +231,7 @@ request.post({
 
 ## Receiving the bearer token (in the body, in json)
 
-```
+```json title="Response"
 HTTP/1.1 200 OK
 Content-Type: application/json
 Cache-Control: no-store
@@ -245,7 +247,7 @@ Pragma: no-cache
 
 OR
 
-```
+```json title="Response"
 HTTP/1.1 403 FORBIDDEN
 Content-Type: application/json
 Cache-Control: no-store

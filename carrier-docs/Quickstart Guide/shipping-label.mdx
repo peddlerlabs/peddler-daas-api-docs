@@ -29,10 +29,10 @@ Here's an example in JavaScript of sending a request to create a shipping label 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-```mdx-code-block	
+
 <Tabs>
 <TabItem value="cURL">
-```
+
 
 ```bash
 curl --location --globoff --request GET 'https://alphadev-api.peddler.com/api/Carriers/[CARRIER_ID]/shippingLabel/zpl' \
@@ -44,10 +44,10 @@ curl --location --globoff --request GET 'https://alphadev-api.peddler.com/api/Ca
 }'
 ```
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="JavaScript">
-```
+
 
 ```js title="shippingLabel.js"
 const labelBody = [
@@ -72,19 +72,19 @@ console.error(error);
 });
 ```
   
-```mdx-code-block
+
 </TabItem>
 </Tabs>
-```
+
 
 ### PDF
 
 Here's an example in JavaScript of sending a request to create a shipping label in PDF format:
 
-```mdx-code-block
+
 <Tabs>
 <TabItem value="cURL">
-```
+
 
 ```bash
 curl --location --globoff --request GET 'https://alphadev-api.peddler.com/api/Carriers/[CARRIER_ID]/shippingLabel/pdf' \
@@ -96,10 +96,10 @@ curl --location --globoff --request GET 'https://alphadev-api.peddler.com/api/Ca
 }'
 ```
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="JavaScript">
-```
+
 
 ```js title="shippingLabel.js"
 const labelBody = [
@@ -124,10 +124,10 @@ console.error(error);
 });
 ```
 
-```mdx-code-block
+
 </TabItem>
 </Tabs>
-```
+
 
 ## Shipping label response
 

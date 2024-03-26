@@ -1,19 +1,19 @@
 {
   "name": "peddler-daas-api",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "private": true,
   "dependencies": {
-    "@docusaurus/core": "^2.4.1",
-    "@docusaurus/plugin-content-docs": "^2.4.1",
-    "@easyops-cn/docusaurus-search-local": "^0.35.0",
-    "@mdx-js/react": "^1.6.21",
-    "clsx": "^1.1.1",
-    "docusaurus-preset-openapi": "0.6.3",
-    "prism-react-renderer": "^1.2.1",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
+    "@docusaurus/core": "^3.1.1",
+    "@docusaurus/plugin-content-docs": "^3.1.1",
+    "@docusaurus/preset-classic": "^3.1.1",
+    "@easyops-cn/docusaurus-search-local": "^0.40.1",
+    "@mdx-js/react": "^3.0.1",
+    "clsx": "^2.1.0",
+    "prism-react-renderer": "^2.3.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "react-websitecarbon-badge": "^1.0.6",
-    "url": "^0.11.0"
+    "url": "^0.11.3"
   },
   "scripts": {
     "docusaurus": "docusaurus",
@@ -24,9 +24,7 @@
     "clear": "docusaurus clear",
     "serve": "docusaurus serve",
     "write-translations": "docusaurus write-translations",
-    "write-heading-ids": "docusaurus write-heading-ids",
-    "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "write-heading-ids": "docusaurus write-heading-ids"
   },
   "browserslist": {
     "production": [
@@ -41,14 +39,6 @@
     ]
   },
   "devDependencies": {
-    "@storybook/addon-essentials": "^7.0.2",
-    "@storybook/addon-interactions": "^7.0.2",
-    "@storybook/addon-links": "^7.0.2",
-    "@storybook/blocks": "^7.0.2",
-    "@storybook/react": "^7.0.2",
-    "@storybook/react-webpack5": "^7.0.2",
-    "@storybook/testing-library": "^0.0.14-next.2",
-    "prop-types": "^15.8.1",
-    "storybook": "^7.0.2"
+    "prop-types": "^15.8.1"
   }
 }

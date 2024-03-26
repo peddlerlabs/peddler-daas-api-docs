@@ -1,8 +1,7 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
 
-const lightCodeTheme = require("prism-react-renderer/themes/github");
-const darkCodeTheme = require("prism-react-renderer/themes/palenight");
+import { themes } from 'prism-react-renderer';
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -18,13 +17,15 @@ const config = {
 
   presets: [
     [
-      "docusaurus-preset-openapi",
-      /** @type {import('docusaurus-preset-openapi').Options} */
+      "@docusaurus/preset-classic",
       {
         docs: {
+          id : "docs",
           routeBasePath: "/docs",
           path: "docs",
           sidebarPath: require.resolve("./sidebars.js"),
+          showLastUpdateAuthor: true,
+          showLastUpdateTime: true,
           // lastVersion: "current",
           // onlyIncludedVersions: ["current"],
           // Please change this to your repo.
@@ -45,8 +46,10 @@ const config = {
       {
         id: 'carrier-docs',
         path: 'carrier-docs',
-        routeBasePath: 'carrier-docs',
+        routeBasePath: '/carrier-docs',
         sidebarPath: require.resolve('./sidebars.js'),
+        showLastUpdateAuthor: true,
+        showLastUpdateTime: true,
       }, 
     ]
 ],
@@ -58,15 +61,14 @@ const config = {
     // @ts-ignore
     ({
       hashed: true,
-      language: ["en"],
       highlightSearchTermsOnTargetPage: true,
       explicitSearchResultPath: true,
+      docsPluginIdForPreferredVersion: "docs",
       }),
     ],
   ],
 
   themeConfig:
-    /** @type {import('docusaurus-preset-openapi').ThemeConfig} */
     ({
       navbar: {
         // title: "",
@@ -77,8 +79,7 @@ const config = {
         },
         items: [
           {
-            type: "doc",
-            docId: "intro",
+            to: "/docs/intro",
             position: "left",
             label: "Retailer Docs",
           },
@@ -87,8 +88,6 @@ const config = {
             label: "Enterprise Docs",
             position: "left",
           },
-          { to: "/api", label: "DaaS API", position: "left" },
-          // { to: "/blog", label: "📰Blog", position: "left" },
           {
             href: "https://github.com/peddlerlabs",
             className: "header-github-link",
@@ -165,8 +164,8 @@ const config = {
       },
       prism: {
         additionalLanguages: ["php"],
-        theme: lightCodeTheme,
-        darkTheme: darkCodeTheme,
+        theme: themes.vsLight,
+        darkTheme: themes.vsDark,
       },
       docs: {
         sidebar: {
@@ -176,7 +175,7 @@ const config = {
     }),
   scripts: [
     {
-      src: "/instatus.js",
+      src: "@site/static/instatus.js",
       async: true,
     },
   ]
