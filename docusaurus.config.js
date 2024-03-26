@@ -17,8 +17,7 @@ const config = {
 
   presets: [
     [
-      "docusaurus-preset-openapi",
-      /** @type {import('docusaurus-preset-openapi').Options} */
+      "@docusaurus/preset-classic",
       {
         docs: {
           routeBasePath: "/docs",
@@ -65,7 +64,6 @@ const config = {
   ],
 
   themeConfig:
-    /** @type {import('docusaurus-preset-openapi').ThemeConfig} */
     ({
       navbar: {
         // title: "",
@@ -175,7 +173,7 @@ const config = {
     }),
   scripts: [
     {
-      src: "/instatus.js",
+      src: "@site/static/instatus.js",
       async: true,
     },
   ]

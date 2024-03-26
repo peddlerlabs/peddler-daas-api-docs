@@ -27,10 +27,10 @@ The `CARRIER_ID` is a unique identifier for your carrier account. It is provided
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-```mdx-code-block	
+
 <Tabs>
 <TabItem value="cURL">
-```
+
 
 ```bash
 curl --location --request POST '${PEDDLER_API_DOMAIN}/oauth/token' \
@@ -43,10 +43,10 @@ curl --location --request POST '${PEDDLER_API_DOMAIN}/oauth/token' \
 ```
 
 
-```mdx-code-block
+
 </TabItem>
 <TabItem value="JavaScript">
-```
+
 
 ```js
 const url = `${PEDDLER_API_DOMAIN}/oauth/token`;
@@ -73,10 +73,10 @@ const tokenResponse = await fetch(url, {
 });
 ```
 
-```mdx-code-block
+
 </TabItem>
 </Tabs>
-```
+
 
 ```json title="Response"
 {

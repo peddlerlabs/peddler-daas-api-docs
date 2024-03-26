@@ -7,15 +7,16 @@ Peddler uses Bearer tokens for any request, i.e. all requests to our api require
 The client accesses the protected resources by presenting the access token to the resource server. 
 The client can use the HTTP Authorization header (recommended) or `access_token` query parameter.
 
-**For example:**
-```
+**For example**:
+
+```json
 GET /protected/protected-apis.html HTTP/1.1
 Host: localhost:3001
 Authorization: Bearer cdtXRlBcXBSWrdc6vZbCFGiq3ZUhl0BF
 ```
 OR
 
-```
+```json
 GET /protected/protected-apis.html?access_token=cdtXRlBcXBSWrdc6vZbCFGiq3ZUhl0BF HTTP/1.1
 Host: localhost:3001
 ```
