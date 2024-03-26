@@ -20,6 +20,7 @@ const config = {
       "@docusaurus/preset-classic",
       {
         docs: {
+          id : "docs",
           routeBasePath: "/docs",
           path: "docs",
           sidebarPath: require.resolve("./sidebars.js"),
@@ -43,7 +44,7 @@ const config = {
       {
         id: 'carrier-docs',
         path: 'carrier-docs',
-        routeBasePath: 'carrier-docs',
+        routeBasePath: '/carrier-docs',
         sidebarPath: require.resolve('./sidebars.js'),
       }, 
     ]
@@ -56,9 +57,9 @@ const config = {
     // @ts-ignore
     ({
       hashed: true,
-      language: ["en"],
       highlightSearchTermsOnTargetPage: true,
       explicitSearchResultPath: true,
+      docsPluginIdForPreferredVersion: "docs",
       }),
     ],
   ],
@@ -74,8 +75,7 @@ const config = {
         },
         items: [
           {
-            type: "doc",
-            docId: "intro",
+            to: "/docs/intro",
             position: "left",
             label: "Retailer Docs",
           },
@@ -84,8 +84,6 @@ const config = {
             label: "Enterprise Docs",
             position: "left",
           },
-          { to: "/api", label: "DaaS API", position: "left" },
-          // { to: "/blog", label: "📰Blog", position: "left" },
           {
             href: "https://github.com/peddlerlabs",
             className: "header-github-link",
