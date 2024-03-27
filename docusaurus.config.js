@@ -6,7 +6,7 @@ import { themes } from 'prism-react-renderer';
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: "Peddler DaaS API",
-  tagline: "Guide to Peddler Shipping API",
+  tagline: "Guide to Peddler DaaS Shipping API",
   url: "https://shipping-api-docs.pdlr.nl/",
   baseUrl: "/",
   onBrokenLinks: "throw",
@@ -26,9 +26,6 @@ const config = {
           sidebarPath: require.resolve("./sidebars.js"),
           showLastUpdateAuthor: true,
           showLastUpdateTime: true,
-          // lastVersion: "current",
-          // onlyIncludedVersions: ["current"],
-          // Please change this to your repo.
           // editUrl:
             // "https://github.com/Abinashbunty/peddler-daas-api-docs/",
         },
@@ -69,12 +66,17 @@ const config = {
   ],
 
   themeConfig:
-    ({
+    {
+      colorMode: {
+        defaultMode: "light",
+        disableSwitch: false,
+        respectPrefersColorScheme: true
+      },
       navbar: {
-        // title: "",
+        title: "DaaS API Docs",
         logo: {
           alt: "Peddler Logo",
-          src: "https://www.peddler.com/images/5b987eb7aa7aee05c01036832b57105d-logo.svg",
+          src: "/img/peddler-logo.svg",
           width: 100,
         },
         items: [
@@ -98,7 +100,7 @@ const config = {
         ],
       },
       footer: {
-        style: "light",
+        style: "dark",
         links: [
           {
             title: "More",
@@ -169,16 +171,18 @@ const config = {
       },
       docs: {
         sidebar: {
-          autoCollapseCategories: true
+          autoCollapseCategories: false,
+          hideable: true,
         }
       }
-    }),
-  scripts: [
-    {
-      src: "@site/static/instatus.js",
-      async: true,
     },
-  ]
+    scripts: [
+      {
+        src: "https://peddler.instatus.com/en/47dda54c/widget/script.js",
+        async: true,
+        defer: true,
+      },
+    ],
 };
 
 module.exports = config;
