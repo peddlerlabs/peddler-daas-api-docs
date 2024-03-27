@@ -28,4 +28,4 @@ To get started with the API your require to have received the following:
 ## Authentication flow
 
 The client authentication flow is illustrated as follows:
-![oauth2-jwt-client-authentication](https://gist.githubusercontent.com/Abinashbunty/ad23b81707f99157209f8121f598c641/raw/ddfd2fca18b499be5a45afc677c3f3f8408830f6/oauth2-jwt-authorization-grant.png)
+![oauth2-jwt-client-authentication](/img/oauth2-jwt-authorization-grant.png)
