@@ -1,0 +1,101 @@
+---
+sidebar_position: 1
+---
+
+# Departed Facility
+
+The Departed Facility feature allows you to update the status of a collection of shipments in bulk. This feature is useful when you want to update the status of multiple shipments at once after they have been created using the API. It skips the need to update each shipment individually by the scanning of the barcode by Peddler.
+
+:::info
+
+This feature is only available for carriers who have the Departed Facility feature enabled. If you would like to enable this feature, please contact at [developers@peddler.com](mailto:developers@peddler.com).
+
+:::
+
+:::danger
+
+Enabling this feature removes the need for scanning the barcode by Peddler. This means that the status of the shipments within the bundle will be updated without any physical verification. Please ensure that you have the necessary checks in place to prevent any misuse of this feature.
+
+:::
+
+## How to use the Departed Facility feature
+
+There is a special endpoint that you can use to update the status of multiple shipments at once. This endpoint is called `departedFacility`. It is a POST request that accepts a list of tracking numbers and updates the status of all the shipments in the list and responds with the count of the number of shipments that were successfully updated.
+
+
+### Request
+
+An example of a request:
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+
+<Tabs>
+<TabItem value="cURL">
+
+
+```bash title="Departed Facility Request"
+curl --location 'https://alphadev-api.peddler.com/api/Carriers/CARRIED_ID/departedFacility' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer YjhAgmCv10GRT74dRdqkNAAu8dSFa8Qf' \
+--data '{
+    "trackingNumbers": [
+        "P197794809406011111",
+        "P197794809406011112",
+        "P197794809406011113",
+        "P197794809406011114",
+        "P197794809406011115",
+        "P197794809406011116"
+    ]
+}'
+```
+
+
+</TabItem>
+<TabItem value="JavaScript">
+
+
+```js title="Departed Facility Request"
+const myHeaders = new Headers();
+myHeaders.append("Content-Type", "application/json");
+myHeaders.append("Authorization", "Bearer YjhAgmCv10GRT74dRdqkNAAu8dSFa8Qf");
+
+const raw = JSON.stringify({
+  "trackingNumbers": [
+    "P197794809406011111",
+    "P197794809406011112",
+    "P197794809406011113",
+    "P197794809406011114",
+    "P197794809406011115",
+    "P197794809406011116"
+  ]
+});
+
+const requestOptions = {
+  method: "POST",
+  headers: myHeaders,
+  body: raw,
+  redirect: "follow"
+};
+
+fetch("https://alphadev-api.peddler.com/api/Carriers/CARRIED_ID/departedFacility", requestOptions)
+  .then((response) => response.text())
+  .then((result) => console.log(result))
+  .catch((error) => console.error(error));
+```
+
+
+</TabItem>
+</Tabs>
+
+
+### Response
+
+The response will be a count of the number of shipments that were successfully updated.
+
+```json
+{
+    "count": 6
+}
+```
