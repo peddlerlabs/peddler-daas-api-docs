@@ -20,7 +20,7 @@ Enabling this feature removes the need for scanning the barcode by Peddler. This
 
 ## How to use the Departed Facility feature
 
-There is a special endpoint that you can use to update the status of multiple shipments at once. This endpoint is called `departedFacility`. It is a POST request that accepts a list of tracking numbers and updates the status of all the shipments in the list to `Departed Facility`.
+There is a special endpoint that you can use to update the status of multiple shipments at once. This endpoint is called `departedFacility`. It is a POST request that accepts a list of tracking numbers and updates the status of all the shipments in the list and responds with the count of the number of shipments that were successfully updated.
 
 
 ### Request
@@ -35,21 +35,19 @@ import TabItem from '@theme/TabItem';
 <TabItem value="cURL">
 
 
-```bash
-curl --location --request GET 'https://alphadev-api.peddler.com/api/Carriers/CARRIER_ID/departedFacility' \
+```bash title="Departed Facility Request"
+curl --location 'https://alphadev-api.peddler.com/api/Carriers/CARRIED_ID/departedFacility' \
 --header 'Content-Type: application/json' \
+--header 'Authorization: Bearer YjhAgmCv10GRT74dRdqkNAAu8dSFa8Qf' \
 --data '{
     "trackingNumbers": [
         "P197794809406011111",
         "P197794809406011112",
         "P197794809406011113",
-        "P197794809406011114"
-    ],
-    "bundleDepartureId": "fg6regfdg7d85fbd9f",
-    "flags": {
-        "key1": "value1",
-        "key2": "value2"
-    }
+        "P197794809406011114",
+        "P197794809406011115",
+        "P197794809406011116"
+    ]
 }'
 ```
 
@@ -58,32 +56,30 @@ curl --location --request GET 'https://alphadev-api.peddler.com/api/Carriers/CAR
 <TabItem value="JavaScript">
 
 
-```js title="Cancel shipment"
+```js title="Departed Facility Request"
 const myHeaders = new Headers();
 myHeaders.append("Content-Type", "application/json");
+myHeaders.append("Authorization", "Bearer YjhAgmCv10GRT74dRdqkNAAu8dSFa8Qf");
 
 const raw = JSON.stringify({
   "trackingNumbers": [
     "P197794809406011111",
     "P197794809406011112",
     "P197794809406011113",
-    "P197794809406011114"
-  ],
-  "bundleDepartureId": "fg6regfdg7d85fbd9f",
-  "flags": {
-    "key1": "value1",
-    "key2": "value2"
-  }
+    "P197794809406011114",
+    "P197794809406011115",
+    "P197794809406011116"
+  ]
 });
 
 const requestOptions = {
-  method: "GET",
+  method: "POST",
   headers: myHeaders,
   body: raw,
   redirect: "follow"
 };
 
-fetch("https://alphadev-api.peddler.com/api/Carriers/HLoQfBpX3LhFn-rVIHRsE/departedFacility", requestOptions)
+fetch("https://alphadev-api.peddler.com/api/Carriers/CARRIED_ID/departedFacility", requestOptions)
   .then((response) => response.text())
   .then((result) => console.log(result))
   .catch((error) => console.error(error));
@@ -92,3 +88,14 @@ fetch("https://alphadev-api.peddler.com/api/Carriers/HLoQfBpX3LhFn-rVIHRsE/depar
 
 </TabItem>
 </Tabs>
+
+
+### Response
+
+The response will be a count of the number of shipments that were successfully updated.
+
+```json
+{
+    "count": 4
+}
+```
