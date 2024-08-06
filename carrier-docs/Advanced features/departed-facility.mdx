@@ -24,6 +24,12 @@ There is a special endpoint that you can use to update the status of multiple sh
 
 When the endpoint is called, the status of the shipments is updated to `SHIPMENT_ENROUTE_TO_WAREHOUSE`. This status indicates that the shipments have left the carrier's facility and are on their way to the Peddler Distribution Centre.
 
+:::warning
+
+The `departedFacility` endpoint can only be called when the shipments are in the `SHIPMENT_CONFIRMED` and `SHIPMENT_READY` statuses. If the shipments are in any other status, the endpoint will return an error.
+
+:::
+
 ### Request
 
 An example of a request:
