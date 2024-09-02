@@ -14,23 +14,89 @@ import BrowserWindow from '@site/src/components/BrowserWindow'
 
 <BrowserWindow url="https://alphadev-api.peddler.com/">
 
-| **STATUS** | **Description** |
-|:---:|---|
-| ``ADDED`` | Shipment added to Peddler and update/cancel possible. |
-| ``SHIPMENT_CONFIRMED`` | Shipment confirmed: Manifest booked into Peddler |
-| ``SHIPMENT_ENROUTE_TO_WAREHOUSE`` | Shipment is on the way to depot |
-| ``SHIPMENT_IN_WAREHOUSE`` | Shipment in warehouse: Arrival scan completed by Peddler |
-| ``OUT_FOR_DELIVERY`` | Out for delivery: Courier confirms package in vehicle & on route |
-| ``DELIVERED`` | Delivered (optional: delivered at neighbours + details) |
-| ``DELIVERED_COLLECTION_POINT`` | Delivered at Collection point (+ details) |
-| ``FAILED_ATTEMPT`` | Shipment failed on route. REASON: ``Customer not answering``, ``Wrong/incomplete address``, ``Issue with package``, ``Refused by customer``.<br /> It may include optional information about next attempt or customer should contact support |
-| ``ON_HOLD`` | Shipment is currently on hold and waiting to be released on the designated timeslot or paused by support |
-| ``EXCEPTION`` | All other issues related to the delivery or Delivery details pertaining to the package |
-| ``RETURN_TO_SENDER`` | Shipment has been returned to sender |
-| ``CANCELED`` | Shipment has been canceled by ``sender`` or ``carrier`` |
-| ``SHIPMENT_DETAILS_UPDATED`` | Delivery details updated - for example address change by ``sender``, ``consignee`` or ``support`` |
+| **Code** 	| **Status**                        	| **Description**                                                          	|
+|----------	|-----------------------------------	|--------------------------------------------------------------------------	|
+|      100 	| `SHIPMENT_CONFIRMED`              	| Shipment registered by client with Peddler                               	|
+|      200 	| `SHIPMENT_ENROUTE_TO_WAREHOUSE`   	| Shipment enroute to distribution center                                  	|
+|      210 	| `SHIPMENT_IN_WAREHOUSE`           	| Package scanned at local distribution center                             	|
+|      300 	| `SHIPMENT_ENROUTE_TO_LOCAL_DEPOT` 	| Shipment enroute to local depot                                          	|
+|      310 	| `SHIPMENT_IN_LOCAL_DEPOT`         	| Package has arrived in local depot                                       	|
+|      400 	| `SHIPMENT_READY`                  	| Ready for dispatch & assigning courier                                   	|
+|      410 	| `OUT_FOR_DELIVERY`                	| Package enroute to destination                                           	|
+|      500 	| `DELIVERED`                       	| Package delivered                                                        	|
+|      501 	| `DELIVERED`                       	| Package delivered at neighbours                                          	|
+|      502 	| `DELIVERED`                       	| Package delivered in mailbox                                             	|
+|      550 	| `DELIVERED_COLLECTION_POINT`      	| Package delivered at collection point                                    	|
+|      570 	| `PICKUP_COLLECTION_POINT`         	| Package picked up from collection point                                  	|
+|      700 	| `ON_HOLD`                         	| Shipment is currently on hold and awaiting release for next day delivery 	|
+|      800 	| `EXCEPTION`                       	| Shipment is currently being processed by customer support                	|
+|      900 	| `RETURN_TO_SENDER`                	| Shipment is returned to sender                                           	|
+|     1000 	| `CANCELED`                        	| Shipment has been canceled                                               	|
+|     1100 	| `SHIPMENT_DETAILS_UPDATED`        	| Shipment details updated by consignee or customer support                	|
 
 </BrowserWindow>
+
+
+## Failed attempt statuses
+
+The following are the possible reasons for a failed attempt:
+
+| **Code** 	| **Status**                              	| **Description**                                 	|
+|----------	|-----------------------------------------	|-------------------------------------------------	|
+|      600 	| `UNKNOWN_FAILURE_REASON`                	|                                                 	|
+|      601 	| `CUSTOMER_NOT_PRESENT_NO_NEIGHBOURS"`   	| Customer not answering; no neighbours available 	|
+|      602 	| `CUSTOMER_WRONG_ADDRESS`                	| Customer does not live here; Wrong address      	|
+|      603 	| `INCOMPLETE_ADDRESS`                    	| Incomplete address; No such address             	|
+|      604 	| `ADDRESS_NOT_FOUND`                     	| Cannot find address; Adres niet vindbaar        	|
+|      605 	| `CLOSED_NOT_PRESENT`                    	| Closed; Gesloten                                	|
+|      606 	| `PACKAGE_REJECTED_BY_CUSTOMER`          	| Package rejected; Geweigerd                     	|
+|      607 	| `MISSORTED_TO_VEHICLE`                  	| Not in bike; Niet in bak                        	|
+|      608 	| `CASH_ON_DELIVERY_FAILED`               	| COD; Cash on delivery                           	|
+|      609 	| `CUSTOMER_REQUEST_NEW_DELIVERY_TIME`    	| Customer request new delivery time              	|
+|      610 	| `CUSTOMER_ADDRESS_UPDATED`              	| Customer delivery address updated               	|
+|      611 	| `PACKAGE_STOLEN`                        	| Package stolen                                  	|
+|      612 	| `PACKAGE_FORWARDED_LOCKERBOX`           	| Forward to lockerbox                            	|
+|      613 	| `PACKAGE_OVERSIZED`                     	| Package oversized                               	|
+|      614 	| `PACKAGE_OVERDUE`                       	| Package overdue                                 	|
+|      615 	| `PACKAGE_DAMAGED`                       	| Package damaged                                 	|
+|      616 	| `PACKAGE_LOST`                          	| Package lost                                    	|
+|      617 	| `CUSTOMER_WRONG_PHONENUMBER`            	| Customer wrong phone number                     	|
+|      618 	| `DANGEROUS_GOODS_ADR`                   	| Package contains dangerous goods ADR            	|
+|      619 	| `ALCOHOL_DELIVERY_CUSTOMER_NOT_PRESENT` 	| Alcohol delivery; Customer not home             	|
+
+
+:::warning FAILED_ATTEMPT status
+
+All the failed attempt statuses will have the status code `FAILED_ATTEMPT`. However, the reason for the failed attempt will be mentioned in the reasons field of the `details` property. In addition to that, there will an additional `failedStatus` property in the root path of the body. Here's an example of the same:
+
+```json 
+{
+  "id": "fx6_ZSWp0RDc24csBqOj9",
+  "carrierTrackingNumber": "P199684830307745678",
+  "metaData": "78420240902-2",
+  "status": "FAILED_ATTEMPT",
+  "location": null,
+  "ts": "2024-09-02T13:08:06.574Z",
+  "trackingUrl": "https://t.pdlr.nl/P199684830307745678/",
+  "code": 601,
+  "failedStatus": "CUSTOMER_NOT_PRESENT_NO_NEIGHBOURS",
+  "details": {
+    "lang": {
+      "en": {
+        "headline": "Delivery attempt failed",
+        "description": "Delivery attempt failed at destination"
+      },
+      "nl": {
+        "headline": "Afleverpoging mislukt",
+        "description": "Afleverpoging mislukt op bestemming"
+      }
+    },
+    "courierName": "Peddler",
+    "reason": "Customer not answering; no neighbours available"
+  }
+}
+```
+:::
 
 
 ## Status details
@@ -91,14 +157,10 @@ Apart from the aforementioned contents `ts`, `details` & `gps`, some more inform
 
 ### ``FAILED_ATTEMPT``
 
-- This status occurs when a package is not delivered due to one of the following reasons:
-  - Customer not answering
-  - Wrong/incomplete address
-  - Issue with package
-  - Issue with transport/courier
-  - Refused by customer
-- ``nextAttemptDate``: Date of next attempt (optional)
-- ``contactSupport``: TRUE (optional)
+- This status occurs when a package is not delivered successfully. 
+- The reason for the failed attempt will be mentioned in the reasons field of the `details` property. 
+- In addition to that, there will an additional `failedStatus` property in the root path of the body.
+- More about the failed attempt statuses can be found [here](#failed-attempt-statuses)
 
 ### ``ON_HOLD``
 
