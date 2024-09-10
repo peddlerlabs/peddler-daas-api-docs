@@ -19,7 +19,24 @@ We recommend creating a manifest including a valid webhook URI as part of the sh
   "carrierTrackingNumber": "string",
   "metaData": "string",
   "status": "string",
-  "ts": "JSON Date"
+  "ts": "JSON Date",
+  "trackingUrl": "string",
+  "code": "number",
+  "failedStatus": "string",
+  "details": {
+    "lang": {
+      "en": {
+        "headline": "string",
+        "description": "string"
+      },
+      "nl": {
+        "headline": "string",
+        "description": "string"
+      }
+    },
+    "courierName": "string",
+    "reason": "string"
+  }
 }
 ```
 
@@ -30,16 +47,39 @@ We recommend creating a manifest including a valid webhook URI as part of the sh
 | ``metaData`` | ``string`` | ``string`` | The metadata |
 | ``status`` | ``string`` | ``string`` | The status of the shipment |
 | ``ts`` | ``JSON Date`` | ``JSON Date`` | The timestamp of the shipment |
+| ``trackingUrl`` | ``string`` | ``string`` | The tracking URL of the shipment |
+| ``code`` | ``number`` | ``number`` | The code of the shipment |
+| ``failedStatus`` | ``string`` | ``string`` | The failed status of the shipment |
+| ``details`` | ``object`` | ``object`` | The details of the shipment status |
+
 
 An example of a webhook body:
 
 ```json title="Webhook body"
 {
-  "id": "Lc7rRTyivvk_lC0w8kLoU",
-  "carrierTrackingNumber": "P123456789012345678",
-  "metaData": "123456",
-  "status": "SHIPMENT_CONFIRMED",
-  "ts": "2021-06-01T12:00:00.000Z"
+  "id": "fx6_ZSWp0RDc24csBqOj9",
+  "carrierTrackingNumber": "P199684830307745678",
+  "metaData": "78420240902-2",
+  "status": "FAILED_ATTEMPT",
+  "location": null,
+  "ts": "2024-09-02T13:08:06.574Z",
+  "trackingUrl": "https://t.pdlr.nl/P199684830307745678/",
+  "code": 601,
+  "failedStatus": "CUSTOMER_NOT_PRESENT_NO_NEIGHBOURS",
+  "details": {
+    "lang": {
+      "en": {
+        "headline": "Delivery attempt failed",
+        "description": "Delivery attempt failed at destination"
+      },
+      "nl": {
+        "headline": "Afleverpoging mislukt",
+        "description": "Afleverpoging mislukt op bestemming"
+      }
+    },
+    "courierName": "Peddler",
+    "reason": "Customer not answering; no neighbours available"
+  }
 }
 ```
 
@@ -57,6 +97,8 @@ An example of the same is as follows:
     "lat": 52.3409992,
     "lng": 4.8236365
   },
-  "ts": "2023-06-14T10:54:55.896Z"
+  "ts": "2023-06-14T10:54:55.896Z",
+  "trackingUrl": "https://t.pdlr.nl/P123456789012345678/",
+  "code": 410
 }
 ```
