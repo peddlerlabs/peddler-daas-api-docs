@@ -30,7 +30,7 @@ The `departedFacility` endpoint can only be called when the shipments are in the
 
 :::
 
-### Request
+## Request
 
 An example of a request:
 
@@ -105,9 +105,9 @@ fetch("https://alphadev-api.peddler.com/api/Carriers/CARRIED_ID/departedFacility
 </Tabs>
 
 
-### Response
+## Response
 
-#### Success
+### Success
 
 The response will be a count of the number of shipments along with the tracking numbers that were successfully updated.
 
@@ -142,7 +142,7 @@ If some of the shipments were successfully updated and some were not, the respon
 :::
 
 
-#### Error
+### Error
 
 If there are trackingNumbers passed in the request that have never been created, the response will be an error message.
 
