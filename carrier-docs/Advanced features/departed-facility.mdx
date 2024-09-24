@@ -107,10 +107,51 @@ fetch("https://alphadev-api.peddler.com/api/Carriers/CARRIED_ID/departedFacility
 
 ### Response
 
-The response will be a count of the number of shipments that were successfully updated.
+#### Success
+
+The response will be a count of the number of shipments along with the tracking numbers that were successfully updated.
 
 ```json
 {
-    "count": 6
+    "count": 2,
+    "trackingNumbers": [
+        "P197794809406011111",
+        "P197794809406011112",
+        "P197794809406011113",
+        "P197794809406011114",
+        "P197794809406011115",
+        "P197794809406011116"
+    ]
+}
+```
+
+:::info Partial success
+
+If some of the shipments were successfully updated and some were not, the response will **ONLY** include the tracking numbers of the shipments that were not updated.
+  
+```json
+{
+    "count": 2,
+    "trackingNumbers": [
+        "P197794809406011113",
+        "P197794809406011114"
+    ]
+}
+```
+
+:::
+
+
+#### Error
+
+If there are trackingNumbers passed in the request that have never been created, the response will be an error message.
+
+```json
+{
+    "error": {
+        "statusCode": 422,
+        "name": "no-manifests-found",
+        "message": "NO MANIFESTS FOUND"
+    }
 }
 ```
