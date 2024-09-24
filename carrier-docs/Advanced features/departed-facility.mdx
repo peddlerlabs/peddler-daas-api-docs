@@ -127,8 +127,8 @@ The response will be a count of the number of shipments along with the tracking 
 
 :::info Partial success
 
-If some of the shipments were successfully updated and some were not, the response will **ONLY** include the tracking numbers of the shipments that were not updated.
-  
+If the payload contains both VALID and INVALID tracking numbers, the response will be a count of the number of VALID shipments along with the tracking numbers that were successfully updated.
+
 ```json
 {
     "count": 2,
@@ -144,7 +144,7 @@ If some of the shipments were successfully updated and some were not, the respon
 
 ### Error
 
-If there are trackingNumbers passed in the request that have never been created, the response will be an error message.
+If there are ONLY (SO NO VALID TRACKING NUMBERS AT ALL) trackingNumbers passed in the request that have never been created, the response will be an error message.
 
 ```json
 {
