@@ -29,6 +29,30 @@ In this section, you will find the list of all the postcodes where Peddler offer
 
 :::danger Update of the postcode list
 
-The list might **NOT** be the real-time list of postcodes that are available for delivery. If you want to check if a postcode is available for delivery, please use the ``/api/PostcodeRegions`` endpoint to get the latest list.
+The list might **NOT** be the real-time list of postcodes that are available for delivery. If you want to check if a postcode is available for delivery, please use the ``/postcodes`` endpoint to get the latest list of postcodes. 
+
+:::
+
+### Get all postcodes
+
+To get all the postcodes for a specific carrier, you can use the following endpoint:
+
+```bash
+curl --location 'https://alphadev-api.peddler.com/api/Carriers/{carrier_id}/postcodes' \
+--header 'Authorization: Bearer ewFP9DYiDAKedxkcfeCj9Znp0X5WkXOk'
+```
+
+### Validate a postcode
+
+To validate a postcode for a specific carrier, you can use the following endpoint:
+
+```bash
+curl --location 'https://alphadev-api.peddler.com/api/Carriers/{carrier_id}/postcode?postcode=1066' \
+--header 'Authorization: Bearer ewFP9DYiDAKedxkcfeCj9Znp0X5WkXOk'
+```
+
+:::note Validation not necessary
+
+Postcode validation is not neccsary since it is implicitly done when you create a shipment.
 
 :::
